@@ -10,6 +10,6 @@ public class ConnectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection);
-        Toast.makeText(ConnectionActivity.this,"Hello Matthieu",Toast.LENGTH_SHORT);
+        Toast.makeText(ConnectionActivity.this,"Hello Julien",Toast.LENGTH_SHORT);
     }
 }
