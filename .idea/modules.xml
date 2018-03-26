@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MiniPoll.iml" filepath="$PROJECT_DIR$/MiniPoll.iml" />
+      <module fileurl="file://C:\Users\franc\AndroidStudioProjects\coo_mini_poll\MiniPoll.iml" filepath="C:\Users\franc\AndroidStudioProjects\coo_mini_poll\MiniPoll.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\franc\AndroidStudioProjects\coo_mini_poll\app\app.iml" filepath="C:\Users\franc\AndroidStudioProjects\coo_mini_poll\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/coo_mini_poll.iml" filepath="$PROJECT_DIR$/coo_mini_poll.iml" />
     </modules>
   </component>
