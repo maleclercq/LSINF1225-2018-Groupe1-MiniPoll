@@ -11,11 +11,11 @@
         android:id="@+id/ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="68dp"
         android:ems="10"
         android:hint="USERNAME"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:id="@+id/Nom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="PASSWORD"
         android:inputType="textPassword"
@@ -34,22 +34,20 @@
         android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="38dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginTop="19dp"
         android:onClick="login"
         android:text="Login"
-        app:layout_constraintEnd_toEndOf="@+id/Nom"
+        app:layout_constraintEnd_toEndOf="@+id/CreateAccount"
         app:layout_constraintTop_toBottomOf="@+id/Nom" />
 
     <Button
         android:id="@+id/CreateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginTop="20dp"
         android:text="Create Account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Nom"
         app:layout_constraintTop_toBottomOf="@+id/Login" />
 </android.support.constraint.ConstraintLayout>
