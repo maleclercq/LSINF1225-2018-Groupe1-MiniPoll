@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.matthieu.minipoll.ConnectionActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context="com.example.matthieu.minipoll.CreateAccountActivity">
 
     <EditText
         android:id="@+id/ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="70dp"
         android:ems="10"
         android:hint="@string/Username"
         android:inputType="textPersonName"
@@ -23,32 +22,35 @@
         android:id="@+id/Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ID" />
 
-    <Button
-        android:id="@+id/Login"
+    <EditText
+        android:id="@+id/ConfirmPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="26dp"
-        android:layout_marginTop="19dp"
-        android:onClick="login"
-        android:text="@string/Login"
-        app:layout_constraintEnd_toEndOf="@+id/CreateAccount"
-        app:layout_constraintTop_toBottomOf="@+id/Password" />
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/ConfirmPassword"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Password" />
 
     <Button
-        android:id="@+id/CreateAccount"
+        android:id="@+id/OK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="34dp"
-        android:layout_marginTop="20dp"
-        android:onClick="createAccount"
-        android:text="@string/CreateAccount"
-        app:layout_constraintEnd_toEndOf="@+id/Password"
-        app:layout_constraintTop_toBottomOf="@+id/Login" />
+        android:layout_marginTop="30dp"
+        android:onClick="validation"
+        android:text="@string/ok"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ConfirmPassword" />
+
 </android.support.constraint.ConstraintLayout>

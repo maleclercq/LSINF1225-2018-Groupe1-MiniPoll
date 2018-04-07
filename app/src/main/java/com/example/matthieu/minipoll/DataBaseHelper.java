@@ -100,8 +100,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             }
     }
 
+    public Cursor rawQuery(String queryString,String[] whereArgs){
+        return myDataBase.rawQuery(queryString, whereArgs);
+    }
+    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
+        return myDataBase.query("main", null, null, null, null, null, null);
+    }
+
+    /*
+    *
+    * Retourne un tableau de string contenant toutes les infos
+    * que la requete sql a renvoye
+     */
     public String[][] createTabFromCursor(Cursor c,int nbrColone){
-        Log.d("ok1","ok1");
         Cursor countLine=c;
         int size=0;
         if (countLine.moveToFirst()) {
@@ -117,16 +128,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 for(int j=0;j<nbrColone;j++){
                     tab[i][j]=c.getString(j);
                 }
+                i++;
             } while (c.moveToNext());
         }
 
         return tab;
-    }
-
-    public Cursor rawQuery(String queryString,String[] whereArgs){
-        return myDataBase.rawQuery(queryString, whereArgs);
-    }
-    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
-        return myDataBase.query("main", null, null, null, null, null, null);
     }
 }

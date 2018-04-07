@@ -33,28 +33,30 @@ public class ConnectionActivity extends AppCompatActivity {
             Toast.makeText(ConnectionActivity.this, "Unable to open database", Toast.LENGTH_LONG).show();
             throw sqle;
         }
+        //A ouvert la dataBase et la stocke dans myDbHelper
 
-        EditText ID=(EditText) findViewById(R.id.ID);//Recupere ID
-        EditText MDP=(EditText) findViewById(R.id.Nom);//Recuper MDP
+        EditText ID=findViewById(R.id.ID);//Recupere ID
+        EditText MDP=findViewById(R.id.Password);//Recuper MDP
 
         String [] whereArgs={ID.getText().toString(),MDP.getText().toString()};//les conditions de la requete sql
         Cursor c=myDbHelper.rawQuery("select ID,NOM,PRENOM,MDP,EMAIL,PHOTO from UTILISATEUR where ID=? AND MDP=?",whereArgs);//on fait la requete
 
         String [][] tab=myDbHelper.createTabFromCursor(c,6);
 
-        if(tab.length==0){//cela veut dire qu'on a pas trouvé de couple ID/MDP dans la requete
+        if(tab.length==0){  //cela veut dire qu'on a pas trouvé de couple ID/MDP dans la requete
             Toast.makeText(ConnectionActivity.this,"Wrong Password",Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(ConnectionActivity.this,"Good Password",Toast.LENGTH_SHORT).show();
             Utilisateur u=new Utilisateur(tab[0][0],tab[0][1],tab[0][2],tab[0][3],tab[0][4],tab[0][5]);
             Intent i = new Intent(ConnectionActivity.this, MainActivity.class);
 
-            i.putExtra("sampleObject",u);
+            //permet de changer de fenetre
+            i.putExtra("utilisateur",u);
             startActivity(i);
         }
     }
 
     public void createAccount(View v){
-        Toast.makeText(ConnectionActivity.this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+        Intent i=new Intent(ConnectionActivity.this, CreateAccountActivity.class);
+        startActivity(i);
     }
 }

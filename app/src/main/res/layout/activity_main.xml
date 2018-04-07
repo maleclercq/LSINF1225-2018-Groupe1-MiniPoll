@@ -7,43 +7,40 @@
     tools:context="com.example.matthieu.minipoll.MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <TextView
-        android:id="@+id/Pseudo"
+    <Button
+        android:id="@+id/Choix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="51dp"
-        android:text="Pseudo"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/oval_choix"
+        android:text="@string/Choix"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/Nom"
+    <Button
+        android:id="@+id/Questionnaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:text="Nom"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Prenom"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/Prenom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="24dp"
-        android:text="Prénom"
-        app:layout_constraintStart_toEndOf="@+id/Nom"
-        app:layout_constraintTop_toBottomOf="@+id/Pseudo" />
+        android:layout_marginBottom="128dp"
+        android:layout_marginTop="128dp"
+        android:background="@drawable/oval_questionnaire"
+        android:text="@string/Questionnaire"
+        app:layout_constraintBottom_toBottomOf="@+id/Sondage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Choix" />
 
     <Button
-        android:id="@+id/LogOff"
+        android:id="@+id/Sondage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:onClick="logOff"
-        android:text="Log Off"
+        android:layout_marginBottom="115dp"
+        android:background="@drawable/oval_sondage"
+        android:text="@string/Sondage"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>

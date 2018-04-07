@@ -11,9 +11,6 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
     Utilisateur u;
-    TextView pseudo;
-    TextView nom;
-    TextView prenom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,20 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent i = getIntent();
-        u= (Utilisateur)i.getSerializableExtra("sampleObject");
-
-        pseudo=findViewById(R.id.Pseudo);
-        pseudo.setText(u.id);
-
-        nom=findViewById(R.id.Nom);
-        nom.setText(u.nom);
-
-        prenom=findViewById(R.id.Prenom);
-        prenom.setText(u.prenom);
+        u= (Utilisateur)i.getSerializableExtra("utilisateur");
     }
 
-    public void logOff(View v){
-        Intent i = new Intent(MainActivity.this, ConnectionActivity.class);
-        startActivity(i);
-    }
 }
