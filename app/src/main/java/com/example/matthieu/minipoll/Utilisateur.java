@@ -7,15 +7,15 @@ import java.io.Serializable;
  */
 
 public class Utilisateur implements Serializable {
-    public String id;
+    public String pseudo;
     public String nom;
     public String prenom;
     public String mdp;
     public String email;
     public String photo;
 
-    public Utilisateur(String id,String nom,String prenom,String mdp,String email,String photo){
-        this.id=id;
+    public Utilisateur(String pseudo,String nom,String prenom,String mdp,String email,String photo){
+        this.pseudo=pseudo;
         this.nom=nom;
         this.prenom=prenom;
         this.mdp=mdp;

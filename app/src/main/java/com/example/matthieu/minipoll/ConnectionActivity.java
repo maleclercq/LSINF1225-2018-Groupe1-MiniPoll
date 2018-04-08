@@ -51,6 +51,7 @@ public class ConnectionActivity extends AppCompatActivity {
 
             //permet de changer de fenetre
             i.putExtra("utilisateur",u);
+            ConnectionActivity.this.finish();
             startActivity(i);
         }
     }

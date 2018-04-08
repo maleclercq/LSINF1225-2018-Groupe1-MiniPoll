@@ -72,5 +72,6 @@ public class CreateProfilActivity extends AppCompatActivity {
 
         i.putExtra("utilisateur",u);
         startActivity(i);
+        finish();
     }
 }

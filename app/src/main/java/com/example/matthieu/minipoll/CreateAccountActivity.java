@@ -73,5 +73,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         i.putExtra("id",id);
         i.putExtra("password",password);
         startActivity(i);
+        finish();
     }
 }
