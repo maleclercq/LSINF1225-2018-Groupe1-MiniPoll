@@ -24,20 +24,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void choix(View v){
-        Toast.makeText(MainActivity.this,"Not Yet Implemented",Toast.LENGTH_LONG).show();
-//        Intent i=new Intent(MainActivity.this,ChoixListeActivity.class);
-//        startActivity(i);
+        Intent i=new Intent(MainActivity.this,SondageListeActivity.class);
+        i.putExtra("utilisateur",u);
+        i.putExtra("type","CHOIX");
+        startActivity(i);
     }
 
     public void questionnaire(View v){
-        Toast.makeText(MainActivity.this,"Not Yet Implemented",Toast.LENGTH_LONG).show();
-//        Intent i=new Intent(MainActivity.this,QuestionnaireListeActivity.class);
-//        startActivity(i);
-
+        Intent i=new Intent(MainActivity.this,SondageListeActivity.class);
+        i.putExtra("utilisateur",u);
+        i.putExtra("type","QUESTIONNAIRE");
+        startActivity(i);
     }
     public void sondage(View v){
         Intent i=new Intent(MainActivity.this,SondageListeActivity.class);
         i.putExtra("utilisateur",u);
+        i.putExtra("type","SONDAGE");
         startActivity(i);
     }
 

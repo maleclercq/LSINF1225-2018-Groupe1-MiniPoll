@@ -10,6 +10,7 @@ public class SondageViewActivity extends AppCompatActivity {
     String titre;
     String date;
     String auteur;
+    String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,9 @@ public class SondageViewActivity extends AppCompatActivity {
         titre= (String)i.getSerializableExtra("Titre");
         date=(String)i.getSerializableExtra("Date");
         auteur= (String)i.getSerializableExtra("Auteur");
+        type= (String)i.getSerializableExtra("type");
 
         TextView tv=findViewById(R.id.tempo);
-        tv.setText("You're "+u.pseudo+"\nAnd you're looking for: "+titre+"\nCreate on: "+date+"\nBy: "+auteur);
+        tv.setText("You're "+u.pseudo+"\nAnd you're looking for: "+titre+"\nCreate on: "+date+"\nBy: "+auteur+"\nAnd that's a "+type);
     }
 }

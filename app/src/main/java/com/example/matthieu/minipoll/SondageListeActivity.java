@@ -1,3 +1,4 @@
+
 package com.example.matthieu.minipoll;
 
 import android.content.Context;
@@ -6,7 +7,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,6 +29,7 @@ public class SondageListeActivity extends AppCompatActivity {
 
     Utilisateur u;
     private ArrayList<String> data = new ArrayList<String>();
+    String typePoll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,18 @@ public class SondageListeActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         u = (Utilisateur) i.getSerializableExtra("utilisateur");
+        this.typePoll = (String) i.getSerializableExtra("type");
+
         ListView lv = (ListView) findViewById(R.id.listview);
         generateListContent();
-        lv.setAdapter(new MyListAdaper(this, R.layout.list_item, data));
+        if(typePoll.compareTo("QUESTIONNAIRE")==0) {
+            lv.setAdapter(new MyListAdaper(this, R.layout.list_item_questionnaire, data));
+        }else if(typePoll.compareTo("CHOIX")==0) {
+            lv.setAdapter(new MyListAdaper(this, R.layout.list_item_choix, data));
+        }else if(typePoll.compareTo("SONDAGE")==0) {
+            lv.setAdapter(new MyListAdaper(this, R.layout.list_item_sondage, data));
+        }
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -59,6 +68,7 @@ public class SondageListeActivity extends AppCompatActivity {
                 i.putExtra("Titre",tab[0]);
                 i.putExtra("Date",tab[1].substring(9)); //substring pour eviter le 'Fait le: '
                 i.putExtra("Auteur",tab[2].substring(5)); //substring pour eviter le 'Par: '
+                i.putExtra("type",typePoll);
                 startActivity(i);
             }
         });
@@ -80,14 +90,14 @@ public class SondageListeActivity extends AppCompatActivity {
         }
 
         String [] whereArgs={u.pseudo};
-        Cursor c=myDbHelper.rawQuery("select TITRE,DATE,AUTEUR from SONDAGE_PARTICIPANT where PARTICIPANT=? AND PARTICIPATION=0",whereArgs);
+        Cursor c=myDbHelper.rawQuery("select TITRE,DATE,AUTEUR from "+typePoll+"_PARTICIPANT where PARTICIPANT=? AND PARTICIPATION=0",whereArgs);
 
         String [][] value=myDbHelper.createTabFromCursor(c,3);
         for(int i=0;i<value.length;i++){
             data.add(value[i][0]+"\nFait le: "+value[i][1]+"\nPar: "+value[i][2]);
         }//Sondages non fait
 
-        c=myDbHelper.rawQuery("select TITRE,DATE,AUTEUR from SONDAGE_PARTICIPANT where PARTICIPANT=? AND PARTICIPATION=1",whereArgs);
+        c=myDbHelper.rawQuery("select TITRE,DATE,AUTEUR from "+typePoll+"_PARTICIPANT where PARTICIPANT=? AND PARTICIPATION=1",whereArgs);
         //cherche mnt les sondages pas encore faits
 
         value=myDbHelper.createTabFromCursor(c,3);
@@ -152,3 +162,4 @@ public class SondageListeActivity extends AppCompatActivity {
         TextView title;
     }
 }
+

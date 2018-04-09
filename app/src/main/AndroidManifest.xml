@@ -25,7 +25,7 @@
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".CreateProfilActivity" />
         <activity android:name=".SondageListeActivity" />
-        <activity android:name=".SondageViewActivity"></activity>
+        <activity android:name=".SondageViewActivity" />
     </application>
 
 </manifest>
