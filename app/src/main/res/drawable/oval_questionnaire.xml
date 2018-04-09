@@ -9,7 +9,7 @@
         android:topLeftRadius="30dp"
         android:topRightRadius="30dp" />
 
-    <solid android:color="#CFCFCF" />
+    <solid android:color="@color/colorQuestionnaire" />
 
     <padding
         android:bottom="0dp"
@@ -21,5 +21,5 @@
         android:height="60dp"
         android:width="270dp" />
 
-    <solid android:color="#f4f441" />
+    <solid android:color="@color/colorQuestionnaire" />
 </shape>
