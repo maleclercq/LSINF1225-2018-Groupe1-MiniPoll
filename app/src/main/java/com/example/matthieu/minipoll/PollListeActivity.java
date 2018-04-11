@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,7 +46,9 @@ public class PollListeActivity extends AppCompatActivity {
         u = (Utilisateur) i.getSerializableExtra("utilisateur");
         this.typePoll = (String) i.getSerializableExtra("type");
         TextView titre=findViewById(R.id.Titre);
-        titre.setText(this.typePoll);
+        SpannableString sousligne = new SpannableString(this.typePoll);
+        sousligne.setSpan(new UnderlineSpan(), 0, sousligne.length(), 0);
+        titre.setText(sousligne);
 
         ListView lv = (ListView) findViewById(R.id.listview);
         generateListContent();
@@ -59,10 +63,13 @@ public class PollListeActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                boolean dejaParticipe=false;
                 String [] tab=new String[3];
                 String str=data.get(position);
                 String [] tempo=str.split("\n");
-                if(tempo.length==4){
+
+                if(tempo.length==4){ //a deja participe et on enleve la partie "Vous avez deja participe\n"
+                    dejaParticipe=true;
                     tab[0]=tempo[1];
                     tab[1]=tempo[2];
                     tab[2]=tempo[3];
@@ -76,7 +83,9 @@ public class PollListeActivity extends AppCompatActivity {
                     i.putExtra("Titre", tab[0]);
                     i.putExtra("Date", tab[1].substring(9)); //substring pour eviter le 'Fait le: '
                     i.putExtra("Auteur", tab[2].substring(5)); //substring pour eviter le 'Par: '
+                    i.putExtra("participation",dejaParticipe);
                     startActivity(i);
+                    finish();
                 }else{
                     Toast.makeText(PollListeActivity.this, "Not yet implemented", Toast.LENGTH_LONG).show();
                 }

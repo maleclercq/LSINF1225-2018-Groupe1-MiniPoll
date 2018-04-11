@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
     public void sondage(View v){
-        Intent i=new Intent(MainActivity.this,PollListeActivity.class);
+        Intent i=new Intent(this,PollListeActivity.class);
         i.putExtra("utilisateur",u);
         i.putExtra("type","SONDAGE");
         startActivity(i);
