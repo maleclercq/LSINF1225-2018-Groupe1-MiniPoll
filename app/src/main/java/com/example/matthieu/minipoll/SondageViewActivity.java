@@ -218,12 +218,15 @@ public class SondageViewActivity extends AppCompatActivity {
         }
 
         String[] whereArgs = {this.titre, this.auteur, this.date};
-        Cursor c = myDbHelper.rawQuery("select PROPOSITION from SONDAGE where titre=? and auteur=? and date=?", whereArgs);
+        Cursor c = myDbHelper.rawQuery("select PROPOSITION,QUESTION from SONDAGE where titre=? and auteur=? and date=?", whereArgs);
 
-        String[][] value = myDbHelper.createTabFromCursor(c, 1);
+        String[][] value = myDbHelper.createTabFromCursor(c, 2);
         for (int i = 0; i < value.length; i++) {
-            data.add("Proposition " + i + ": " + value[i][0] + "\n");
+            data.add("Proposition " + (i+1) + ": " + value[i][0] + "\n");
         }
+
+        TextView question=findViewById(R.id.Question);
+        question.setText(value[0][1]);
 
         if(participation){
             ajoutReponse();
