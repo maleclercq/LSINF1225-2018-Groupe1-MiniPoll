@@ -7,11 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 
 public class ConnectionActivity extends AppCompatActivity {
+
+    boolean debug=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,7 @@ public class ConnectionActivity extends AppCompatActivity {
     }
 
     public void login(View v){
+
         final DataBaseHelper myDbHelper = new DataBaseHelper(ConnectionActivity.this);
         try {
             myDbHelper.createDataBase();
@@ -35,13 +39,19 @@ public class ConnectionActivity extends AppCompatActivity {
         }
         //A ouvert la dataBase et la stocke dans myDbHelper
 
-        EditText ID=findViewById(R.id.ID);//Recupere ID
-        EditText MDP=findViewById(R.id.Password);//Recuper MDP
+        String ID=((TextView) findViewById(R.id.ID)).getText().toString();//Recupere ID
+        String MDP=((TextView) findViewById(R.id.Password)).getText().toString();//Recuper MDP
 
-        String [] whereArgs={ID.getText().toString(),MDP.getText().toString()};//les conditions de la requete sql
+        if(debug){
+            ID="THEWALL";
+            MDP="idontloveobama";
+        }
+
+        String [] whereArgs={ID,MDP};//les conditions de la requete sql
         Cursor c=myDbHelper.rawQuery("select ID,NOM,PRENOM,MDP,EMAIL,PHOTO from UTILISATEUR where ID=? AND MDP=?",whereArgs);//on fait la requete
 
         String [][] tab=myDbHelper.createTabFromCursor(c,6);
+
 
         if(tab.length==0){  //cela veut dire qu'on a pas trouvé de couple ID/MDP dans la requete
             Toast.makeText(ConnectionActivity.this,"Wrong Password",Toast.LENGTH_SHORT).show();

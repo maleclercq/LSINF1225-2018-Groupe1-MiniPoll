@@ -39,4 +39,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void ami(View v){
+        //a completer
+    }
+
+    public void profile(View v){
+        //a completer
+    }
+
+    public void ajouterPoll(View v){
+        //a completer
+    }
+
 }
