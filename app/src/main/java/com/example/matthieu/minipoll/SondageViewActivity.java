@@ -48,7 +48,7 @@ public class SondageViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sondage_view);
 
         Intent i = getIntent();
-        this.u = (Utilisateur) i.getSerializableExtra("utilisateur");
+        this.u = (Utilisateur) i.getSerializableExtra("Utilisateur");
         this.titre = (String) i.getSerializableExtra("Titre");
         this.date = (String) i.getSerializableExtra("Date");
         this.auteur = (String) i.getSerializableExtra("Auteur");
@@ -66,7 +66,7 @@ public class SondageViewActivity extends AppCompatActivity {
 
         if(!participation) {
             TextView nbrMaxTV = findViewById(R.id.nbrMax);
-            nbrMaxTV.setText("Nbr of choises: " + nbrChoixMax);
+            nbrMaxTV.setText("Number of choices: " + nbrChoixMax);
         }
 
         if(participation){
