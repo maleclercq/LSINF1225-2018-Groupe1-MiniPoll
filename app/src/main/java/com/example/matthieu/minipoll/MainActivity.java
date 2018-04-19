@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //a completer
         Intent i=new Intent(this,FriendActivity.class);  // FriendActivity ca creer
         i.putExtra("utilisateur",u);
-        startActivity(i)
+        startActivity(i);
 
     }
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         //a completer
         Intent i=new Intent(this,ProfileActivity.class); // ProfileActivity ca creer
         i.putExtra("utilisateur",u);
-        startActivity(i)
+        startActivity(i);
     }
 
     public void ajouterPoll(View v){
