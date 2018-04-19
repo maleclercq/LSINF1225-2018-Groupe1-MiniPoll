@@ -53,7 +53,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="86dp"
-        android:backgroundTint="#00bfff"
+        android:backgroundTint="@color/colorValidation"
         android:onClick="login"
         android:text="@string/Login"
         app:layout_constraintEnd_toEndOf="@+id/Password"
@@ -70,7 +70,7 @@
         android:layout_marginTop="8dp"
         android:onClick="createAccount"
         android:text="@string/CreateAccount"
-        android:backgroundTint="#00bfff"
+        android:backgroundTint="@color/colorValidation"
         app:layout_constraintEnd_toEndOf="@+id/Password"
         app:layout_constraintStart_toStartOf="@+id/Password"
         app:layout_constraintTop_toBottomOf="@+id/Login" />

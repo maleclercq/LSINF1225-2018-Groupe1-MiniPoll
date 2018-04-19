@@ -6,4 +6,7 @@
     <color name="colorChoix">#f48c42</color>
     <color name="colorSondage">#8DB600</color>
     <color name="colorQuestionnaire">#FFDF00</color>
+    <color name="colorValidation">#e81f3f</color>
+
+
 </resources>
