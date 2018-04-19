@@ -80,9 +80,9 @@ public class PollListeActivity extends AppCompatActivity {
                 if(typePoll.compareTo("SONDAGE")==0) {
                     Intent i = new Intent(PollListeActivity.this, SondageViewActivity.class);
                     i.putExtra("utilisateur", u);
-                    i.putExtra("Titre", tab[0]);
-                    i.putExtra("Date", tab[1].substring(9)); //substring pour eviter le 'Fait le: '
-                    i.putExtra("Auteur", tab[2].substring(5)); //substring pour eviter le 'Par: '
+                    i.putExtra("titre", tab[0]);
+                    i.putExtra("date", tab[1].substring(9)); //substring pour eviter le 'Fait le: '
+                    i.putExtra("auteur", tab[2].substring(5)); //substring pour eviter le 'Par: '
                     i.putExtra("participation",dejaParticipe);
                     startActivity(i);
                     finish();

@@ -26,6 +26,7 @@
         <activity android:name=".CreateProfilActivity" />
         <activity android:name=".PollListeActivity" />
         <activity android:name=".SondageViewActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

@@ -48,10 +48,10 @@ public class SondageViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sondage_view);
 
         Intent i = getIntent();
-        this.u = (Utilisateur) i.getSerializableExtra("Utilisateur");
-        this.titre = (String) i.getSerializableExtra("Titre");
-        this.date = (String) i.getSerializableExtra("Date");
-        this.auteur = (String) i.getSerializableExtra("Auteur");
+        this.u = (Utilisateur) i.getSerializableExtra("utilisateur");
+        this.titre = (String) i.getSerializableExtra("titre");
+        this.date = (String) i.getSerializableExtra("date");
+        this.auteur = (String) i.getSerializableExtra("auteur");
         this.participation=(boolean) i.getSerializableExtra("participation");
         this.nbrDuChoix=1;
 
