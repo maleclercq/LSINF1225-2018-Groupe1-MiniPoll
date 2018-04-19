@@ -1,5 +1,6 @@
 package com.example.matthieu.minipoll;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,12 +46,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void ami(View v){
-        //a completer
-    }
-
     public void ajouterPoll(View v){
         //a completer
+        Intent i=new Intent(this,NewPollActivity.class); // NewPollActivity ca creer
+        i.putExtra("utilisateur",u);
+        startActivity(i);
     }
 
 }

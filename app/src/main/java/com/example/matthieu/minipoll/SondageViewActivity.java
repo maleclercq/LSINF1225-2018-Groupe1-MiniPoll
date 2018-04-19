@@ -171,6 +171,13 @@ public class SondageViewActivity extends AppCompatActivity {
             String answer=this.data.get(this.tabPosition.get(i).position);
             answer=answer.substring(15,answer.length()-8); //enleve 'proposition 1: ' et la valeur de la proposition
 
+            Log.e("debug",this.titre);
+            Log.e("debug",this.date);
+            Log.e("debug",this.auteur);
+            Log.e("debug",this.u.pseudo);
+            Log.e("debug",answer);
+            Log.e("debug",this.tabPosition.get(i).value+"");
+
             SQLiteStatement stmt = db.compileStatement("insert into SONDAGE_RESULTAT values('"
                     + this.titre + "','"
                     + this.date + "','"
