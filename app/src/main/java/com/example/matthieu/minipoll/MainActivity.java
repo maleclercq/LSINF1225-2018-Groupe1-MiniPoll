@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         //a completer
         Intent i=new Intent(this,NewPollActivity.class); // NewPollActivity ca creer
         i.putExtra("utilisateur",u);
-
+        startActivity(i);
     }
 
 }
