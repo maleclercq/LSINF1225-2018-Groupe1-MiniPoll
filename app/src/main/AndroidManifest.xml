@@ -28,7 +28,8 @@
         <activity android:name=".SondageViewActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".FriendActivity" />
-        <activity android:name=".NewPollActivity"></activity>
+        <activity android:name=".NewPollActivity" />
+        <activity android:name=".AddFriend"></activity>
     </application>
 
 </manifest>
