@@ -40,24 +40,22 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+
     public void ami(View v){
-        //a completer
-        Intent i=new Intent(this,FriendActivity.class);  // FriendActivity ca creer
+        Intent i=new Intent(this,FriendActivity.class);
         i.putExtra("utilisateur",u);
         startActivity(i);
-
     }
 
+
     public void profile(View v){
-        //a completer
-        Intent i=new Intent(this,ProfileActivity.class); // ProfileActivity ca creer
+        Intent i=new Intent(this,ProfileActivity.class);
         i.putExtra("utilisateur",u);
         startActivity(i);
     }
 
     public void ajouterPoll(View v){
-        //a completer
-        Intent i=new Intent(this,NewPollActivity.class); // NewPollActivity ca creer
+        Intent i=new Intent(this,NewPollActivity.class);
         i.putExtra("utilisateur",u);
         startActivity(i);
     }

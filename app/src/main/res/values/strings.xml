@@ -38,5 +38,8 @@
     <string name="Questionnaire">Quizz</string>
     <string name="Sondage">Survey</string>
 
+    <!-->Activity Friend -->
+    <string name="Myfriends">My friends:</string>
+
 
 </resources>
