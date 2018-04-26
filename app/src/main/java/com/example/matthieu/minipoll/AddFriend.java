@@ -1,18 +1,5 @@
-
-
-
-//
-//
-//Encore brouillon car c'est moi (francois) qui ait fait
-//
-//
-
-
-
-
 package com.example.matthieu.minipoll;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -20,14 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.matthieu.minipoll.ConnectionActivity;
-import com.example.matthieu.minipoll.DataBaseHelper;
-import com.example.matthieu.minipoll.R;
-import com.example.matthieu.minipoll.Utilisateur;
-
 import java.io.IOException;
 
-public class FriendActivity extends AppCompatActivity {
+public class AddFriend extends AppCompatActivity {
 
     Utilisateur u;
 
