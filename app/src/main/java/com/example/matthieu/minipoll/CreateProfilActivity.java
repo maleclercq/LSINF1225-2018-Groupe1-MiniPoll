@@ -24,27 +24,27 @@ public class CreateProfilActivity extends AppCompatActivity {
 
 
         Intent i = getIntent();
-        this.id= (String)i.getSerializableExtra("id");
-        this.password= (String)i.getSerializableExtra("password");
+        this.id = (String) i.getSerializableExtra("id");
+        this.password = (String) i.getSerializableExtra("password");
     }
 
-    public void Validation(View v){
+    public void Validation(View v) {
 
-        String prenom=((EditText) findViewById(R.id.Prenom)).getText().toString();
-        String nom=((EditText) findViewById(R.id.NomDeFamille)).getText().toString();
-        String mail=((EditText) findViewById(R.id.AdresseEMail)).getText().toString();
-        String image="basicimage.png";
+        String prenom = ((EditText) findViewById(R.id.Prenom)).getText().toString();
+        String nom = ((EditText) findViewById(R.id.NomDeFamille)).getText().toString();
+        String mail = ((EditText) findViewById(R.id.AdresseEMail)).getText().toString();
+        String image = "basicimage.png";
 
-        if(        prenom.compareTo("")==0
-                || nom.compareTo("")==0
-                || mail.compareTo("")==0
+        if (prenom.compareTo("") == 0
+                || nom.compareTo("") == 0
+                || mail.compareTo("") == 0
                 ) {
 
             Toast.makeText(CreateProfilActivity.this, "Please, fill all the field", Toast.LENGTH_LONG).show(); //traduction
             return;
         }
 
-        if(!mail.contains("@") || !mail.contains(".") ){
+        if (!mail.contains("@") || !mail.contains(".")) {
             Toast.makeText(CreateProfilActivity.this, "Please, enter a valid mail", Toast.LENGTH_LONG).show(); //traduction
             return;
         }
@@ -64,14 +64,19 @@ public class CreateProfilActivity extends AppCompatActivity {
         }
 
         SQLiteDatabase db = myDbHelper.getWritableDatabase();
-        SQLiteStatement stmt = db.compileStatement("insert into UTILISATEUR values('"+id+"','"+nom+"','"+prenom+"','"+password+"','"+mail+"','"+image+"')");
+        SQLiteStatement stmt = db.compileStatement("insert into UTILISATEUR values('" + id + "','" + nom + "','" + prenom + "','" + password + "','" + mail + "','" + image + "')");
         stmt.execute();
 
-        Utilisateur u=new Utilisateur(id,nom,prenom,password,mail,"basicimage.png");
+        Utilisateur u = new Utilisateur(id, nom, prenom, password, mail, "basicimage.png");
         Intent i = new Intent(CreateProfilActivity.this, MainActivity.class);
 
-        i.putExtra("utilisateur",u);
+        i.putExtra("utilisateur", u);
         startActivity(i);
+        finish();
+    }
+
+    public void retour(View v)
+    {
         finish();
     }
 }

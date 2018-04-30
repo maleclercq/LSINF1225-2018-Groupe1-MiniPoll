@@ -10,4 +10,5 @@ public class NewPollActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_poll);
     }
+
 }

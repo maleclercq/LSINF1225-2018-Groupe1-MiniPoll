@@ -61,4 +61,5 @@ public class FriendActivity extends AppCompatActivity {
         String [][] tab=myDbHelper.createTabFromCursor(c,6);
 
     }
+
 }
