@@ -18,6 +18,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.matthieu.minipoll.ConnectionActivity;
@@ -60,6 +61,10 @@ public class FriendActivity extends AppCompatActivity {
 
         String [][] tab=myDbHelper.createTabFromCursor(c,6);
 
+    }
+    public void retour(View v)
+    {
+        finish();
     }
 
 }
