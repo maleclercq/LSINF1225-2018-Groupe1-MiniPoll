@@ -61,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void chooseImage(View v){
-        Intent i=new Intent(ProfileActivity.this, ChoiceOfProfilPictureActivity.class);
+        Intent i=new Intent(this, ChoiceOfProfilPictureActivity.class);
         startActivity(i);
     }
     public void retour(View v) {

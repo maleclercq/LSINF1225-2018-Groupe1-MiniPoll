@@ -12,10 +12,9 @@ import android.widget.ImageView;
 
 import java.io.File;
 
-public class ChoiceOfProfilPictureActivity extends ProfileActivity {
+public class ChoiceOfProfilPictureActivity extends AppCompatActivity {
 
     public static final int CAMERA_REQUEST = 10;
-    public static final int REQUEST_CODE = 20;
     public static final int IMAGE_GALLERY_REQUEST = 20;
     private ImageView imgSpecimenPhoto;
 
