@@ -33,7 +33,10 @@
         <activity android:name=".NewPollActivity" />
         <activity android:name=".AddFriend" />
         <activity android:name=".NewChoiceActivity" />
-        <activity android:name=".ChoiceOfProfilPictureActivity"></activity>
+        <activity android:name=".ChoiceOfProfilPictureActivity" />
+        <activity android:name=".NewSondageActivity" />
+        <activity android:name=".NewSondageTempoActivity" />
+        <activity android:name=".ListeAmisPourPollActivity"></activity>
     </application>
 
 </manifest>

@@ -7,10 +7,24 @@ import android.view.View;
 
 public class NewPollActivity extends AppCompatActivity {
 
+    Utilisateur u;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_poll);
+        Intent i = getIntent();
+        this.u= (Utilisateur)i.getSerializableExtra("utilisateur");
+    }
+
+    public void questionnaire(View v){
+        //
+    }
+
+    public void newSondage(View v){
+        Intent i=new Intent(this,NewSondageTempoActivity.class);
+        i.putExtra("utilisateur",this.u);
+        startActivity(i);
     }
 
     public void newChoice(View v){

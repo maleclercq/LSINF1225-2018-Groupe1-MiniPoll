@@ -38,5 +38,18 @@
     <string name="Questionnaire">Quizz</string>
     <string name="Sondage">Survey</string>
 
+    <!--newSondageTempoActivity-->
+    <string name="FieldNbrOfProposition">Please, choose your number of proposition</string>
+    <string name="FieldNbrOfChoice">Please, choose your number of choices</string>
+
+    <!--newSondageActivity-->
+    <string name="Titre">Title</string>
+    <string name="createSondage">Please field all the blank and the title</string>
+    <string name="Proposition">Proposition</string>
+    <string name="previsualisation">Previsualisation</string>
+
+    <!--activity new poll-->
+    <string name="TitreNewPoll">Choose your type of new poll</string>
+
 
 </resources>
