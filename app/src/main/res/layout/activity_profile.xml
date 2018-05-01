@@ -8,117 +8,111 @@
 
     <Button
         android:id="@+id/Edit"
-        android:layout_width="33dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="35dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/pencil"
         android:backgroundTint="@color/colorValidation"
         android:onClick="editProfile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
 
     <Button
         android:id="@+id/Retour"
-        android:layout_width="38dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="23dp"
-        android:layout_marginEnd="18dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/left_arrow"
         android:backgroundTint="@color/colorValidation"
         android:onClick="retour"
-        app:layout_constraintBottom_toTopOf="@+id/imgSpecimenPhoto"
-        app:layout_constraintEnd_toStartOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintBottom_toBottomOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="37dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="30dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/firstName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintTop_toBottomOf="@id/Retour"
+        app:layout_constraintTop_toTopOf="@id/imgSpecimenPhoto"
+        app:layout_constraintStart_toEndOf="@id/imgSpecimenPhoto"
         tools:text="nom" />
 
     <TextView
         android:id="@+id/firstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="66dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imgSpecimenPhoto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addImage"
-        app:layout_constraintTop_toTopOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toEndOf="@id/imgSpecimenPhoto"
         tools:text="prénom" />
 
     <TextView
         android:id="@+id/pseudo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/firstName"
+        app:layout_constraintStart_toEndOf="@id/imgSpecimenPhoto"
         app:layout_constraintTop_toBottomOf="@+id/firstName"
+        app:layout_constraintBottom_toBottomOf="@id/imgSpecimenPhoto"
         tools:text="pseudo" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="62dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginTop="80dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="@+id/imgSpecimenPhoto"
-        app:layout_constraintTop_toBottomOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgSpecimenPhoto"
         tools:text="email" />
 
     <TextView
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="91dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/Edit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintVertical_bias="0.172"
         tools:text="password" />
 
     <ImageView
         android:id="@+id/imgSpecimenPhoto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="38dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintEnd_toStartOf="@+id/name"
+        android:layout_width="148dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="@+id/pseudo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?android:attr/selectableItemBackground" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/addImage"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginStart="114dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/plus"
         android:onClick="chooseImage"
-        app:layout_constraintBottom_toBottomOf="@+id/imgSpecimenPhoto"
-        app:layout_constraintEnd_toStartOf="@+id/firstName"
+        app:layout_constraintTop_toBottomOf="@id/imgSpecimenPhoto"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgSpecimenPhoto" />
-
-
+        app:layout_constraintEnd_toEndOf="@+id/pseudo" />
 </android.support.constraint.ConstraintLayout>

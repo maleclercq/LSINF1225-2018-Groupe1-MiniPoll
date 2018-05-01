@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void ajouterPoll(View v){
+    public void newPoll(View v){
         //a completer
-        Intent i=new Intent(this,NewPollActivity.class); // NewPollActivity ca creer
+        Intent i=new Intent(this, NewPollActivity.class); // NewPollActivity à creer
         i.putExtra("utilisateur",u);
         startActivity(i);
     }
