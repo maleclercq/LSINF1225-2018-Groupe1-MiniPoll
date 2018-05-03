@@ -44,9 +44,10 @@
 
     <!--newSondageActivity-->
     <string name="Titre">Title</string>
-    <string name="createSondage">Please field all the blank and the title</string>
+    <string name="createSondage">Please field all the blank</string>
     <string name="Proposition">Proposition</string>
     <string name="previsualisation">Previsualisation</string>
+    <string name="question">Question</string>
 
     <!--activity new poll-->
     <string name="TitreNewPoll">Choose your type of new poll</string>

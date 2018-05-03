@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.matthieu.minipoll.MainActivity"
+    tools:context="com.example.matthieu.minipoll.ListeAmisPourPollActivity"
     tools:layout_editor_absoluteY="81dp">
 
 
@@ -53,5 +53,16 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="OK"
+        android:text="@string/ok"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearL2" />
 
 </android.support.constraint.ConstraintLayout>

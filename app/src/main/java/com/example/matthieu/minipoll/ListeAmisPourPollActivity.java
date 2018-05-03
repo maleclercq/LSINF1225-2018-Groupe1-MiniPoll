@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,12 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,9 +27,25 @@ import java.util.List;
 public class ListeAmisPourPollActivity extends AppCompatActivity {
     Utilisateur u;
     DataBaseHelper myDbHelper;
+    ArrayList<String> tabSTM;
+    String typePoll;
+
+    String titre;
+    String date;
+    String auteur;
 
     private ArrayList<String> amisARajouter;
     private ArrayList<String> amisQuiOntEteRajoute;
+
+    /**
+     *
+     * Elements a recevoir de i.getSeriazableExtra:
+     *                              utilisateur: Recois un Utilisateur
+     *                              sql: Recoit une liste de stmt sql pour créer le poll après avoir choisi les amis
+     *                              isChoice: boolean qui regarde si c'est un choix (pour ne mettre que un ami)
+     *                              titre: recoit le titre du poll
+     *                              date: recoit la date du poll
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,11 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         this.u = (Utilisateur) i.getSerializableExtra("utilisateur");
+        this.tabSTM= (ArrayList<String>) i.getSerializableExtra("sql");
+        this.typePoll=(String) i.getSerializableExtra("typePoll");
+
+        this.titre=(String) i.getSerializableExtra("titre");
+        this.date=(String) i.getSerializableExtra("date");
 
         amisARajouter= new ArrayList<String>();
         amisQuiOntEteRajoute = new ArrayList<String>();
@@ -70,10 +86,14 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         ListView amis2 = (ListView) findViewById(R.id.listview3);
         amis2.setAdapter(new ListeAmisPourPollActivity.MyListAdaper(this, R.layout.list_item_amis, amisARajouter));
 
-        /**  S'occupe du listener sur la liste des amis qui peuvent etre rajoute (deuxieme liste) */
+        /**  S'occupe du listener sur la liste des amis qui peuvent etre rajoutes (deuxieme liste) */
         amis2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                if(typePoll.compareTo("Choice")==0 && amisQuiOntEteRajoute.size()==1){
+                    amisARajouter.add(amisQuiOntEteRajoute.get(0));
+                    amisQuiOntEteRajoute.remove(0);
+                }
                 amisQuiOntEteRajoute.add(amisARajouter.get(position));
                 amisARajouter.remove(position);
 
@@ -102,9 +122,81 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
             Toast.makeText(ListeAmisPourPollActivity.this, "Unable to open database", Toast.LENGTH_LONG).show();
             throw sqle;
         }
-        amisARajouter.add("ami 1");
-        amisARajouter.add("ami 2");
 
+        String [] whereArgs={u.pseudo};//les conditions de la requete sql
+        Cursor c=myDbHelper.rawQuery("select AMI from AMI where Utilisateur=?",whereArgs);//on fait la requete
+
+        String [][] tab=myDbHelper.createTabFromCursor(c,1);
+
+        for(int i=0;i<tab.length;i++){
+            amisARajouter.add(tab[i][0]);
+        }
+
+    }
+
+    public void OK(View v)
+    {
+        if(amisQuiOntEteRajoute.size()==0){
+            Toast.makeText(this,"Choice, at least, one friend",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        /** ouvre la db **/
+        this.myDbHelper = new DataBaseHelper(this);
+        try {
+            myDbHelper.createDataBase();
+        } catch (IOException ioe) {
+            Toast.makeText(this, "Unable to create database", Toast.LENGTH_LONG).show();
+            throw new Error("Unable to create database");
+        }
+        try {
+            myDbHelper.openDataBase();
+        } catch (SQLException sqle) {
+            Toast.makeText(this, "Unable to open database", Toast.LENGTH_LONG).show();
+            throw sqle;
+        }
+        SQLiteDatabase db = myDbHelper.getWritableDatabase();
+        /** Fin d'ouverture **/
+
+        for(int i=0;i<tabSTM.size();i++){
+            Log.e("debug",tabSTM.get(i));
+            SQLiteStatement stmt=db.compileStatement(tabSTM.get(i));
+            stmt.execute();
+        }
+
+        String insert="";
+        if(typePoll.compareTo("Survey")==0) {
+            insert="SONDAGE_PARTICIPANT";
+        }else if(typePoll.compareTo("Choice")==0){
+            insert="CHOIX_PARTICIPANT";
+        } else {
+            insert="QUESTIONNAIRE_PARTICIPANT";
+        }
+        for(int i=0;i<amisQuiOntEteRajoute.size();i++){
+            SQLiteStatement stmt = db.compileStatement("insert into "+insert+" values('"
+                    +this.titre     +"',' "
+                    +this.date      + "',' "
+                    +this.u.pseudo    + "',' "
+                    +amisQuiOntEteRajoute.get(i)  +"',"
+                    +0              +")");
+            stmt.execute();
+        }
+
+        /**
+         * rajoute le créateur a la liste des participants"
+         **/
+        if(typePoll.compareTo("Survey")==0) {
+            Log.e("debug",insert);
+            SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
+                    + this.titre + "',' "
+                    + this.date + "',' "
+                    + this.u.pseudo + "',' "
+                    + this.u.pseudo + "',"
+                    + 0 + ")");
+            stmt.execute();
+        }
+
+        finish();
     }
 
     @Override
@@ -158,8 +250,5 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
     public class ViewHolder {
         TextView title;
     }
-    public void retour(View v)
-    {
-        finish();
-    }
+
 }
