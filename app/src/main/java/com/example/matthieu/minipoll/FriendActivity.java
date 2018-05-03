@@ -96,5 +96,6 @@ public class FriendActivity extends AppCompatActivity {
 
 
     }
+
 }
 */

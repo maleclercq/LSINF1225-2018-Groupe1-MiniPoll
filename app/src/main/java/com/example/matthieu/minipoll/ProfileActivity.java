@@ -59,4 +59,8 @@ public class ProfileActivity extends AppCompatActivity {
         //profilPicture.setImageAlpha(u.photo);
 
     }
+    public void retour(View v)
+    {
+        finish();
+    }
 }

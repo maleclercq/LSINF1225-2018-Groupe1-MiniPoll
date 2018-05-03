@@ -309,4 +309,8 @@ public class SondageViewActivity extends AppCompatActivity {
     public class ViewHolder {
         TextView title;
     }
+    public void retour(View v)
+    {
+        finish();
+    }
 }

@@ -180,5 +180,9 @@ public class PollListeActivity extends AppCompatActivity {
         ImageView thumbnail;
         TextView title;
     }
+    public void retour(View v)
+    {
+        finish();
+    }
 }
 

@@ -4,32 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:noHistory = "true"
-    tools:context="com.example.matthieu.minipoll.CreateProfilActivity">
+    android:noHistory="true"
+    tools:context="com.example.matthieu.minipoll.CreateProfilActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
         android:alpha=".5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/background_connection" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/AddImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
@@ -37,48 +33,59 @@
         android:id="@+id/NomDeFamille"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/LastName"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/AddImage" />
+        app:layout_constraintTop_toBottomOf="@+id/AddImage" />
 
     <EditText
         android:id="@+id/Prenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/FirstName"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/NomDeFamille"
         app:layout_constraintTop_toBottomOf="@+id/NomDeFamille" />
 
     <EditText
         android:id="@+id/AdresseEMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/Mail"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Prenom" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/Prenom"
+        app:layout_constraintTop_toBottomOf="@+id/Prenom" />
 
     <Button
         android:id="@+id/OK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/colorValidation"
         android:onClick="Validation"
         android:text="@string/ok"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AdresseEMail" />
+
+    <Button
+        android:id="@+id/Retour"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/left_arrow"
         android:backgroundTint="@color/colorValidation"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/AdresseEMail" />
+        android:onClick="retour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
