@@ -1,4 +1,4 @@
-package com.example.matthieu.minipoll;
+package com.example.matthieu.minipoll.Profile;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.matthieu.minipoll.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;

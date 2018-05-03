@@ -1,4 +1,4 @@
-package com.example.matthieu.minipoll;
+package com.example.matthieu.minipoll.Profile;
 
 import android.content.Intent;
 import android.database.SQLException;
@@ -9,6 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.matthieu.minipoll.DataBaseHelper;
+import com.example.matthieu.minipoll.MainActivity;
+import com.example.matthieu.minipoll.R;
+import com.example.matthieu.minipoll.Utilisateur;
 
 import java.io.IOException;
 

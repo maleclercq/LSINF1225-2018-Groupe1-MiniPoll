@@ -3,13 +3,13 @@ package com.example.matthieu.minipoll;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.matthieu.minipoll.Profile.CreateProfilActivity;
 
 import java.io.IOException;
 

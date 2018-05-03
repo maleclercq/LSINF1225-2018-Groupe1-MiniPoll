@@ -1,10 +1,15 @@
-package com.example.matthieu.minipoll;
+package com.example.matthieu.minipoll.Profile;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.matthieu.minipoll.DataBaseHelper;
+import com.example.matthieu.minipoll.Profile.ChoiceOfProfilPictureActivity;
+import com.example.matthieu.minipoll.R;
+import com.example.matthieu.minipoll.Utilisateur;
 
 
 public class ProfileActivity extends AppCompatActivity {

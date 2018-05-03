@@ -1,4 +1,4 @@
-package com.example.matthieu.minipoll;
+package com.example.matthieu.minipoll.New_poll;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.matthieu.minipoll.New_poll.NewSondageActivity;
+import com.example.matthieu.minipoll.R;
+import com.example.matthieu.minipoll.Utilisateur;
 
 public class NewSondageTempoActivity extends AppCompatActivity {
 
@@ -30,17 +34,17 @@ public class NewSondageTempoActivity extends AppCompatActivity {
             nbrChoix = Integer.parseInt(((EditText) findViewById(R.id.NbrChoix)).getText().toString());
             nbrProposition = Integer.parseInt(((EditText) findViewById(R.id.NbrProposition)).getText().toString());
         } catch (NumberFormatException e){
-            Toast.makeText(this,"Please, field coorectly the field",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Please, field coRrectly the field",Toast.LENGTH_LONG).show();
             return;
         }
 
         if(nbrChoix<1 || nbrChoix>nbrProposition){
-            Toast.makeText(this,"Please, eenter a correct value for the choises",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Please, enter a correct value for the choises",Toast.LENGTH_LONG).show();
             return;
         }
 
         if(nbrProposition<2 || nbrProposition>6){
-            Toast.makeText(this,"Please, eenter a correct value for the Proposition (between 2 and 6)",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Please, enter a correct value for the Proposition (between 2 and 6)",Toast.LENGTH_LONG).show();
             return;
         }
 

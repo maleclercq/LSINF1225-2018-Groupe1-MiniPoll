@@ -1,4 +1,4 @@
-package com.example.matthieu.minipoll;
+package com.example.matthieu.minipoll.New_poll;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.matthieu.minipoll.DataBaseHelper;
+import com.example.matthieu.minipoll.R;
+import com.example.matthieu.minipoll.Utilisateur;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -111,7 +115,8 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
     private void generateListContent() {
         this.myDbHelper = new DataBaseHelper(ListeAmisPourPollActivity.this);
         try {
-            myDbHelper.createDataBase();
+            myDbHelper.createDataBase();//Ceci est un commentaire sans apostrophe sinon c est chiant
+
         } catch (IOException ioe) {
             Toast.makeText(ListeAmisPourPollActivity.this, "Unable to create database", Toast.LENGTH_LONG).show();
             throw new Error("Unable to create database");

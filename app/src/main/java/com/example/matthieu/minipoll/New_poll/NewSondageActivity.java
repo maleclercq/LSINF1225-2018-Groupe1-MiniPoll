@@ -1,4 +1,4 @@
-package com.example.matthieu.minipoll;
+package com.example.matthieu.minipoll.New_poll;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -24,6 +24,11 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.matthieu.minipoll.DataBaseHelper;
+import com.example.matthieu.minipoll.New_poll.ListeAmisPourPollActivity;
+import com.example.matthieu.minipoll.R;
+import com.example.matthieu.minipoll.Utilisateur;
 
 public class NewSondageActivity extends Activity {
     private ListView myList;

@@ -1,10 +1,12 @@
 package com.example.matthieu.minipoll;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.matthieu.minipoll.New_poll.NewPollActivity;
+import com.example.matthieu.minipoll.Profile.ProfileActivity;
 
 
 public class MainActivity extends AppCompatActivity {
