@@ -175,6 +175,14 @@ public class NewSondageActivity extends Activity {
             tabSTM.add(str);
         }
 
+        String str=("insert into SONDAGE_TYPE values('"
+                + titre + "','"
+                + date + "','"
+                + u.pseudo + "',"
+                + nbrChoix + ","
+                + nbrProp + ");");
+        tabSTM.add(str);
+
         Intent i=new Intent(this,ListeAmisPourPollActivity.class);
         i.putExtra("utilisateur",u);
         i.putExtra("sql", tabSTM);
