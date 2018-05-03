@@ -184,4 +184,8 @@ public class NewSondageActivity extends Activity {
         startActivity(i);
         finish();
     }
+
+    public void retour(View v){
+        finish();
+    }
 }
