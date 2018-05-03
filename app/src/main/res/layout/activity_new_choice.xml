@@ -68,11 +68,11 @@
 
     <Button
         android:id="@+id/Retour"
-        android:layout_width="0dp"
+        android:layout_width="86dp"
         android:layout_height="0dp"
         android:layout_marginBottom="85dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/left_arrow"
         android:onClick="retour"
@@ -123,6 +123,7 @@
         android:layout_marginBottom="17dp"
         android:layout_marginStart="1dp"
         android:text="Button"
+        android:backgroundTint="@color/colorValidation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,11 +136,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"
         android:text="Button"
+        android:backgroundTint="@color/colorValidation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button3"
         tools:text="Previsualisation" />
-
 
 
 

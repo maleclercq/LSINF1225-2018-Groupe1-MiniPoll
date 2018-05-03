@@ -68,6 +68,7 @@
         android:layout_marginStart="8dp"
         android:onClick="OK"
         android:text="OK"
+        android:backgroundTint="@color/colorValidation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
