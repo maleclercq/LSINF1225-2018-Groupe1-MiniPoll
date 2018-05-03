@@ -174,9 +174,9 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         }
         for(int i=0;i<amisQuiOntEteRajoute.size();i++){
             SQLiteStatement stmt = db.compileStatement("insert into "+insert+" values('"
-                    +this.titre     +"',' "
-                    +this.date      + "',' "
-                    +this.u.pseudo    + "',' "
+                    +this.titre     +"','"
+                    +this.date      + "','"
+                    +this.u.pseudo    + "','"
                     +amisQuiOntEteRajoute.get(i)  +"',"
                     +0              +")");
             stmt.execute();
@@ -188,9 +188,9 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         if(typePoll.compareTo("Survey")==0) {
             Log.e("debug",insert);
             SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
-                    + this.titre + "',' "
-                    + this.date + "',' "
-                    + this.u.pseudo + "',' "
+                    + this.titre + "','"
+                    + this.date + "','"
+                    + this.u.pseudo + "','"
                     + this.u.pseudo + "',"
                     + 0 + ")");
             stmt.execute();
