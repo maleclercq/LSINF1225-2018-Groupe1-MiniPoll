@@ -171,13 +171,6 @@ public class SondageViewActivity extends AppCompatActivity {
             String answer=this.data.get(this.tabPosition.get(i).position);
             answer=answer.substring(15,answer.length()-8); //enleve 'proposition 1: ' et la valeur de la proposition
 
-            Log.e("debug",this.titre);
-            Log.e("debug",this.date);
-            Log.e("debug",this.auteur);
-            Log.e("debug",this.u.pseudo);
-            Log.e("debug",answer);
-            Log.e("debug",this.tabPosition.get(i).value+"");
-
             SQLiteStatement stmt = db.compileStatement("insert into SONDAGE_RESULTAT values('"
                     + this.titre + "','"
                     + this.date + "','"
@@ -241,6 +234,23 @@ public class SondageViewActivity extends AppCompatActivity {
 
         c=myDbHelper.rawQuery("select NOMBRE_A_CHOISIR from SONDAGE_TYPE where titre=? and auteur=? and date=?", whereArgs);
         nbrChoixMax=Integer.parseInt(myDbHelper.createTabFromCursor(c,1)[0][0]);
+
+        if(participation){
+            TextView reponses=findViewById(R.id.Reponses);
+            TextView amis=findViewById(R.id.pasRepondu);
+            String strReponses="";
+
+            String[] whereArgs2={this.titre,this.date,this.auteur,"0"};
+            c=myDbHelper.rawQuery("select participant from questionnaire_participant where titre=? and date=? and auteur=? and participation=? ", whereArgs);
+            String[][] value2 = myDbHelper.createTabFromCursor(c, 1);
+
+            for(int i=0;i<value2.length;i++){
+                strReponses+=value2[i][0]+"\n";
+            }
+
+            reponses.setText(strReponses);
+        }
+
     }
 
     private void ajoutReponse() {

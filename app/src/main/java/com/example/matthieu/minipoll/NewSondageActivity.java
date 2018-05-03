@@ -1,11 +1,21 @@
 package com.example.matthieu.minipoll;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -13,16 +23,19 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class NewSondageActivity extends Activity {
     private ListView myList;
     private MyAdapter myAdapter;
+    private DataBaseHelper myDbHelper;
 
     Utilisateur u;
     int nbrChoix;
     int nbrProp;
 
-    ArrayList tabProp;
+    ArrayList<String> tabProp;
+    ArrayList<String> tabSTM;
 
     /** sources :https://vikaskanani.wordpress.com/2011/07/27/android-focusable-edittext-inside-listview/ */
 
@@ -37,7 +50,7 @@ public class NewSondageActivity extends Activity {
         this.nbrChoix= (int)i.getSerializableExtra("nbrChoix");
         this.u= (Utilisateur)i.getSerializableExtra("utilisateur");
 
-        this.tabProp=new ArrayList<>();
+        this.tabProp=new ArrayList<String>();
 
         myList = (ListView) findViewById(R.id.MyList);
         myList.setItemsCanFocus(true);
@@ -64,7 +77,7 @@ public class NewSondageActivity extends Activity {
         }
 
         public Object getItem(int position) {
-            return position;
+            return myItems.get(position);
         }
 
         public long getItemId(int position) {
@@ -108,10 +121,66 @@ public class NewSondageActivity extends Activity {
         String caption;
     }
 
+    public void test(View v){
+
+    }
+
+    public String getDate(){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        return ( dateFormat.format( cal.getTime() ) );
+    }
+
     public void OK(View v){
+        String titre=((EditText)findViewById(R.id.Titre)).getText().toString();
+
+        String question=((EditText)findViewById(R.id.Question)).getText().toString();
+
+        for(int i=0;i<nbrProp;i++) {
+            tabProp.add( ( (ListItem) myAdapter.getItem(i) ).caption );
+        }
+
+        if(tabProp.contains("") || titre.compareTo("")==0 || question.compareTo("")==0 ){ //si toute les cases n'ont pas ete remplies
+            Toast.makeText(this,"Fill all the blank please",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        this.myDbHelper = new DataBaseHelper(this);
+        try {
+            myDbHelper.createDataBase();
+        } catch (IOException ioe) {
+            Toast.makeText(this, "Unable to create database", Toast.LENGTH_LONG).show();
+            throw new Error("Unable to create database");
+        }
+        try {
+            myDbHelper.openDataBase();
+        } catch (SQLException sqle) {
+            Toast.makeText(this, "Unable to open database", Toast.LENGTH_LONG).show();
+            throw sqle;
+        }
+
+        tabSTM=new ArrayList<String>();
+
+        SQLiteDatabase db = myDbHelper.getWritableDatabase();
+
+        String date= getDate();
+
+        for(int i=0;i<nbrProp;i++) {
+            String str=("insert into SONDAGE values('"
+                    + titre + "','"
+                    + date + "','"
+                    + u.pseudo + "','"
+                    + question + "','"
+                    + tabProp.get(i) + "');");
+            tabSTM.add(str);
+        }
+
         Intent i=new Intent(this,ListeAmisPourPollActivity.class);
         i.putExtra("utilisateur",u);
-//        i.putExtra("sql",sqlListe);
+        i.putExtra("sql", tabSTM);
+        i.putExtra("typePoll","Survey");
+        i.putExtra("titre",titre);
+        i.putExtra("date",date);
         startActivity(i);
         finish();
     }
