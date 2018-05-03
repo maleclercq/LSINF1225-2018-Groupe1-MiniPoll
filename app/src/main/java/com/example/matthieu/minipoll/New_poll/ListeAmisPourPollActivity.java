@@ -179,7 +179,7 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         }
         for(int i=0;i<amisQuiOntEteRajoute.size();i++){
             SQLiteStatement stmt = db.compileStatement("insert into "+insert+" values('"
-                    +this.titre     +"','"
+                    +this.titre +"','"
                     +this.date      + "','"
                     +this.u.pseudo    + "','"
                     +amisQuiOntEteRajoute.get(i)  +"',"

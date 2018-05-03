@@ -44,18 +44,20 @@ public class NewSondageActivity extends Activity {
 
     /** sources :https://vikaskanani.wordpress.com/2011/07/27/android-focusable-edittext-inside-listview/ */
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_sondage);
 
         Intent i = getIntent();
-        this.nbrProp= (int)i.getSerializableExtra("nbrProp");
-        this.nbrChoix= (int)i.getSerializableExtra("nbrChoix");
-        this.u= (Utilisateur)i.getSerializableExtra("utilisateur");
+        this.nbrProp = (int) i.getSerializableExtra("nbrProp");
+        this.nbrChoix = (int) i.getSerializableExtra("nbrChoix");
+        this.u = (Utilisateur) i.getSerializableExtra("utilisateur");
 
-        this.tabProp=new ArrayList<String>();
+        this.tabProp = new ArrayList<String>();
 
         myList = (ListView) findViewById(R.id.MyList);
         myList.setItemsCanFocus(true);
@@ -106,7 +108,7 @@ public class NewSondageActivity extends Activity {
             //we need to update adapter once we finish with editing
             holder.caption.setOnFocusChangeListener(new OnFocusChangeListener() {
                 public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus){
+                    if (!hasFocus) {
                         final int position = v.getId();
                         final EditText Caption = (EditText) v;
                         myItems.get(position).caption = Caption.getText().toString();
@@ -126,29 +128,32 @@ public class NewSondageActivity extends Activity {
         String caption;
     }
 
-    public void test(View v){
+    public void test(View v) {
 
     }
 
-    public String getDate(){
+    public String getDate() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
-        return ( dateFormat.format( cal.getTime() ) );
+        return (dateFormat.format(cal.getTime()));
     }
 
-    public void OK(View v){
-        String titre=((EditText)findViewById(R.id.Titre)).getText().toString();
+    public void OK(View v) {
+        String titre = ((EditText) findViewById(R.id.Titre)).getText().toString();
 
-        String question=((EditText)findViewById(R.id.Question)).getText().toString();
+        String question = ((EditText) findViewById(R.id.Question)).getText().toString();
 
-        for(int i=0;i<nbrProp;i++) {
-            tabProp.add( ( (ListItem) myAdapter.getItem(i) ).caption );
+        for (int i = 0; i < nbrProp; i++) {
+            tabProp.add(((ListItem) myAdapter.getItem(i)).caption);
         }
 
-        if(tabProp.contains("") || titre.compareTo("")==0 || question.compareTo("")==0 ){ //si toute les cases n'ont pas ete remplies
-            Toast.makeText(this,"Fill all the blank please",Toast.LENGTH_LONG).show();
+        if (tabProp.contains("") || titre.compareTo("") == 0 || question.compareTo("") == 0) { //si toute les cases n'ont pas ete remplies
+            Toast.makeText(this, "Fill all the blank please", Toast.LENGTH_LONG).show();
             return;
         }
+
+        titre = titre.replace("'", " ");
+        question = question.replace("'", " ");
 
         this.myDbHelper = new DataBaseHelper(this);
         try {
@@ -164,23 +169,23 @@ public class NewSondageActivity extends Activity {
             throw sqle;
         }
 
-        tabSTM=new ArrayList<String>();
+        tabSTM = new ArrayList<String>();
 
         SQLiteDatabase db = myDbHelper.getWritableDatabase();
 
-        String date= getDate();
+        String date = getDate();
 
-        for(int i=0;i<nbrProp;i++) {
-            String str=("insert into SONDAGE values('"
+        for (int i = 0; i < nbrProp; i++) {
+            String str = ("insert into SONDAGE values('"
                     + titre + "','"
                     + date + "','"
                     + u.pseudo + "','"
                     + question + "','"
-                    + tabProp.get(i) + "');");
+                    + tabProp.get(i).replace("'", " ") + "');");
             tabSTM.add(str);
         }
 
-        String str=("insert into SONDAGE_TYPE values('"
+        String str = ("insert into SONDAGE_TYPE values('"
                 + titre + "','"
                 + date + "','"
                 + u.pseudo + "',"
@@ -188,17 +193,17 @@ public class NewSondageActivity extends Activity {
                 + nbrProp + ");");
         tabSTM.add(str);
 
-        Intent i=new Intent(this,ListeAmisPourPollActivity.class);
-        i.putExtra("utilisateur",u);
+        Intent i = new Intent(this, ListeAmisPourPollActivity.class);
+        i.putExtra("utilisateur", u);
         i.putExtra("sql", tabSTM);
-        i.putExtra("typePoll","Survey");
-        i.putExtra("titre",titre);
-        i.putExtra("date",date);
+        i.putExtra("typePoll", "Survey");
+        i.putExtra("titre", titre);
+        i.putExtra("date", date);
         startActivity(i);
         finish();
     }
 
-    public void retour(View v){
+    public void retour(View v) {
         finish();
     }
 }
