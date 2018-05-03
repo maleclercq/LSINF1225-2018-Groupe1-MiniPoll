@@ -25,18 +25,22 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".CreateProfilActivity" />
+        <activity android:name=".Profile.CreateProfilActivity" />
         <activity android:name=".PollListeActivity" />
         <activity android:name=".SondageViewActivity" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".Profile.ProfileActivity" />
         <activity android:name=".FriendActivity" />
-        <activity android:name=".NewPollActivity" />
+        <activity android:name=".New_poll.NewPollActivity" />
         <activity android:name=".AddFriend" />
-        <activity android:name=".NewChoiceActivity" />
-        <activity android:name=".ChoiceOfProfilPictureActivity" />
-        <activity android:name=".NewSondageActivity" />
-        <activity android:name=".NewSondageTempoActivity" />
-        <activity android:name=".ListeAmisPourPollActivity"></activity>
+        <activity android:name=".New_poll.NewChoiceActivity" />
+        <activity android:name=".Profile.ChoiceOfProfilPictureActivity" />
+        <activity android:name=".New_poll.NewSondageActivity" />
+        <activity android:name=".New_poll.NewSondageTempoActivity" />
+        <activity android:name=".New_poll.ListeAmisPourPollActivity" />
+        <activity
+            android:name=".New_poll.NewQuizzActivity"
+            android:label="@string/title_activity_new_quizz"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

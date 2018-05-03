@@ -1,9 +1,12 @@
-package com.example.matthieu.minipoll;
+package com.example.matthieu.minipoll.New_poll;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.matthieu.minipoll.R;
+import com.example.matthieu.minipoll.Utilisateur;
 
 public class NewPollActivity extends AppCompatActivity {
 

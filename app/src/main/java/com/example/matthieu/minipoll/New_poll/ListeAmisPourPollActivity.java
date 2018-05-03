@@ -1,4 +1,4 @@
-package com.example.matthieu.minipoll;
+package com.example.matthieu.minipoll.New_poll;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.matthieu.minipoll.DataBaseHelper;
+import com.example.matthieu.minipoll.R;
+import com.example.matthieu.minipoll.Utilisateur;
 
 import java.io.IOException;
 import java.util.ArrayList;

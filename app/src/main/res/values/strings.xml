@@ -51,6 +51,7 @@
 
     <!--activity new poll-->
     <string name="TitreNewPoll">Choose your type of new poll</string>
+    <string name="title_activity_new_quizz">NewQuizzActivity</string>
 
 
 </resources>
