@@ -12,10 +12,12 @@
         android:id="@+id/Choix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/oval_choix"
         android:onClick="choix"
         android:text="@string/Choix"
+        app:layout_constraintBottom_toTopOf="@+id/Questionnaire"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Ami" />
@@ -39,12 +41,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
+        android:layout_marginTop="47dp"
         android:background="@drawable/oval_sondage"
         android:onClick="sondage"
         android:text="@string/Sondage"
         app:layout_constraintBottom_toTopOf="@+id/AddPoll"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Questionnaire" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -90,7 +94,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/plus"
-        android:onClick="ajouterPoll"
+        android:onClick="newPoll"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

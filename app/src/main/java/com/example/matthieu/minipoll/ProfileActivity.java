@@ -59,8 +59,12 @@ public class ProfileActivity extends AppCompatActivity {
         //profilPicture.setImageAlpha(u.photo);
 
     }
-    public void retour(View v)
-    {
+
+    public void chooseImage(View v){
+        Intent i=new Intent(this, ChoiceOfProfilPictureActivity.class);
+        startActivity(i);
+    }
+    public void retour(View v) {
         finish();
     }
 }

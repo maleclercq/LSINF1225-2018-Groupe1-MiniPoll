@@ -21,17 +21,17 @@ public class AddFriend extends AppCompatActivity {
         Intent i = getIntent();
         u= (Utilisateur)i.getSerializableExtra("utilisateur");
 
-        final DataBaseHelper myDbHelper = new DataBaseHelper(FriendActivity.this);
+        final DataBaseHelper myDbHelper = new DataBaseHelper(this);
         try {
             myDbHelper.createDataBase();
         } catch (IOException ioe) {
-            Toast.makeText(FriendActivity.this, "Unable to create database", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Unable to create database", Toast.LENGTH_LONG).show();
             throw new Error("Unable to create database");
         }
         try {
             myDbHelper.openDataBase();
         } catch (SQLException sqle) {
-            Toast.makeText(FriendActivity.this, "Unable to open database", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Unable to open database", Toast.LENGTH_LONG).show();
             throw sqle;
         }
         //A ouvert la dataBase et la stocke dans myDbHelper
