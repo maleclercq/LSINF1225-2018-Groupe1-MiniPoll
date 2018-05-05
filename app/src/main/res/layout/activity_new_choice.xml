@@ -12,10 +12,10 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="94dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/secondChoice"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/secondChoice"
         tools:text="Choose between a picture or a text" />
 
@@ -23,7 +23,7 @@
         android:id="@+id/titreQuestion3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
+        android:layout_marginBottom="18dp"
         android:layout_marginEnd="18dp"
         android:ems="10"
         android:hint="@string/Choix"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="18dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="19dp"
         android:ems="10"
         android:hint="@string/Choix"
         android:inputType="textPersonName"
@@ -47,33 +47,32 @@
         android:id="@+id/titreQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/Choix"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/Retour"
-        app:layout_constraintTop_toBottomOf="@+id/Retour" />
+        app:layout_constraintBottom_toBottomOf="@+id/firstChoice"
+        app:layout_constraintStart_toEndOf="@+id/firstChoice"
+        app:layout_constraintTop_toBottomOf="@+id/firstChoice" />
 
     <TextView
         android:id="@+id/consigne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="74dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginTop="45dp"
         android:text="@string/createSondage"
-        app:layout_constraintBottom_toBottomOf="@+id/Retour"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Retour" />
+        app:layout_constraintStart_toEndOf="@+id/Retour"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/Retour"
-        android:layout_width="86dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="85dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/left_arrow"
         android:onClick="retour"
         app:layout_constraintBottom_toTopOf="@+id/firstChoice"
@@ -85,49 +84,49 @@
         android:id="@+id/firstChoice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="92dp"
         android:text="TextView"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Retour"
+        app:layout_constraintEnd_toEndOf="@+id/Retour"
+        app:layout_constraintStart_toEndOf="@+id/Retour"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="First choice :" />
 
     <TextView
         android:id="@+id/secondChoice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="132dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="131dp"
         android:text="TextView"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintBottom_toBottomOf="@+id/titreQuestion3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/titreQuestion"
         tools:text="Second choice :" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="111dp"
+        android:layout_marginStart="16dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/secondChoice"
-        app:layout_constraintStart_toStartOf="@+id/firstChoice"
-        app:layout_constraintTop_toBottomOf="@+id/firstChoice"
+        app:layout_constraintBottom_toBottomOf="@+id/titreQuestion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titreQuestion"
         tools:text="Choose between a picture or a text" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:layout_marginStart="1dp"
-        android:text="Button"
+        android:layout_marginEnd="3dp"
+        android:layout_marginTop="6dp"
         android:backgroundTint="@color/colorValidation"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        android:text="Button"
+        app:layout_constraintEnd_toStartOf="@+id/titreQuestion3"
+        app:layout_constraintTop_toBottomOf="@+id/titreQuestion3"
         tools:text="Validation" />
 
     <Button
@@ -135,13 +134,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"
-        android:text="Button"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
         android:backgroundTint="@color/colorValidation"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button3"
         tools:text="Previsualisation" />
-
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile.EditProfileActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/Retour"
+        android:layout_width="52dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/left_arrow"
+        android:backgroundTint="@color/colorValidation"
+        android:onClick="retour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/FirstName"
+        app:layout_constraintStart_toEndOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintTop_toTopOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="name" />
+
+    <EditText
+        android:id="@+id/FirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="154dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="154dp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Email"
+        app:layout_constraintStart_toEndOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/Pseudo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="23dp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintStart_toEndOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/FirstName"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="56dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/imgSpecimenPhoto" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="32dp"
+        android:inputType="textPassword"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/Email"
+        app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+    <Button
+        android:id="@+id/ModifProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="validationProfile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Password" />
+
+    <ImageView
+        android:id="@+id/imgSpecimenPhoto"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toEndOf="@+id/Retour"
+        app:layout_constraintTop_toBottomOf="@+id/Retour"
+        app:srcCompat="@drawable/photo" />
+
+    <Button
+        android:id="@+id/EditPicture"
+        android:layout_width="35dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginStart="210dp"
+        android:background="@drawable/pencil"
+        android:onClick="chooseImage"
+        app:layout_constraintBottom_toBottomOf="@+id/imgSpecimenPhoto"
+        app:layout_constraintEnd_toStartOf="@+id/Pseudo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

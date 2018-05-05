@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class ChoiceOfProfilPictureActivity extends AppCompatActivity {
+public class ChoiceOfProfilePictureActivity extends AppCompatActivity {
 
     public static final int CAMERA_REQUEST = 10;
     public static final int IMAGE_GALLERY_REQUEST = 20;
@@ -31,7 +31,7 @@ public class ChoiceOfProfilPictureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choice_of_profil_picture);
+        setContentView(R.layout.activity_choice_of_profile_picture);
 
         // get a reference to the image view that holds what the user will see
         imgSpecimenPhoto = findViewById(R.id.imgSpecimenPhoto);

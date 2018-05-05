@@ -39,7 +39,7 @@
     <string name="Sondage">Survey</string>
 
     <!--newSondageTempoActivity-->
-    <string name="FieldNbrOfProposition">Please, choose your number of proposition</string>
+    <string name="FieldNbrOfProposition">Please, choose your number of propositions</string>
     <string name="FieldNbrOfChoice">Please, choose your number of choices</string>
 
     <!--newSondageActivity-->
@@ -53,5 +53,6 @@
     <string name="TitreNewPoll">Choose your type of new poll</string>
     <string name="title_activity_new_quizz">NewQuizzActivity</string>
 
+    <!--activity new choice-->
 
 </resources>

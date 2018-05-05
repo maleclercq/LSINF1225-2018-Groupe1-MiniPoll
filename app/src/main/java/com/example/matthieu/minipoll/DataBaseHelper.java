@@ -1,5 +1,6 @@
 package com.example.matthieu.minipoll;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -84,10 +85,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super.close();
     }
 
-
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -108,9 +109,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-    *
-    * Retourne un tableau de string contenant toutes les infos
-    * que la requete sql a renvoye
+     *
+     * Retourne un tableau de string contenant toutes les infos
+     * que la requete sql a renvoye
      */
     public String[][] createTabFromCursor(Cursor c,int nbrColone){
         Cursor countLine=c;
@@ -134,4 +135,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return tab;
     }
+
 }
+
