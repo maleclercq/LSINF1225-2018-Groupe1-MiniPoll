@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class Utilisateur implements Serializable {
-    public String pseudo;
+    private String pseudo;
     public String nom;
     public String prenom;
     public String mdp;
@@ -15,11 +15,19 @@ public class Utilisateur implements Serializable {
     public String photo;
 
     public Utilisateur(String pseudo,String nom,String prenom,String mdp,String email,String photo){
-        this.pseudo=pseudo;
+        this.setPseudo(pseudo);
         this.nom=nom;
         this.prenom=prenom;
         this.mdp=mdp;
         this.email=email;
         this.photo=photo;
+    }
+
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 }

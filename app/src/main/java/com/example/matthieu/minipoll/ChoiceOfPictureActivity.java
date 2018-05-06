@@ -1,5 +1,7 @@
-package com.example.matthieu.minipoll.Profile;
+package com.example.matthieu.minipoll;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,7 +10,10 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class ChoiceOfProfilePictureActivity extends AppCompatActivity {
+public class ChoiceOfPictureActivity extends Activity {
 
     public static final int CAMERA_REQUEST = 10;
     public static final int IMAGE_GALLERY_REQUEST = 20;
@@ -31,15 +36,26 @@ public class ChoiceOfProfilePictureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choice_of_profile_picture);
+        setContentView(R.layout.activity_choice_of_picture);
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+
+        getWindow().setLayout((int)(width*.7), (int)(height*.2));
+
+        WindowManager.LayoutParams params = getWindow().getAttributes();
+        params.gravity = Gravity.CENTER;
+        params.x = 0;
+        params.y = -20;
+
 
         // get a reference to the image view that holds what the user will see
         imgSpecimenPhoto = findViewById(R.id.imgSpecimenPhoto);
     }
 
-    public void retour(View v){
-        finish();
-    }
 
     /**
      * This method will be called when the Take Picture button will be clicked.
@@ -120,7 +136,7 @@ public class ChoiceOfProfilePictureActivity extends AppCompatActivity {
     }
 
     public String getPictureName() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
         String timestamp = sdf.format(new Date());
         return "MyPicture" + timestamp + ".jpg";
     }

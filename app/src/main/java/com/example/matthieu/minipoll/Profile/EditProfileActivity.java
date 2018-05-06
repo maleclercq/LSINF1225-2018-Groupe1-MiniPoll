@@ -3,14 +3,13 @@ package com.example.matthieu.minipoll.Profile;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.matthieu.minipoll.ChoiceOfPictureActivity;
 import com.example.matthieu.minipoll.DataBaseHelper;
 import com.example.matthieu.minipoll.R;
 import com.example.matthieu.minipoll.Utilisateur;
@@ -22,7 +21,7 @@ public class EditProfileActivity extends AppCompatActivity {
     EditText editFirstName, editName, editId, editEmail, editPassword;
     String firstname, name, id, email, password;
     Utilisateur u;
-    DataBaseHelper myDbHelper;
+    SQLiteDatabase sql;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +71,13 @@ public class EditProfileActivity extends AppCompatActivity {
         if(editPassword.toString().matches("^.*[^a-zA-Z0-9 ].*$") || password.length()<6){
             Toast.makeText(EditProfileActivity.this,"Please, enter a valid password",Toast.LENGTH_LONG).show(); //traduction
         }
-        Cursor c=myDbHelper.rawQuery("SELECT * FROM Utilisateur WHERE ID='"+ editId.getText().toString()+"'", null);
-        if(c.moveToFirst()) {
-            myDbHelper.rawQuery("UPDATE Utilisateur SET NOM ='"+ editName.getText()+"', FIRSTNAME='"+ editFirstName.getText()+"',ID='"+ editId.getText()+"', MDP='" + editPassword.getText()+"', EMAIL'" + editEmail.getText(), new String[]{"' WHERE ID ='" + editId.getText() + "'"});
-            Toast.makeText(this, "Record Modified", Toast.LENGTH_LONG).show();
+        try (Cursor c = sql.rawQuery("SELECT * FROM Utilisateur WHERE ID='" + editId.getText().toString() + "'", null)) {
+            if (c.moveToFirst()) {
+                sql.execSQL("UPDATE Utilisateur SET NOM ='" + editName.getText() + "', FIRSTNAME='" + editFirstName.getText() + "',ID='" + editId.getText() + "', MDP='" + editPassword.getText() + "', EMAIL'" + editEmail.getText(), new String[]{"' WHERE ID ='" + editId.getText() + "'"});
+                Toast.makeText(this, "Record Modified", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Impossible to update profile", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -84,7 +86,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void chooseImage(View v){
-        Intent i = new Intent(this, ChoiceOfProfilePictureActivity.class);
+        Intent i = new Intent(this, ChoiceOfPictureActivity.class);
         startActivity(i);
     }
 

@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 
+
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     String DB_PATH = null;
@@ -104,9 +105,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public Cursor rawQuery(String queryString,String[] whereArgs){
         return myDataBase.rawQuery(queryString, whereArgs);
     }
+
     public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
         return myDataBase.query("main", null, null, null, null, null, null);
     }
+
 
     /*
      *
@@ -135,6 +138,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return tab;
     }
+
 
 }
 

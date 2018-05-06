@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.matthieu.minipoll.ChoiceOfPictureActivity;
 import com.example.matthieu.minipoll.DataBaseHelper;
 import com.example.matthieu.minipoll.MainActivity;
 import com.example.matthieu.minipoll.R;
@@ -21,6 +22,7 @@ public class CreateProfilActivity extends AppCompatActivity {
 
     String id;
     String password;
+    Utilisateur u;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +74,7 @@ public class CreateProfilActivity extends AppCompatActivity {
         SQLiteStatement stmt = db.compileStatement("insert into UTILISATEUR values('" + id + "','" + nom + "','" + prenom + "','" + password + "','" + mail + "','" + image + "')");
         stmt.execute();
 
-        Utilisateur u = new Utilisateur(id, nom, prenom, password, mail, "basicimage.png");
+        u = new Utilisateur(id, nom, prenom, password, mail, "basicimage.png");
         Intent i = new Intent(CreateProfilActivity.this, MainActivity.class);
 
         i.putExtra("utilisateur", u);
@@ -83,5 +85,11 @@ public class CreateProfilActivity extends AppCompatActivity {
     public void retour(View v)
     {
         finish();
+    }
+
+    public void chooseImage(View view) {
+        Intent i = new Intent(this, ChoiceOfPictureActivity.class);
+        i.putExtra("utilisateur",u);
+        startActivity(i);
     }
 }

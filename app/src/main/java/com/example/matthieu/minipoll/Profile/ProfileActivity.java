@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
         firstName.setText(u.prenom);
 
         TextView pseudo = findViewById(R.id.Pseudo);
-        pseudo.setText(u.pseudo);
+        pseudo.setText(u.getPseudo());
 
         TextView email = findViewById(R.id.Email);
         email.setText(u.email);
