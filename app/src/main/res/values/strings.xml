@@ -39,19 +39,28 @@
     <string name="Sondage">Survey</string>
 
     <!--newSondageTempoActivity-->
-    <string name="FieldNbrOfProposition">Please, choose your number of proposition</string>
+    <string name="FieldNbrOfProposition">Please, choose your number of propositions</string>
     <string name="FieldNbrOfChoice">Please, choose your number of choices</string>
 
     <!--newSondageActivity-->
     <string name="Titre">Title</string>
     <string name="createSondage">Please fill all the blank</string>
     <string name="Proposition">Proposition</string>
-    <string name="previsualisation">Previsualisation</string>
+    <string name="previsualisation">Prévisualisation</string>
     <string name="question">Question</string>
 
     <!--activity new poll-->
     <string name="TitreNewPoll">Choose your type of new poll</string>
     <string name="title_activity_new_quizz">NewQuizzActivity</string>
+
+    <!--activity new choice-->
+    <string name = "TypeChoice">Choose between text and picture</string>
+    <string name = "Choix1">First choice :</string>
+    <string name = "Choix2">Second choice :</string>
+
+    <!--activity choose image-->
+    <string name ="Gallery">Image gallery</string>
+    <string name="Camera">Take a picture</string>
 
 
 </resources>

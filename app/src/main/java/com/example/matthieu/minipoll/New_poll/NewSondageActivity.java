@@ -1,21 +1,18 @@
 package com.example.matthieu.minipoll.New_poll;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -26,7 +23,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.matthieu.minipoll.DataBaseHelper;
-import com.example.matthieu.minipoll.New_poll.ListeAmisPourPollActivity;
 import com.example.matthieu.minipoll.R;
 import com.example.matthieu.minipoll.Utilisateur;
 
@@ -115,7 +111,6 @@ public class NewSondageActivity extends Activity {
                     }
                 }
             });
-
             return convertView;
         }
     }
@@ -179,7 +174,7 @@ public class NewSondageActivity extends Activity {
             String str = ("insert into SONDAGE values('"
                     + titre + "','"
                     + date + "','"
-                    + u.pseudo + "','"
+                    + u.getPseudo() + "','"
                     + question + "','"
                     + tabProp.get(i).replace("'", " ") + "');");
             tabSTM.add(str);
@@ -188,7 +183,7 @@ public class NewSondageActivity extends Activity {
         String str = ("insert into SONDAGE_TYPE values('"
                 + titre + "','"
                 + date + "','"
-                + u.pseudo + "',"
+                + u.getPseudo() + "',"
                 + nbrChoix + ","
                 + nbrProp + ");");
         tabSTM.add(str);

@@ -37,7 +37,7 @@ public class AddFriend extends AppCompatActivity {
         //A ouvert la dataBase et la stocke dans myDbHelper
 
 
-        String [] whereArgs={u.pseudo};//les conditions de la requete sql
+        String [] whereArgs={u.getPseudo()};//les conditions de la requete sql
         Cursor c=myDbHelper.rawQuery("select AMIS from AMIS where u=? ",whereArgs);//on fait la requete
 
         String [][] tab=myDbHelper.createTabFromCursor(c,6);

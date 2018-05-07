@@ -128,7 +128,7 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
             throw sqle;
         }
 
-        String [] whereArgs={u.pseudo};//les conditions de la requete sql
+        String [] whereArgs={u.getPseudo()};//les conditions de la requete sql
         Cursor c=myDbHelper.rawQuery("select AMI from AMI where Utilisateur=?",whereArgs);//on fait la requete
 
         String [][] tab=myDbHelper.createTabFromCursor(c,1);
@@ -181,7 +181,7 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
             SQLiteStatement stmt = db.compileStatement("insert into "+insert+" values('"
                     +this.titre +"','"
                     +this.date      + "','"
-                    +this.u.pseudo    + "','"
+                    +this.u.getPseudo() + "','"
                     +amisQuiOntEteRajoute.get(i)  +"',"
                     +0              +")");
             stmt.execute();
@@ -195,8 +195,8 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
             SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
                     + this.titre + "','"
                     + this.date + "','"
-                    + this.u.pseudo + "','"
-                    + this.u.pseudo + "',"
+                    + this.u.getPseudo() + "','"
+                    + this.u.getPseudo() + "',"
                     + 0 + ")");
             stmt.execute();
         }

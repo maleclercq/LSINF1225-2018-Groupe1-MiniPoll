@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.matthieu.minipoll.DataBaseHelper;
-import com.example.matthieu.minipoll.Profile.ChoiceOfProfilPictureActivity;
 import com.example.matthieu.minipoll.R;
 import com.example.matthieu.minipoll.Utilisateur;
 
@@ -24,16 +23,16 @@ public class ProfileActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         u = (Utilisateur) i.getSerializableExtra("utilisateur");
-        TextView name=findViewById(R.id.name);
+        TextView name=findViewById(R.id.Name);
         name.setText(u.nom);
 
-        TextView firstName = findViewById(R.id.firstName);
+        TextView firstName = findViewById(R.id.FirstName);
         firstName.setText(u.prenom);
 
-        TextView pseudo = findViewById(R.id.pseudo);
-        pseudo.setText(u.pseudo);
+        TextView pseudo = findViewById(R.id.Pseudo);
+        pseudo.setText(u.getPseudo());
 
-        TextView email = findViewById(R.id.email);
+        TextView email = findViewById(R.id.Email);
         email.setText(u.email);
 
         TextView password = findViewById(R.id.password);
@@ -46,11 +45,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    public void chooseImage(View v){
-        Intent i=new Intent(this, ChoiceOfProfilPictureActivity.class);
+    public void editProfile(View v){
+        Intent i=new Intent(this, EditProfileActivity.class);
         startActivity(i);
     }
+
     public void retour(View v) {
         finish();
     }
+
 }

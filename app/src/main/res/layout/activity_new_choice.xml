@@ -9,139 +9,166 @@
 
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/TextOrPicture2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="94dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/secondChoice"
-        app:layout_constraintTop_toBottomOf="@+id/secondChoice"
-        tools:text="Choose between a picture or a text" />
+        android:layout_height="19dp"
+        android:text="@string/TypeChoice"
+        app:layout_constraintBottom_toTopOf="@+id/SecondChoiceImage"
+        app:layout_constraintStart_toStartOf="@+id/Retour"
+        app:layout_constraintTop_toBottomOf="@+id/SecondChoice" />
 
     <EditText
-        android:id="@+id/titreQuestion3"
+        android:id="@+id/TitleSecondChoice"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
-        android:layout_marginEnd="18dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="@string/Choix"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/Previsualisation"
+        app:layout_constraintStart_toStartOf="@+id/TitleFirstChoice"
+        app:layout_constraintTop_toTopOf="@+id/SecondChoiceImage"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/textFirstChoice"
+        android:id="@+id/TitleFirstChoice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="18dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="38dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/Choix"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/SecondChoice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintStart_toEndOf="@+id/FirstChoiceImage"
+        app:layout_constraintTop_toBottomOf="@+id/TextOrPicture" />
 
     <EditText
-        android:id="@+id/titreQuestion"
+        android:id="@+id/TitleChoice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/Choix"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/Retour"
-        app:layout_constraintTop_toBottomOf="@+id/Retour" />
+        app:layout_constraintEnd_toEndOf="@+id/Consigne"
+        app:layout_constraintHorizontal_bias="0.368"
+        app:layout_constraintStart_toStartOf="@+id/Consigne"
+        app:layout_constraintTop_toBottomOf="@+id/Consigne" />
 
     <TextView
-        android:id="@+id/consigne"
+        android:id="@+id/Consigne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="74dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/createSondage"
-        app:layout_constraintBottom_toBottomOf="@+id/Retour"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Retour" />
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Retour" />
 
     <Button
         android:id="@+id/Retour"
-        android:layout_width="86dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="85dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="46dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/left_arrow"
         android:onClick="retour"
-        app:layout_constraintBottom_toTopOf="@+id/firstChoice"
-        app:layout_constraintEnd_toStartOf="@+id/consigne"
+        app:layout_constraintBottom_toTopOf="@+id/SecondChoice"
+        app:layout_constraintEnd_toStartOf="@+id/Consigne"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/firstChoice"
+        android:id="@+id/FirstChoice"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
+        android:layout_height="20dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/Choix1"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Retour"
-        tools:text="First choice :" />
+        app:layout_constraintBottom_toTopOf="@+id/TextOrPicture"
+        app:layout_constraintStart_toStartOf="@+id/Retour"
+        app:layout_constraintTop_toBottomOf="@+id/TitleChoice" />
 
     <TextView
-        android:id="@+id/secondChoice"
+        android:id="@+id/SecondChoice"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
+        android:layout_height="25dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/Choix2"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        tools:text="Second choice :" />
+        app:layout_constraintBottom_toTopOf="@+id/TextOrPicture2"
+        app:layout_constraintStart_toStartOf="@+id/Retour"
+        app:layout_constraintTop_toBottomOf="@+id/FirstChoiceImage" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/TextOrPicture"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="111dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/secondChoice"
-        app:layout_constraintStart_toStartOf="@+id/firstChoice"
-        app:layout_constraintTop_toBottomOf="@+id/firstChoice"
-        tools:text="Choose between a picture or a text" />
+        android:layout_height="19dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/TypeChoice"
+        app:layout_constraintBottom_toTopOf="@+id/FirstChoiceImage"
+        app:layout_constraintStart_toStartOf="@+id/Retour"
+        app:layout_constraintTop_toBottomOf="@+id/FirstChoice"
+        tools:text="@string/TypeChoice" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/OK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:layout_marginStart="1dp"
-        android:text="Button"
+        android:layout_marginStart="52dp"
         android:backgroundTint="@color/colorValidation"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
+        android:onClick="validation"
+        android:text="@string/ok"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        tools:text="Validation" />
+        app:layout_constraintTop_toTopOf="@+id/Previsualisation"
+        tools:text="@string/ok" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/Previsualisation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="Button"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="42dp"
         android:backgroundTint="@color/colorValidation"
+        android:text="@string/previsualisation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        tools:text="Previsualisation" />
+        tools:text="@string/previsualisation" />
 
+    <ImageView
+        android:id="@+id/FirstChoiceImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="48dp"
+        android:background="@android:drawable/ic_menu_gallery"
+        android:onClick="chooseImage"
+        app:layout_constraintBottom_toBottomOf="@+id/TitleFirstChoice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TitleFirstChoice"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/SecondChoiceImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:drawable/ic_menu_gallery"
+        android:onClick="chooseImage"
+        app:layout_constraintBottom_toTopOf="@+id/OK"
+        app:layout_constraintStart_toStartOf="@+id/FirstChoiceImage"
+        app:layout_constraintTop_toBottomOf="@+id/TextOrPicture2" />
 
 
 </android.support.constraint.ConstraintLayout>

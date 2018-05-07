@@ -21,8 +21,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -108,7 +106,7 @@ public class PollListeActivity extends AppCompatActivity {
             throw sqle;
         }
 
-        String [] whereArgs={u.pseudo};
+        String [] whereArgs={u.getPseudo()};
         Cursor c=myDbHelper.rawQuery("select TITRE,DATE,AUTEUR from "+typePoll+"_PARTICIPANT where PARTICIPANT=? AND PARTICIPATION=0",whereArgs);
 
         String [][] value=myDbHelper.createTabFromCursor(c,3);

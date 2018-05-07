@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,12 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -175,14 +171,14 @@ public class SondageViewActivity extends AppCompatActivity {
                     + this.titre + "','"
                     + this.date + "','"
                     + this.auteur + "','"
-                    + this.u.pseudo + "','"
+                    + this.u.getPseudo() + "','"
                     + answer +"','"
                     + this.tabPosition.get(i).value+"')");
             stmt.execute();
         }
 
         SQLiteStatement stmt = db.compileStatement("delete from SONDAGE_PARTICIPANT where " +
-                "PARTICIPANT='"+this.u.pseudo+"' AND "
+                "PARTICIPANT='"+ this.u.getPseudo() +"' AND "
                 + "TITRE='"+this.titre + "' AND "
                 + "DATE='"+this.date + "' AND "
                 + "AUTEUR='"+this.auteur+"'");
@@ -192,7 +188,7 @@ public class SondageViewActivity extends AppCompatActivity {
                 + this.titre + "','"
                 + this.date + "','"
                 + this.auteur + "','"
-                + this.u.pseudo + "','1')");
+                + this.u.getPseudo() + "','1')");
         stmt.execute();
 
         Intent i=new Intent(this,PollListeActivity.class);
@@ -254,7 +250,7 @@ public class SondageViewActivity extends AppCompatActivity {
     }
 
     private void ajoutReponse() {
-        String [] whereArgs = {this.titre, this.auteur, this.date,this.u.pseudo};
+        String [] whereArgs = {this.titre, this.auteur, this.date, this.u.getPseudo()};
         Cursor c= myDbHelper.rawQuery("select PROPOSITION, ORDRE_PREF from SONDAGE_RESULTAT where titre=? and auteur=? and date=? and PARTICIPANT=?", whereArgs);
 
         String [][] tab=myDbHelper.createTabFromCursor(c,2);

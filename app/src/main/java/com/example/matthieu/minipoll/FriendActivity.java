@@ -12,7 +12,6 @@
 
 package com.example.matthieu.minipoll;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -20,11 +19,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
-import com.example.matthieu.minipoll.ConnectionActivity;
-import com.example.matthieu.minipoll.DataBaseHelper;
-import com.example.matthieu.minipoll.R;
-import com.example.matthieu.minipoll.Utilisateur;
 
 import java.io.IOException;
 
@@ -56,7 +50,7 @@ public class FriendActivity extends AppCompatActivity {
         //A ouvert la dataBase et la stocke dans myDbHelper
 
 
-        String [] whereArgs={u.pseudo};//les conditions de la requete sql
+        String [] whereArgs={u.getPseudo()};//les conditions de la requete sql
         Cursor c=myDbHelper.rawQuery("select AMIS from AMIS where u=? ",whereArgs);//on fait la requete
 
         String [][] tab=myDbHelper.createTabFromCursor(c,6);
