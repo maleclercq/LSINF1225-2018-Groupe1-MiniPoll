@@ -27,13 +27,13 @@ import java.util.List;
 
 public class SondageViewActivity extends AppCompatActivity {
     Utilisateur u;
-    DataBaseHelper myDbHelper;
     boolean participation;
     String titre;
     String date;
     String auteur;
     int nbrDuChoix;
     int nbrChoixMax;
+    Sondage sondage;
 
     private ArrayList<String> data = new ArrayList<String>();
     private ArrayList<Position> tabPosition=new ArrayList<Position>();
@@ -50,6 +50,7 @@ public class SondageViewActivity extends AppCompatActivity {
         this.auteur = (String) i.getSerializableExtra("auteur");
         this.participation=(boolean) i.getSerializableExtra("participation");
         this.nbrDuChoix=1;
+        this.sondage=new Sondage(SondageViewActivity.this,this.titre,this.date,this.auteur);
 
         TextView titreTV=findViewById(R.id.Titre);
         SpannableString sousligne = new SpannableString(this.titre);
@@ -161,35 +162,17 @@ public class SondageViewActivity extends AppCompatActivity {
             return;
         }
 
-        SQLiteDatabase db = myDbHelper.getWritableDatabase();
         for(int i=0;i<tabPosition.size();i++) {
 
             String answer=this.data.get(this.tabPosition.get(i).position);
             answer=answer.substring(15,answer.length()-8); //enleve 'proposition 1: ' et la valeur de la proposition
 
-            SQLiteStatement stmt = db.compileStatement("insert into SONDAGE_RESULTAT values('"
-                    + this.titre + "','"
-                    + this.date + "','"
-                    + this.auteur + "','"
-                    + this.u.getPseudo() + "','"
-                    + answer +"','"
-                    + this.tabPosition.get(i).value+"')");
-            stmt.execute();
+            sondage.insertResultat(u.getPseudo(),answer,this.tabPosition.get(i).value);
         }
 
-        SQLiteStatement stmt = db.compileStatement("delete from SONDAGE_PARTICIPANT where " +
-                "PARTICIPANT='"+ this.u.getPseudo() +"' AND "
-                + "TITRE='"+this.titre + "' AND "
-                + "DATE='"+this.date + "' AND "
-                + "AUTEUR='"+this.auteur+"'");
-        stmt.execute();
+        sondage.deleteParticipant(this.u.getPseudo());
 
-        stmt=db.compileStatement("insert into SONDAGE_PARTICIPANT values('"
-                + this.titre + "','"
-                + this.date + "','"
-                + this.auteur + "','"
-                + this.u.getPseudo() + "','1')");
-        stmt.execute();
+        sondage.insertParticipant(this.u.getPseudo());
 
         Intent i=new Intent(this,PollListeActivity.class);
         i.putExtra("utilisateur",u);
@@ -199,24 +182,8 @@ public class SondageViewActivity extends AppCompatActivity {
     }
 
     private void generateListContent() {
-        this.myDbHelper = new DataBaseHelper(SondageViewActivity.this);
-        try {
-            myDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            Toast.makeText(SondageViewActivity.this, "Unable to create database", Toast.LENGTH_LONG).show();
-            throw new Error("Unable to create database");
-        }
-        try {
-            myDbHelper.openDataBase();
-        } catch (SQLException sqle) {
-            Toast.makeText(SondageViewActivity.this, "Unable to open database", Toast.LENGTH_LONG).show();
-            throw sqle;
-        }
 
-        String[] whereArgs = {this.titre, this.auteur, this.date};
-        Cursor c = myDbHelper.rawQuery("select PROPOSITION,QUESTION from SONDAGE where titre=? and auteur=? and date=?", whereArgs);
-
-        String[][] value = myDbHelper.createTabFromCursor(c, 2);
+        String [][] value=sondage.getPropositionAndQuestion();
         for (int i = 0; i < value.length; i++) {
             data.add("Proposition " + (i+1) + ": " + value[i][0] + "\n");
         }
@@ -228,17 +195,14 @@ public class SondageViewActivity extends AppCompatActivity {
             ajoutReponse();
         }
 
-        c=myDbHelper.rawQuery("select NOMBRE_A_CHOISIR from SONDAGE_TYPE where titre=? and auteur=? and date=?", whereArgs);
-        nbrChoixMax=Integer.parseInt(myDbHelper.createTabFromCursor(c,1)[0][0]);
+        nbrChoixMax=sondage.getNombreAChoisir();
 
         if(participation){
             TextView reponses=findViewById(R.id.Reponses);
             TextView amis=findViewById(R.id.pasRepondu);
             String strReponses="";
 
-            String[] whereArgs2={this.titre,this.date,this.auteur,"0"};
-            c=myDbHelper.rawQuery("select participant from questionnaire_participant where titre=? and date=? and auteur=? and participation=? ", whereArgs);
-            String[][] value2 = myDbHelper.createTabFromCursor(c, 1);
+            String[][] value2 = sondage.getParticipants();
 
             for(int i=0;i<value2.length;i++){
                 strReponses+=value2[i][0]+"\n";
@@ -250,10 +214,7 @@ public class SondageViewActivity extends AppCompatActivity {
     }
 
     private void ajoutReponse() {
-        String [] whereArgs = {this.titre, this.auteur, this.date, this.u.getPseudo()};
-        Cursor c= myDbHelper.rawQuery("select PROPOSITION, ORDRE_PREF from SONDAGE_RESULTAT where titre=? and auteur=? and date=? and PARTICIPANT=?", whereArgs);
-
-        String [][] tab=myDbHelper.createTabFromCursor(c,2);
+        String [][] tab=sondage.getPropositionAndOrdrePref(this.u.getPseudo());
 
         for(int i=0;i<data.size();i++){
             for(int j=0;j<tab.length;j++){
