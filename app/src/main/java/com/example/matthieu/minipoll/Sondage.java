@@ -76,8 +76,8 @@ public class Sondage {
     }
 
     public String[][] getParticipants(){
-        String[] whereArgs={titre,date,auteur,"1"};
-        Cursor c=myDbHelper.rawQuery("select participant from questionnaire_participant where titre=? and date=? and auteur=? and participation=? ", whereArgs);
+        String[] whereArgs={titre,date,auteur,"0"};
+        Cursor c=myDbHelper.rawQuery("select participant from sondage_participant where titre=? and date=? and auteur=? and participation=? ", whereArgs);
         String[][] value = myDbHelper.createTabFromCursor(c, 1);
         return value;
     }
@@ -89,8 +89,8 @@ public class Sondage {
                 + this.date + "','"
                 + this.auteur + "','"
                 + pseudo + "','"
-                + answer +"','"
-                + ordrePref +"')");
+                + answer +"',"
+                + ordrePref +")");
         stmt.execute();
     }
 
@@ -108,8 +108,29 @@ public class Sondage {
                 + this.titre + "','"
                 + this.date + "','"
                 + this.auteur + "','"
-                + pseudo + "','1')");
+                + pseudo + "',1)");
         stmt.execute();
+    }
+
+    public String getScore(String proposition,int nbrMax){
+        int m=nbrMax + 1;
+        int score=0;
+        String [] whereArgs = {titre, auteur, date, proposition};
+        Cursor c= myDbHelper.rawQuery("select ordre_pref from SONDAGE_RESULTAT where titre=? and auteur=? and date=? and proposition=?", whereArgs);
+
+        String[][] tabScore=myDbHelper.createTabFromCursor(c,1);
+
+        for(int i=0;i<tabScore.length;i++){
+            Log.e("debug",tabScore[i][0]);
+            score+=(m- Integer.parseInt(tabScore[i][0]));
+        }
+
+        return Integer.toString(score);
+    }
+
+    public String deleteSondage(){
+        String test="dksfskd";
+        return test;
     }
 
 
