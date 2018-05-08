@@ -14,8 +14,6 @@ public class Choice {
     private String date;
     private String auteur;
     private String question;
-    private String first;
-    private String second;
     private DataBaseHelper myDbHelper;
     private SQLiteDatabase db;
 
@@ -38,21 +36,19 @@ public class Choice {
         this.date = date;
         this.auteur = auteur;
         this.question = question;
-        this.first = first;
-        this.second = second;
 
         this.db = myDbHelper.getWritableDatabase();
     }
 
-    public void insertAnswer(String pseudo, String answer) {
+    public void insertAnswer(String pseudo, String answer, String first, String second) {
         if (answer.compareTo(first) == 0) {
             SQLiteStatement stmt = db.compileStatement("insert into CHOIX_REPONSE values('"
                     + this.titre + "','"
                     + this.date + "','"
                     + this.auteur + "','"
-                    + this.question + "'+'"
-                    + this.first + "','"
-                    + pseudo + ")");
+                    + this.question + "','"
+                    + first + "','"
+                    + pseudo + "')");
             stmt.execute();
         }
         if (answer.compareTo(second) == 0) {
@@ -60,9 +56,9 @@ public class Choice {
                     + this.titre + "','"
                     + this.date + "','"
                     + this.auteur + "','"
-                    + this.question + "'+'"
-                    + this.second + "','"
-                    + pseudo + ")");
+                    + this.question + "','"
+                    + second + "','"
+                    + pseudo + "')");
             stmt.execute();
         }
 
@@ -73,15 +69,16 @@ public class Choice {
                 + this.titre + "','"
                 + this.date + "','"
                 + this.auteur + "','"
-                + this.question + "'+'"
+                + this.question + "','"
                 + pseudo + "','"
-                + false + ")");
+                + 0 + "')");
         stmt.execute();
+
     }
 
     public String[][] getPropositions() {
-        String[] whereArgs = {titre, auteur, date};
-        Cursor c = myDbHelper.rawQuery("select PROPOSITION,QUESTION from CHOIX where titre=? and auteur=? and date=?", whereArgs);
+        String[] whereArgs = {titre, date, auteur};
+        Cursor c = myDbHelper.rawQuery("select PROPOSITION,QUESTION from CHOIX where titre=? and date=? and auteur=?", whereArgs);
         String[][] proposition =  myDbHelper.createTabFromCursor(c, 2);
         return proposition;
     }
