@@ -89,6 +89,8 @@ public class ChoiceViewActivity extends AppCompatActivity {
     }
 
     public void validation(View v){
+        this.myDbHelper = new DataBaseHelper(ChoiceViewActivity.this);
+        SQLiteDatabase db = myDbHelper.getWritableDatabase();
         if(participation){
             Toast.makeText(this,"You've already answer to it",Toast.LENGTH_LONG).show();
             return;
@@ -97,15 +99,28 @@ public class ChoiceViewActivity extends AppCompatActivity {
         {
             if (answer.compareTo(second)==0 || answer.compareTo(first)==0)
             {
-                choice.insertAnswer(u.getPseudo(), answer);
+                choice.insertAnswer(u.getPseudo(), answer, first, second);
                 Toast.makeText(this,"Thank you for your answer",Toast.LENGTH_LONG).show();
             }
-            else
-            {
-                Toast.makeText(this,"Please select one proposition",Toast.LENGTH_LONG).show();
+            else {
+                Toast.makeText(this, "Please select one proposition", Toast.LENGTH_LONG).show();
                 return;
             }
-
+            SQLiteStatement stmt1=db.compileStatement("insert into CHOIX_PARTICIPANT values('"
+                    + this.titre + "','"
+                    + this.date + "','"
+                    + this.auteur + "','"
+                    + this.question + "','"
+                    + this.u.getPseudo() + "',"
+                    + 1 + ")");
+            stmt1.execute();
+            SQLiteStatement stmt2 = db.compileStatement("delete from CHOIX_PARTICIPANT where " +
+                    "PARTICIPANT='"+ this.u.getPseudo() +"' AND "
+                    + "TITRE='"+this.titre + "' AND "
+                    + "DATE='"+this.date + "' AND "
+                    + "AUTEUR='"+this.auteur +"' AND "
+                    + "PARTICIPATION=0");
+            stmt2.execute();
         }
         Intent i=new Intent(this,PollListeActivity.class);
         i.putExtra("utilisateur",u);

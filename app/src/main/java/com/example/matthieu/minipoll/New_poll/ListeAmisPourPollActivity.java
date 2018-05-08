@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.matthieu.minipoll.Choice;
+import com.example.matthieu.minipoll.ChoiceViewActivity;
 import com.example.matthieu.minipoll.DataBaseHelper;
 import com.example.matthieu.minipoll.R;
 import com.example.matthieu.minipoll.Utilisateur;
@@ -69,6 +70,8 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
 
         amisARajouter= new ArrayList<String>();
         amisQuiOntEteRajoute = new ArrayList<String>();
+
+        this.choice=new Choice(ListeAmisPourPollActivity.this,this.titre,this.date,this.u.getPseudo());
 
         ListView amis1 = (ListView) findViewById(R.id.listview2);
         generateListContent();
@@ -175,11 +178,11 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         if (typePoll.compareTo("Survey") == 0) {
             insert = "SONDAGE_PARTICIPANT";
         } else if (typePoll.compareTo("Choice") == 0) {
-            choice.chooseParticipant(this.u.getPseudo());
+            choice.chooseParticipant(amisQuiOntEteRajoute.get(0));
         } else {
             insert = "QUESTIONNAIRE_PARTICIPANT";
         }
-        if (insert.compareTo("Choice") != 0)
+        if (typePoll.compareTo("Choice") != 0)
         {
             for(int i=0;i<amisQuiOntEteRajoute.size();i++) {
                 SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.matthieu.minipoll.Choice;
 import com.example.matthieu.minipoll.ChoiceOfPictureActivity;
 import com.example.matthieu.minipoll.DataBaseHelper;
 import com.example.matthieu.minipoll.R;
@@ -80,7 +81,7 @@ public class NewChoiceActivity extends Activity {
                 +date      + "','"
                 +this.u.getPseudo() + "','"
                 +first  + "','"
-                +question  +")");
+                +question  + "')");
         tabSTM.add(stmt1);
 
         String stmt2 = ("insert into CHOIX values('"
@@ -88,7 +89,7 @@ public class NewChoiceActivity extends Activity {
                 +date      + "','"
                 +this.u.getPseudo() + "','"
                 +second +"','"
-                +question  +")");
+                +question  + "')");
         tabSTM.add(stmt2);
 
         Intent i=new Intent(this,ListeAmisPourPollActivity.class);
@@ -106,8 +107,8 @@ public class NewChoiceActivity extends Activity {
 
     public void retour(View v){
         finish();
-
     }
+
     public void chooseImage(View view) {
         Intent i = new Intent(this, ChoiceOfPictureActivity.class);
         i.putExtra("utilisateur",u);

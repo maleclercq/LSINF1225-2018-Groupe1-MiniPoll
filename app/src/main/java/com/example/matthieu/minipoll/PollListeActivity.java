@@ -67,9 +67,6 @@ public class PollListeActivity extends AppCompatActivity {
                 String [] tab=new String[3];
                 String str=data.get(position);
                 String [] tempo=str.split("\n");
-                first = (String) i.getSerializableExtra("first");
-                second = (String) i.getSerializableExtra("second");
-
 
 
                 if(tempo.length==4){ //a deja participe et on enleve la partie "Vous avez deja participe\n"
