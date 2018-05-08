@@ -33,9 +33,9 @@
         <activity android:name=".New_poll.NewPollActivity" />
         <activity android:name=".AddFriend" />
         <activity android:name=".New_poll.NewChoiceActivity" />
-        <activity android:name=".ChoiceOfPictureActivity"
-            android:theme="@style/AppTheme.CustomTheme"
-            />
+        <activity
+            android:name=".ChoiceOfPictureActivity"
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity android:name=".New_poll.NewSondageActivity" />
         <activity android:name=".New_poll.NewSondageTempoActivity" />
         <activity android:name=".New_poll.ListeAmisPourPollActivity" />
@@ -43,9 +43,9 @@
             android:name=".New_poll.NewQuizzActivity"
             android:label="@string/title_activity_new_quizz"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Profile.EditProfileActivity">
-
-        </activity>
+        <activity android:name=".Profile.EditProfileActivity" />
+        <activity android:name=".New_poll.NewQuestionActivity"></activity>
+        <activity android:name=".New_poll.PopUpReponseFinaleActivity"></activity>
     </application>
 
 </manifest>

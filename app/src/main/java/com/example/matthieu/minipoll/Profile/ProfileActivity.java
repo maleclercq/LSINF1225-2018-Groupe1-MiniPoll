@@ -24,19 +24,19 @@ public class ProfileActivity extends AppCompatActivity {
         Intent i = getIntent();
         u = (Utilisateur) i.getSerializableExtra("utilisateur");
         TextView name=findViewById(R.id.Name);
-        name.setText(u.nom);
+        name.setText("Nom: "+u.nom);
 
         TextView firstName = findViewById(R.id.FirstName);
-        firstName.setText(u.prenom);
+        firstName.setText("Prenom: "+u.prenom);
 
         TextView pseudo = findViewById(R.id.Pseudo);
-        pseudo.setText(u.getPseudo());
+        pseudo.setText("Pseudo: "+u.getPseudo());
 
         TextView email = findViewById(R.id.Email);
-        email.setText(u.email);
+        email.setText("Email: "+u.email);
 
         TextView password = findViewById(R.id.password);
-        password.setText(u.mdp);
+        password.setText("Mot de passe: "+u.mdp);
 
 
         //Ajouter la photo de profil

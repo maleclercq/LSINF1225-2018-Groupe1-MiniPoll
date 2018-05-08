@@ -48,19 +48,26 @@
     <string name="Proposition">Proposition</string>
     <string name="previsualisation">Prévisualisation</string>
     <string name="question">Question</string>
+    <string name="cloturer">Cloturer</string>
 
     <!--activity new poll-->
     <string name="TitreNewPoll">Choose your type of new poll</string>
     <string name="title_activity_new_quizz">NewQuizzActivity</string>
 
     <!--activity new choice-->
-    <string name = "TypeChoice">Choose between text and picture</string>
-    <string name = "Choix1">First choice :</string>
-    <string name = "Choix2">Second choice :</string>
+    <string name="TypeChoice">Choose between text and picture</string>
+    <string name="Choix1">First choice :</string>
+    <string name="Choix2">Second choice :</string>
 
     <!--activity choose image-->
-    <string name ="Gallery">Image gallery</string>
+    <string name="Gallery">Image gallery</string>
     <string name="Camera">Take a picture</string>
+
+    <!--activity newQuestion-->
+    <string name="FieldRightAnswer">Right answer\'s number</string>
+
+    <!--activity newQuizz-->
+    <string name="FieldNbrOfQuestion">Select the number of questions</string>
 
 
 </resources>

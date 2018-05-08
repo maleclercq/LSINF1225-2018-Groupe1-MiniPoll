@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,19 +22,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.matthieu.minipoll.New_poll.PopUpReponseFinaleActivity;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SondageViewActivity extends AppCompatActivity {
     Utilisateur u;
-    DataBaseHelper myDbHelper;
     boolean participation;
     String titre;
     String date;
     String auteur;
     int nbrDuChoix;
     int nbrChoixMax;
+    Sondage sondage;
+    boolean confirmationCloture=false;
 
     private ArrayList<String> data = new ArrayList<String>();
     private ArrayList<Position> tabPosition=new ArrayList<Position>();
@@ -50,6 +54,7 @@ public class SondageViewActivity extends AppCompatActivity {
         this.auteur = (String) i.getSerializableExtra("auteur");
         this.participation=(boolean) i.getSerializableExtra("participation");
         this.nbrDuChoix=1;
+        this.sondage=new Sondage(SondageViewActivity.this,this.titre,this.date,this.auteur);
 
         TextView titreTV=findViewById(R.id.Titre);
         SpannableString sousligne = new SpannableString(this.titre);
@@ -65,91 +70,102 @@ public class SondageViewActivity extends AppCompatActivity {
             nbrMaxTV.setText("Number of choices: " + nbrChoixMax);
         }
 
-        if(participation){
-            return; //pas de listener vu qu'il a deja participe
+        if(participation){ //affiche le score de la question
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    String [][] value=sondage.getPropositionAndQuestion();
+                    int nbrMax=sondage.getNombreAChoisir();
+                    String str=sondage.getScore(value[position][0],nbrMax);
+
+                    str="Le score de cette reponse est : "+str;
+                    Toast.makeText(SondageViewActivity.this,str,Toast.LENGTH_SHORT).show();
+                }
+            });
         }
-
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                boolean dejaSelectionne = false;
-                for (int i = 0; i < tabPosition.size(); i++) {
-                    if (tabPosition.get(i).position == position) dejaSelectionne = true;
-                }
-
-                if (nbrChoixMax+1==nbrDuChoix && !dejaSelectionne) {
+        else {
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    boolean dejaSelectionne = false;
                     for (int i = 0; i < tabPosition.size(); i++) {
+                        if (tabPosition.get(i).position == position) dejaSelectionne = true;
+                    }
+
+                    if (nbrChoixMax + 1 == nbrDuChoix && !dejaSelectionne) {
+                        for (int i = 0; i < tabPosition.size(); i++) {
+                            int index = tabPosition.get(i).position;
+                            data.set(index, data.get(index).substring(0, data.get(index).length() - 7));
+                            tabPosition.remove(i);
+                            i--;
+                        }
+                        nbrDuChoix = 1;
+                    } else if (!dejaSelectionne) {
+                        data.set(position, data.get(position) + "      " + nbrDuChoix);
+                        Position p = new Position(position, nbrDuChoix);
+                        tabPosition.add(p);
+                        nbrDuChoix++;
+                    } else {
+                        decalerData(position);
+                    }
+
+                    //Actualise data
+                    ListView lv = (ListView) findViewById(R.id.listview);
+                    lv.setAdapter(new SondageViewActivity.MyListAdaper(SondageViewActivity.this, R.layout.list_choose_sondage, data));
+                }
+
+
+                /*
+                *trouve l'endroid ou se trouve l'element selectionne dans tabPosition
+                 */
+                private int trouverIndex(int position) {
+                    int indexDansTab = 0;
+                    for (int i = 0; i < tabPosition.size(); i++) {
+                        if (tabPosition.get(i).position == position) {
+                            indexDansTab = i;
+                        }
+                    }
+                    return indexDansTab;
+                }
+
+                /*
+                *supprime l'element selectionne et decale tout ce
+                * qu'il y avait apres
+                 */
+                private void decalerData(int position) {
+                    int indexDansTab = trouverIndex(position);
+                    boolean etaitLeDernier = false;
+
+                    for (int i = indexDansTab; i < tabPosition.size(); i++) {
                         int index = tabPosition.get(i).position;
-                        data.set(index, data.get(index).substring(0, data.get(index).length() - 7));
-                        tabPosition.remove(i);
-                        i--;
+                        String newValue = data.get(index);
+                        int val = tabPosition.get(i).value;
+                        val--;
+
+                        if (val == 0) {//enleve le dernier element (si il etais avant a 0)
+                            data.set(index, data.get(index).substring(0, data.get(index).length() - 7));
+                            tabPosition.remove(i);
+                            etaitLeDernier = true;
+                            i--;
+
+                        } else {
+                            data.set(index, data.get(index).substring(0, data.get(index).length() - 1) + val);
+                            tabPosition.get(i).value = tabPosition.get(i).value - 1;
+                        }
                     }
-                    nbrDuChoix=1;
-                } else if (!dejaSelectionne) {
-                    data.set(position, data.get(position) + "      " + nbrDuChoix);
-                    Position p = new Position(position, nbrDuChoix);
-                    tabPosition.add(p);
-                    nbrDuChoix++;
-                } else{
-                    decalerData(position);
-                }
+                    if (!etaitLeDernier) {
+                        data.set(position, data.get(position).substring(0, data.get(position).length() - 7));
+                        tabPosition.remove(indexDansTab);
+                    }
 
-                //Actualise data
-                ListView lv = (ListView) findViewById(R.id.listview);
-                lv.setAdapter(new SondageViewActivity.MyListAdaper(SondageViewActivity.this, R.layout.list_choose_sondage, data));
-            }
-
-
-            /*
-            *trouve l'endroid ou se trouve l'element selectionne dans tabPosition
-             */
-            private int trouverIndex(int position){
-                int indexDansTab=0;
-                for(int i=0;i<tabPosition.size();i++){
-                    if(tabPosition.get(i).position==position){
-                        indexDansTab=i;
+                    if (nbrDuChoix != 1) { //evite de tomber a 0
+                        nbrDuChoix--;
                     }
                 }
-                return  indexDansTab;
-            }
-
-            /*
-            *supprime l'element selectionne et decale tout ce
-            * qu'il y avait apres
-             */
-            private void decalerData(int position){
-                int indexDansTab=trouverIndex(position);
-                boolean etaitLeDernier=false;
-
-                for(int i=indexDansTab;i<tabPosition.size();i++){
-                    int index=tabPosition.get(i).position;
-                    String newValue=data.get(index);
-                    int val=tabPosition.get(i).value;
-                    val--;
-
-                    if(val==0){//enleve le dernier element (si il etais avant a 0)
-                        data.set(index,data.get(index).substring(0,data.get(index).length()-7));
-                        tabPosition.remove(i);
-                        etaitLeDernier=true;
-                        i--;
-
-                    } else{
-                        data.set(index,data.get(index).substring(0,data.get(index).length()-1)+val);
-                        tabPosition.get(i).value=tabPosition.get(i).value-1;
-                    }
-                }
-                if(!etaitLeDernier) {
-                    data.set(position, data.get(position).substring(0, data.get(position).length() - 7));
-                    tabPosition.remove(indexDansTab);
-                }
-
-                if(nbrDuChoix!=1) { //evite de tomber a 0
-                    nbrDuChoix--;
-                }
-            }
 
 
-        });
+            });
+        }
     }
 
     public void saveChoises(View v){
@@ -161,35 +177,16 @@ public class SondageViewActivity extends AppCompatActivity {
             return;
         }
 
-        SQLiteDatabase db = myDbHelper.getWritableDatabase();
         for(int i=0;i<tabPosition.size();i++) {
 
             String answer=this.data.get(this.tabPosition.get(i).position);
             answer=answer.substring(15,answer.length()-8); //enleve 'proposition 1: ' et la valeur de la proposition
-
-            SQLiteStatement stmt = db.compileStatement("insert into SONDAGE_RESULTAT values('"
-                    + this.titre + "','"
-                    + this.date + "','"
-                    + this.auteur + "','"
-                    + this.u.getPseudo() + "','"
-                    + answer +"','"
-                    + this.tabPosition.get(i).value+"')");
-            stmt.execute();
+            sondage.insertResultat(u.getPseudo(),answer,this.tabPosition.get(i).value);
         }
 
-        SQLiteStatement stmt = db.compileStatement("delete from SONDAGE_PARTICIPANT where " +
-                "PARTICIPANT='"+ this.u.getPseudo() +"' AND "
-                + "TITRE='"+this.titre + "' AND "
-                + "DATE='"+this.date + "' AND "
-                + "AUTEUR='"+this.auteur+"'");
-        stmt.execute();
+        sondage.deleteParticipant(this.u.getPseudo());
 
-        stmt=db.compileStatement("insert into SONDAGE_PARTICIPANT values('"
-                + this.titre + "','"
-                + this.date + "','"
-                + this.auteur + "','"
-                + this.u.getPseudo() + "','1')");
-        stmt.execute();
+        sondage.insertParticipant(this.u.getPseudo());
 
         Intent i=new Intent(this,PollListeActivity.class);
         i.putExtra("utilisateur",u);
@@ -199,24 +196,8 @@ public class SondageViewActivity extends AppCompatActivity {
     }
 
     private void generateListContent() {
-        this.myDbHelper = new DataBaseHelper(SondageViewActivity.this);
-        try {
-            myDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            Toast.makeText(SondageViewActivity.this, "Unable to create database", Toast.LENGTH_LONG).show();
-            throw new Error("Unable to create database");
-        }
-        try {
-            myDbHelper.openDataBase();
-        } catch (SQLException sqle) {
-            Toast.makeText(SondageViewActivity.this, "Unable to open database", Toast.LENGTH_LONG).show();
-            throw sqle;
-        }
 
-        String[] whereArgs = {this.titre, this.auteur, this.date};
-        Cursor c = myDbHelper.rawQuery("select PROPOSITION,QUESTION from SONDAGE where titre=? and auteur=? and date=?", whereArgs);
-
-        String[][] value = myDbHelper.createTabFromCursor(c, 2);
+        String [][] value=sondage.getPropositionAndQuestion();
         for (int i = 0; i < value.length; i++) {
             data.add("Proposition " + (i+1) + ": " + value[i][0] + "\n");
         }
@@ -228,32 +209,33 @@ public class SondageViewActivity extends AppCompatActivity {
             ajoutReponse();
         }
 
-        c=myDbHelper.rawQuery("select NOMBRE_A_CHOISIR from SONDAGE_TYPE where titre=? and auteur=? and date=?", whereArgs);
-        nbrChoixMax=Integer.parseInt(myDbHelper.createTabFromCursor(c,1)[0][0]);
+        nbrChoixMax=sondage.getNombreAChoisir();
 
         if(participation){
-            TextView reponses=findViewById(R.id.Reponses);
             TextView amis=findViewById(R.id.pasRepondu);
-            String strReponses="";
+            String amisPasRepondu="Participants n'ayant pas encore repondu:\n";
 
-            String[] whereArgs2={this.titre,this.date,this.auteur,"0"};
-            c=myDbHelper.rawQuery("select participant from questionnaire_participant where titre=? and date=? and auteur=? and participation=? ", whereArgs);
-            String[][] value2 = myDbHelper.createTabFromCursor(c, 1);
+            String[][] value2 = sondage.getParticipants();
 
-            for(int i=0;i<value2.length;i++){
-                strReponses+=value2[i][0]+"\n";
+            if(value2.length==0) { //tout le monde a repondu
+                amisPasRepondu="Tout le monde a repondu a ce sondage";
             }
 
-            reponses.setText(strReponses);
+            for(int i=0;i<value2.length;i++){
+                amisPasRepondu+=value2[i][0]+" , ";
+                if((i+1)%5==0){
+                    amisPasRepondu+="\n";
+                }
+            }
+
+            amis.setText(amisPasRepondu);
+
         }
 
     }
 
     private void ajoutReponse() {
-        String [] whereArgs = {this.titre, this.auteur, this.date, this.u.getPseudo()};
-        Cursor c= myDbHelper.rawQuery("select PROPOSITION, ORDRE_PREF from SONDAGE_RESULTAT where titre=? and auteur=? and date=? and PARTICIPANT=?", whereArgs);
-
-        String [][] tab=myDbHelper.createTabFromCursor(c,2);
+        String [][] tab=sondage.getPropositionAndOrdrePref(this.u.getPseudo());
 
         for(int i=0;i<data.size();i++){
             for(int j=0;j<tab.length;j++){
@@ -315,6 +297,21 @@ public class SondageViewActivity extends AppCompatActivity {
     public class ViewHolder {
         TextView title;
     }
+
+    public void cloturer(View v){
+        if(!confirmationCloture){
+            Toast.makeText(this,"Veuillez Re-appuyer pour confirmer la cloture du sondage",Toast.LENGTH_SHORT).show();
+            confirmationCloture=true;
+            return;
+        }
+        String reponseFinale;
+        reponseFinale=sondage.deleteSondage();
+        Intent i=new Intent(this, PopUpReponseFinaleActivity.class);
+        i.putExtra("str",reponseFinale);
+        startActivity(i);
+        finish();
+    }
+
     public void retour(View v)
     {
         finish();
