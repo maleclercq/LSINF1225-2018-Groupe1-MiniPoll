@@ -6,12 +6,16 @@ import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
+import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import java.io.IOException;
 
 public class AddFriend extends AppCompatActivity {
 
     Utilisateur u;
+    private ViewPager mPager ;
+    private CardStackAdapter mAdapter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,16 @@ public class AddFriend extends AppCompatActivity {
 
         Intent i = getIntent();
         u= (Utilisateur)i.getSerializableExtra("utilisateur");
+
+        mPager = (ViewPager) findViewById(R.id.viewPager);
+
+        mAdapter = new CardStackAdapter(getSupportFragmentManager());
+
+        mPager.setPageTransformer(true, new CardStackTransformer());
+
+        mPager.setOffscreenPageLimit(5);
+
+        mPager.setAdapter(mAdapter);
 
         final DataBaseHelper myDbHelper = new DataBaseHelper(this);
         try {
@@ -43,4 +57,24 @@ public class AddFriend extends AppCompatActivity {
         String [][] tab=myDbHelper.createTabFromCursor(c,6);
 
     }
+
+    private class CardStackTransformer implements ViewPager.PageTransformer
+    {
+        @Override
+        public void transformPage(View page, float position)
+        {
+            if(position>=0)
+            {
+                page.setScaleX(0.8f - 0.02f * position);
+
+                page.setScaleY(0.8f);
+
+                page.setTranslationX(- page.getWidth()*position);
+
+                page.setTranslationY(30 * position);
+            }
+
+        }
+    }
 }
+
