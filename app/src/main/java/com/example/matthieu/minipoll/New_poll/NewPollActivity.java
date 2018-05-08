@@ -21,7 +21,9 @@ public class NewPollActivity extends AppCompatActivity {
     }
 
     public void questionnaire(View v){
-        //
+        Intent i=new Intent(this,NewQuizzActivity.class);
+        i.putExtra("utilisateur",this.u);
+        startActivity(i);
     }
 
     public void newSondage(View v){

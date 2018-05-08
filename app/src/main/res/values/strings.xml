@@ -63,5 +63,11 @@
     <string name="Gallery">Image gallery</string>
     <string name="Camera">Take a picture</string>
 
+    <!--activity newQuestion-->
+    <string name="FieldRightAnswer">Right answer\'s number</string>
+
+    <!--activity newQuizz-->
+    <string name="FieldNbrOfQuestion">Select the number of questions</string>
+
 
 </resources>
