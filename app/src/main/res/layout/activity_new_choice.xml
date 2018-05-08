@@ -216,7 +216,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/title_background_choice" />
+        app:srcCompat="@drawable/title_background_choice"/>
 
     <TextView
         android:id="@+id/textView7"
