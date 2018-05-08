@@ -39,12 +39,15 @@
     <string name="Sondage">Survey</string>
 
     <!--newSondageTempoActivity-->
-    <string name="FieldNbrOfProposition">Please, choose your number of propositions</string>
-    <string name="FieldNbrOfChoice">Please, choose your number of choices</string>
+    <string name="FieldNbrOfProposition">Propositions :</string>
+    <string name="FieldNbrOfChoice">Choices :</string>
 
     <!--newSondageActivity-->
+    <string name="DescriptionSurvey">To create a new Survey, please fill in the number of propositions as well as the number of possible choices. </string>
+    <string name="NewSurveyPageTitle"><u>New Survey</u></string>
     <string name="Titre">Title</string>
-    <string name="createSondage">Survey title : </string>
+    <string name="NewSurveyTitle">Survey Title : </string>
+    <!--<string name="createSondage">Survey title : </string>-->
     <string name="Proposition">Proposition</string>
     <string name="previsualisation">Prévisualisation</string>
     <string name="question">Question</string>
@@ -55,6 +58,7 @@
     <string name="title_activity_new_quizz">NewQuizzActivity</string>
 
     <!--activity new choice-->
+    <string name="CreateChoixTitle">New Choice</string>
     <string name="TypeChoice">Choose between text and picture</string>
     <string name="Choix1">First choice :</string>
     <string name="Choix2">Second choice :</string>
