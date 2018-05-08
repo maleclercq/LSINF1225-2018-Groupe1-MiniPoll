@@ -45,10 +45,6 @@ public class Sondage {
         this.db= myDbHelper.getWritableDatabase();
     }
 
-    public void insertQuestion(String question){
-
-    }
-
     public String [][] getPropositionAndQuestion(){
         String[] whereArgs = {titre, auteur, date};
         Cursor c = myDbHelper.rawQuery("select PROPOSITION,QUESTION from SONDAGE where titre=? and auteur=? and date=?", whereArgs);

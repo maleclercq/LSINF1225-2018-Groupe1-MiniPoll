@@ -190,9 +190,9 @@ public class NewQuestionActivity extends Activity {
                     + date + "','"
                     + u.getPseudo() + "','"
                     + question.replace("'", " ") + "','"
-                    + listeReponse.get(i).replace("'", " ") + "','"
+                    + listeReponse.get(i).replace("'", " ") + "',"
                     + j
-                    + "');");
+                    + ");");
             tabSTM.add(str); //OK
         }
 
@@ -200,7 +200,7 @@ public class NewQuestionActivity extends Activity {
                 + titre + "','"
                 + date + "','"
                 + u.getPseudo()
-                + ");");
+                + "');");
         tabSTM.add(str);//OK
 
         String str2 = ("insert into QUESTION values('"

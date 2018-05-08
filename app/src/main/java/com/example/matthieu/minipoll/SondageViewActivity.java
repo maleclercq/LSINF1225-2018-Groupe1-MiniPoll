@@ -316,4 +316,5 @@ public class SondageViewActivity extends AppCompatActivity {
     {
         finish();
     }
+
 }
