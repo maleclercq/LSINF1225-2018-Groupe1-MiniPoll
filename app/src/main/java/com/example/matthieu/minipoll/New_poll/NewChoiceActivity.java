@@ -24,7 +24,7 @@ import java.util.Calendar;
 
 public class NewChoiceActivity extends Activity {
     Utilisateur u;
-    ArrayList<String> tabSTM;
+    ArrayList<String> tabSTM = new ArrayList<String>();
 
     @Override
 
@@ -45,12 +45,13 @@ public class NewChoiceActivity extends Activity {
 
     public void validation(View v){
         String titre = ((EditText) findViewById(R.id.TitleChoice)).getText().toString();
+        String question = ((EditText) findViewById(R.id.QuestionChoice)).getText().toString();
         String first = ((EditText) findViewById(R.id.TitleFirstChoice)).getText().toString();
         String second = ((EditText) findViewById(R.id.TitleSecondChoice)).getText().toString();
-        ImageView firstIg;
-        ImageView secondIg;
+        //ImageView firstIg;
+        //ImageView secondIg;
 
-        if(titre.compareTo("")==0 || first.compareTo("")==0 || second.compareTo("")==0) { //si toute les cases n'ont pas ete remplies
+        if(titre.compareTo("")==0 || question.compareTo("")==0 || first.compareTo("")==0 || second.compareTo("")==0) { //si toute les cases n'ont pas ete remplies
             Toast.makeText(this,"Fill all the blanks please",Toast.LENGTH_LONG).show();
             return;
         }
@@ -78,14 +79,16 @@ public class NewChoiceActivity extends Activity {
                 +titre     +"','"
                 +date      + "','"
                 +this.u.getPseudo() + "','"
-                +first  +")");
+                +first  + "','"
+                +question  +")");
         tabSTM.add(stmt1);
 
         String stmt2 = ("insert into CHOIX values('"
                 +titre     +"','"
                 +date      + "','"
                 +this.u.getPseudo() + "','"
-                +second  +")");
+                +second +"','"
+                +question  +")");
         tabSTM.add(stmt2);
 
         Intent i=new Intent(this,ListeAmisPourPollActivity.class);
@@ -93,7 +96,10 @@ public class NewChoiceActivity extends Activity {
         i.putExtra("sql", tabSTM);
         i.putExtra("typePoll","Choice");
         i.putExtra("titre",titre);
+        i.putExtra("question", question);
         i.putExtra("date",date);
+        i.putExtra("first", first);
+        i.putExtra("second", second);
         startActivity(i);
         finish();
     }

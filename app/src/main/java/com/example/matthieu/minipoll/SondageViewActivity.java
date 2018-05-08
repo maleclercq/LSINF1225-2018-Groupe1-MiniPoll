@@ -168,7 +168,7 @@ public class SondageViewActivity extends AppCompatActivity {
         }
     }
 
-    public void saveChoises(View v){
+    public void saveChoices(View v){
         if(participation){
             Toast.makeText(this,"You've already answer to it",Toast.LENGTH_LONG).show();
             return;

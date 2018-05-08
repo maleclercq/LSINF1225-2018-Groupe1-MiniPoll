@@ -33,6 +33,8 @@ public class PollListeActivity extends AppCompatActivity {
     private ArrayList<String> data = new ArrayList<String>();
     String typePoll;
     DataBaseHelper myDbHelper;
+    String first;
+    String second;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class PollListeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_poll_liste);
 
 
-        Intent i = getIntent();
+        final Intent i = getIntent();
         u = (Utilisateur) i.getSerializableExtra("utilisateur");
         this.typePoll = (String) i.getSerializableExtra("type");
         TextView titre=findViewById(R.id.Titre);
@@ -65,6 +67,10 @@ public class PollListeActivity extends AppCompatActivity {
                 String [] tab=new String[3];
                 String str=data.get(position);
                 String [] tempo=str.split("\n");
+                first = (String) i.getSerializableExtra("first");
+                second = (String) i.getSerializableExtra("second");
+
+
 
                 if(tempo.length==4){ //a deja participe et on enleve la partie "Vous avez deja participe\n"
                     dejaParticipe=true;
@@ -84,7 +90,20 @@ public class PollListeActivity extends AppCompatActivity {
                     i.putExtra("participation",dejaParticipe);
                     startActivity(i);
                     finish();
-                }else{
+                }
+                if(typePoll.compareTo("CHOIX")==0){
+                    Intent i = new Intent(PollListeActivity.this, ChoiceViewActivity.class);
+                    i.putExtra("utilisateur", u);
+                    i.putExtra("titre", tab[0]);
+                    i.putExtra("date", tab[1].substring(9)); //substring pour eviter le 'Fait le: '
+                    i.putExtra("auteur", tab[2].substring(5)); //substring pour eviter le 'Par: '
+                    i.putExtra("participation",dejaParticipe);
+                    i.putExtra("first", first);
+                    i.putExtra("second", second);
+                    startActivity(i);
+                    finish();
+                }
+                else{
                     Toast.makeText(PollListeActivity.this, "Not yet implemented", Toast.LENGTH_LONG).show();
                 }
             }

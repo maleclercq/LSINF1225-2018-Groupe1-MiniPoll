@@ -7,6 +7,9 @@
     <color name="colorSondage">#8DB600</color>
     <color name="colorQuestionnaire">#FFDF00</color>
     <color name="colorValidation">#e81f3f</color>
+    <color name="colorOui">#8DB600</color>
+    <color name="colorNon">#EF5350</color>
+
 
 
 </resources>

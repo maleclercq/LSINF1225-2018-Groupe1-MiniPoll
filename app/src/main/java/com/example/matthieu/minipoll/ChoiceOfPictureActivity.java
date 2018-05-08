@@ -27,6 +27,10 @@ import java.util.Date;
 import java.util.Objects;
 
 public class ChoiceOfPictureActivity extends Activity {
+    //sources:
+    // - https://www.youtube.com/watch?v=_xIWkCJZCu0
+    // - https://www.youtube.com/watch?v=wBuWqqBWziU
+    // - https://www.youtube.com/watch?v=QIbOBrO9OEA
 
     public static final int CAMERA_REQUEST = 10;
     public static final int IMAGE_GALLERY_REQUEST = 20;

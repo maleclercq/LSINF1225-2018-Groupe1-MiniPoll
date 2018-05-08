@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.matthieu.minipoll.Choice;
 import com.example.matthieu.minipoll.DataBaseHelper;
 import com.example.matthieu.minipoll.R;
 import com.example.matthieu.minipoll.Utilisateur;
@@ -37,6 +38,8 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
     String titre;
     String date;
     String auteur;
+
+    Choice choice;
 
     private ArrayList<String> amisARajouter;
     private ArrayList<String> amisQuiOntEteRajoute;
@@ -139,10 +142,9 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
 
     }
 
-    public void OK(View v)
-    {
-        if(amisQuiOntEteRajoute.size()==0){
-            Toast.makeText(this,"Choice, at least, one friend",Toast.LENGTH_LONG).show();
+    public void OK(View v) {
+        if (amisQuiOntEteRajoute.size() == 0) {
+            Toast.makeText(this, "Choice, at least, one friend", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -163,28 +165,31 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         SQLiteDatabase db = myDbHelper.getWritableDatabase();
         /** Fin d'ouverture **/
 
-        for(int i=0;i<tabSTM.size();i++){
-            Log.e("debug",tabSTM.get(i));
-            SQLiteStatement stmt=db.compileStatement(tabSTM.get(i));
+        for (int i = 0; i < tabSTM.size(); i++) {
+            Log.e("debug", tabSTM.get(i));
+            SQLiteStatement stmt = db.compileStatement(tabSTM.get(i));
             stmt.execute();
         }
 
-        String insert="";
-        if(typePoll.compareTo("Survey")==0) {
-            insert="SONDAGE_PARTICIPANT";
-        }else if(typePoll.compareTo("Choice")==0){
-            insert="CHOIX_PARTICIPANT";
+        String insert = "";
+        if (typePoll.compareTo("Survey") == 0) {
+            insert = "SONDAGE_PARTICIPANT";
+        } else if (typePoll.compareTo("Choice") == 0) {
+            choice.chooseParticipant(this.u.getPseudo());
         } else {
-            insert="QUESTIONNAIRE_PARTICIPANT";
+            insert = "QUESTIONNAIRE_PARTICIPANT";
         }
-        for(int i=0;i<amisQuiOntEteRajoute.size();i++){
-            SQLiteStatement stmt = db.compileStatement("insert into "+insert+" values('"
-                    +this.titre +"','"
-                    +this.date      + "','"
-                    +this.u.getPseudo() + "','"
-                    +amisQuiOntEteRajoute.get(i)  +"',"
-                    +0              +")");
-            stmt.execute();
+        if (insert.compareTo("Choice") != 0)
+        {
+            for(int i=0;i<amisQuiOntEteRajoute.size();i++) {
+                SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
+                    + this.titre + "','"
+                    + this.date + "','"
+                    + this.u.getPseudo() + "','"
+                    + amisQuiOntEteRajoute.get(i) + "',"
+                    + 0 + ")");
+                stmt.execute();
+            }
         }
 
         /**

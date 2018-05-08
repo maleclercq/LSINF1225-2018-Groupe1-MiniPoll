@@ -34,6 +34,7 @@ public class NewPollActivity extends AppCompatActivity {
 
     public void newChoice(View v){
         Intent i=new Intent(this, NewChoiceActivity.class);
+        i.putExtra("utilisateur",this.u);
         startActivity(i);
     }
 
