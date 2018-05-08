@@ -75,6 +75,7 @@
     <string name="FieldRightAnswer">Right answer\'s number</string>
 
     <!--activity newQuizz-->
+    <string name="NewQuizTitle">Quiz title :</string>
     <string name="FieldNbrOfQuestion">Select the number of questions</string>
 
 
