@@ -80,7 +80,7 @@ public class NewQuestionActivity extends Activity {
         }
         @Override
         public int getCount() {
-            return count;
+            return myItems.size();
         }
 
         public Object getItem(int position) {
