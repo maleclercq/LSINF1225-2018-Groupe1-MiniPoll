@@ -44,7 +44,7 @@
 
     <!--newSondageActivity-->
     <string name="Titre">Title</string>
-    <string name="createSondage">Please fill all the blank</string>
+    <string name="createSondage">Survey title : </string>
     <string name="Proposition">Proposition</string>
     <string name="previsualisation">Prévisualisation</string>
     <string name="question">Question</string>
