@@ -35,8 +35,12 @@
 
     <!-->Activity main -->
     <string name="Choix">Choice</string>
+    <string name="NewChoix">New Choice</string>
     <string name="Questionnaire">Quizz</string>
+    <string name="NewQuestionnaire">New Quizz</string>
     <string name="Sondage">Survey</string>
+    <string name="NewSurvey">New Survey</string>
+
 
     <!--newSondageTempoActivity-->
     <string name="FieldNbrOfProposition">Propositions :</string>

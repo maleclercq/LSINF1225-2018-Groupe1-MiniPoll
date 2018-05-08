@@ -7,49 +7,6 @@
     tools:context="com.example.matthieu.minipoll.New_poll.NewPollActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <Button
-        android:id="@+id/Choix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:background="@drawable/oval_choix"
-        android:onClick="newChoice"
-        android:text="@string/Choix"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/Questionnaire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/oval_questionnaire"
-        android:onClick="questionnaire"
-        android:text="@string/Questionnaire"
-        app:layout_constraintBottom_toTopOf="@+id/Sondage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Choix" />
-
-    <Button
-        android:id="@+id/Sondage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/oval_sondage"
-        android:onClick="newSondage"
-        android:text="@string/Sondage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -66,12 +23,112 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/background_main" />
 
+    <Button
+        android:id="@+id/Choix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/oval_choix"
+        android:onClick="newChoice"
+        android:text="@string/NewChoix"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <Button
+        android:id="@+id/Questionnaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/oval_questionnaire"
+        android:onClick="questionnaire"
+        android:text="@string/NewQuestionnaire"
+        app:layout_constraintBottom_toTopOf="@+id/Sondage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Choix" />
+
+    <Button
+        android:id="@+id/Sondage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/oval_sondage"
+        android:onClick="newSondage"
+        android:text="@string/NewSurvey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="52dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:elevation="100dp"
+        android:text="+"
+        android:textColor="@color/White"
+        android:textSize="20pt"
+        app:layout_constraintBottom_toBottomOf="@+id/Choix"
+        app:layout_constraintStart_toStartOf="@+id/Choix"
+        app:layout_constraintTop_toTopOf="@+id/Choix" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:elevation="100dp"
+        android:text="+"
+        android:textColor="@color/White"
+        android:textSize="20pt"
+        app:layout_constraintBottom_toBottomOf="@+id/Questionnaire"
+        app:layout_constraintStart_toStartOf="@+id/Questionnaire"
+        app:layout_constraintTop_toTopOf="@+id/Questionnaire" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:elevation="100dp"
+        android:text="+"
+        android:textColor="@color/White"
+        android:textSize="20pt"
+        app:layout_constraintBottom_toBottomOf="@+id/Sondage"
+        app:layout_constraintStart_toStartOf="@+id/Sondage"
+        app:layout_constraintTop_toTopOf="@+id/Sondage" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/new_menu_title_black" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="8dp"
         android:text="@string/TitreNewPoll"
+        android:textSize="8pt"
+        android:textStyle="bold"
+        android:textColor="@color/White"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
