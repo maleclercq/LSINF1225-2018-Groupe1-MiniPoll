@@ -43,11 +43,11 @@
     <string name="FieldNbrOfChoice">Choices :</string>
 
     <!--newSondageActivity-->
+    <string name="FormulateQuestion">Formulate the question :</string>
     <string name="DescriptionSurvey">To create a new Survey, please fill in the number of propositions as well as the number of possible choices. </string>
     <string name="NewSurveyPageTitle"><u>New Survey</u></string>
     <string name="Titre">Title</string>
     <string name="NewSurveyTitle">Survey Title : </string>
-    <!--<string name="createSondage">Survey title : </string>-->
     <string name="Proposition">Proposition</string>
     <string name="previsualisation">Prévisualisation</string>
     <string name="question">Question</string>

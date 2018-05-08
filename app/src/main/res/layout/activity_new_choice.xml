@@ -9,134 +9,29 @@
 
 
     <EditText
-        android:id="@+id/TitleChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Enter the title of your choice"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Consigne" />
-
-    <TextView
-        android:id="@+id/TextOrPicture2"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:text="@string/TypeChoice"
-        app:layout_constraintBottom_toTopOf="@+id/SecondChoiceImage"
-        app:layout_constraintStart_toStartOf="@+id/Retour"
-        app:layout_constraintTop_toBottomOf="@+id/SecondChoice" />
-
-    <EditText
-        android:id="@+id/TitleSecondChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Enter the second proposition"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/TitleFirstChoice"
-        app:layout_constraintTop_toBottomOf="@+id/TextOrPicture2" />
-
-    <EditText
-        android:id="@+id/TitleFirstChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="38dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Enter the first proposition"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/SecondChoice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/FirstChoiceImage"
-        app:layout_constraintTop_toBottomOf="@+id/TextOrPicture" />
-
-    <EditText
         android:id="@+id/QuestionChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="95dp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/colorSondage"
         android:ems="10"
-        android:hint="Enter your question"
         android:inputType="textPersonName"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/FirstChoice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Consigne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/CreateChoixTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Retour" />
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
         android:id="@+id/Retour"
-        android:layout_width="46dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="146dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="52dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/left_arrow"
         android:onClick="retour"
-        app:layout_constraintBottom_toTopOf="@+id/FirstChoiceImage"
-        app:layout_constraintEnd_toStartOf="@+id/Consigne"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/FirstChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="348dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/Choix1"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/Retour"
-        app:layout_constraintTop_toBottomOf="@+id/QuestionChoice" />
-
-    <TextView
-        android:id="@+id/SecondChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/Choix2"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/TextOrPicture2"
-        app:layout_constraintStart_toStartOf="@+id/Retour"
-        app:layout_constraintTop_toBottomOf="@+id/FirstChoiceImage" />
-
-    <TextView
-        android:id="@+id/TextOrPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/TypeChoice"
-        app:layout_constraintBottom_toTopOf="@+id/FirstChoiceImage"
-        app:layout_constraintStart_toStartOf="@+id/Retour"
-        app:layout_constraintTop_toBottomOf="@+id/FirstChoice"
-        tools:text="@string/TypeChoice" />
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/OK"
@@ -149,7 +44,6 @@
         android:text="@string/ok"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FirstChoiceImage"
         tools:text="@string/ok" />
 
     <Button
@@ -167,29 +61,177 @@
         app:layout_constraintVertical_bias="1.0"
         tools:text="@string/previsualisation" />
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="228dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/FormulateQuestion"
+        android:textColor="@color/colorSondage"
+        android:textStyle="bold"
+        android:textSize="8pt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/choice_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionChoice" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/choice_box_white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+        app:layout_constraintEnd_toEndOf="@+id/imageView15" />
+
+    <TextView
+        android:id="@+id/FirstChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/Choix1"
+        android:textColor="@color/White"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/imageView15"
+        app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+    <EditText
+        android:id="@+id/TitleFirstChoice"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:backgroundTint="@color/colorSondage"
+        android:hint="Enter the first proposition"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView18"
+        app:layout_constraintEnd_toEndOf="@+id/imageView18"
+        app:layout_constraintStart_toStartOf="@+id/imageView18"
+        app:layout_constraintTop_toTopOf="@+id/imageView18" />
+
     <ImageView
         android:id="@+id/FirstChoiceImage"
         android:layout_width="50dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="185dp"
-        android:layout_marginStart="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:drawable/ic_menu_gallery"
+        android:backgroundTint="@color/colorQuestionnaire"
         android:onClick="chooseImage"
-        app:layout_constraintBottom_toTopOf="@+id/OK"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Retour" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView18"
+        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/choice_box"
+        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintStart_toStartOf="@+id/imageView15"
+        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+    <TextView
+        android:id="@+id/SecondChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/Choix2"
+        android:textColor="@color/White"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/imageView19"
+        app:layout_constraintTop_toTopOf="@+id/imageView19" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/choice_box_white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView19"
+        app:layout_constraintEnd_toEndOf="@+id/imageView19" />
 
     <ImageView
         android:id="@+id/SecondChoiceImage"
         android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:drawable/ic_menu_gallery"
+        android:backgroundTint="@color/colorQuestionnaire"
         android:onClick="chooseImage"
-        app:layout_constraintBottom_toTopOf="@+id/OK"
-        app:layout_constraintStart_toStartOf="@+id/FirstChoiceImage"
-        app:layout_constraintTop_toBottomOf="@+id/TextOrPicture2" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView20"
+        app:layout_constraintEnd_toEndOf="@+id/imageView19"
+        app:layout_constraintTop_toTopOf="@+id/imageView19" />
+
+    <EditText
+        android:id="@+id/TitleSecondChoice"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Enter the second proposition"
+        android:backgroundTint="@color/colorSondage"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView20"
+        app:layout_constraintEnd_toEndOf="@+id/imageView20"
+        app:layout_constraintStart_toStartOf="@+id/imageView20"
+        app:layout_constraintTop_toTopOf="@+id/imageView20" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/title_background_choice" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/CreateChoixTitle"
+        android:textColor="@color/White"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
