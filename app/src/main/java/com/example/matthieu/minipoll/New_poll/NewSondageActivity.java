@@ -170,7 +170,7 @@ public class NewSondageActivity extends Activity {
 
         String date = getDate();
 
-        for (int i = 0; i < nbrProp; i++) {
+        for (int i = 0; i < tabProp.size(); i++) {
             String str = ("insert into SONDAGE values('"
                     + titre + "','"
                     + date + "','"
@@ -196,6 +196,19 @@ public class NewSondageActivity extends Activity {
         i.putExtra("date", date);
         startActivity(i);
         finish();
+    }
+
+    public void previsualisation(View v){
+        for (int i = 0; i < nbrProp; i++) {
+            tabProp.add(((ListItem) myAdapter.getItem(i)).caption);
+        }
+        Intent i=new Intent(this,PrevisualisationSondage.class);
+        i.putExtra("tabProp",this.tabProp);
+        i.putExtra("titre",((EditText) findViewById(R.id.Titre)).getText().toString());
+        i.putExtra("question",((EditText) findViewById(R.id.Question)).getText().toString());
+        i.putExtra("nbrChoixMax",this.nbrChoix);
+        startActivity(i);
+        tabProp=new ArrayList<>();
     }
 
     public void retour(View v) {

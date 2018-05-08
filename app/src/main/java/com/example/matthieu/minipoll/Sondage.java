@@ -108,7 +108,7 @@ public class Sondage {
         stmt.execute();
     }
 
-    public String getScore(String proposition,int nbrMax){
+    public int getScore(String proposition,int nbrMax){
         int m=nbrMax + 1;
         int score=0;
         String [] whereArgs = {titre, auteur, date, proposition};
@@ -121,13 +121,95 @@ public class Sondage {
             score+=(m- Integer.parseInt(tabScore[i][0]));
         }
 
-        return Integer.toString(score);
+        return score;
     }
 
-    public String deleteSondage(){
-        String test="dksfskd";
-        return test;
+    public String deleteSondage(String pseudo){
+        if(pseudo.compareTo(this.auteur)!=0){
+            return null;
+        }
+        String test="";
+        String [] whereArgs = {titre, auteur, date};
+        Cursor c= myDbHelper.rawQuery("select PROPOSITION from SONDAGE where titre=? and auteur=? and date=?", whereArgs);
+        String[][] value=myDbHelper.createTabFromCursor(c,1);
+        int maxScore=-1;
+        int tempo=-1;
+        int position=-1;
+        int nbrChoisir=getNombreAChoisir();
+
+        for(int i=0;i<value.length;i++){
+            Log.e("debug",value[i][0]);
+            tempo=getScore(value[i][0],nbrChoisir);
+            if(tempo>maxScore) {
+                maxScore=tempo;
+                position=i;
+            }
+            if(tempo==maxScore){
+                String choixA=choixAuteur(value[position][0],value[i][0]);
+                if(value[position][0].compareTo(choixA)==0){
+                    position=i;
+                }
+            }
+        }
+
+        removeSondage();
+
+        return "La reponse finale a ce sondage est: "+value[position][0];
     }
 
+    private String choixAuteur(String prop1,String prop2){
+        String [] whereArgs = {titre, auteur, date,auteur,prop1};
+        Cursor c= myDbHelper.rawQuery("select ordre_pref from SONDAGE_RESULTAT where titre=? and auteur=? and date=? and participant=? and proposition=?", whereArgs);
+        int i=Integer.parseInt(myDbHelper.createTabFromCursor(c,1)[0][0]);
+
+        String [] whereArgs2 = {titre, auteur, date,auteur,prop2};
+        c= myDbHelper.rawQuery("select ordre_pref from SONDAGE_RESULTAT where titre=? and auteur=? and date=? and participant=? and proposition=?", whereArgs);
+        int j=Integer.parseInt(myDbHelper.createTabFromCursor(c,1)[0][0]);
+
+        if(i>j){
+            return prop1;
+        } else{
+            return prop2;
+        }
+    }
+
+    private void removeSondage(){
+        SQLiteStatement stmt = db.compileStatement("delete from SONDAGE where " +
+                  "TITRE='"+this.titre + "' AND "
+                + "DATE='"+this.date + "' AND "
+                + "AUTEUR='"+this.auteur+"'");
+        stmt.execute();
+
+        stmt = db.compileStatement("delete from SONDAGE_PARTICIPANT where " +
+                "TITRE='"+this.titre + "' AND "
+                + "DATE='"+this.date + "' AND "
+                + "AUTEUR='"+this.auteur+"'");
+        stmt.execute();
+
+        stmt = db.compileStatement("delete from SONDAGE_RESULTAT where " +
+                "TITRE='"+this.titre + "' AND "
+                + "DATE='"+this.date + "' AND "
+                + "AUTEUR='"+this.auteur+"'");
+        stmt.execute();
+
+        stmt = db.compileStatement("delete from SONDAGE_TYPE where " +
+                "TITRE='"+this.titre + "' AND "
+                + "DATE='"+this.date + "' AND "
+                + "AUTEUR='"+this.auteur+"'");
+        stmt.execute();
+    }
+
+    public boolean aRepondu(String pseudo){
+        boolean reponse=false;
+        String [][] values=getParticipants();
+
+        for(int i=0;i<values.length;i++){
+            if(values[i][0].compareTo(pseudo)==0){
+                reponse=true;
+            }
+        }
+
+        return reponse;
+    }
 
 }

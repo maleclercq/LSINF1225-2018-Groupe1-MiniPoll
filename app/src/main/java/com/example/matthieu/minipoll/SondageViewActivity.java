@@ -76,7 +76,7 @@ public class SondageViewActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                     String [][] value=sondage.getPropositionAndQuestion();
                     int nbrMax=sondage.getNombreAChoisir();
-                    String str=sondage.getScore(value[position][0],nbrMax);
+                    String str=""+sondage.getScore(value[position][0],nbrMax);
 
                     str="Le score de cette reponse est : "+str;
                     Toast.makeText(SondageViewActivity.this,str,Toast.LENGTH_SHORT).show();
@@ -227,9 +227,7 @@ public class SondageViewActivity extends AppCompatActivity {
                     amisPasRepondu+="\n";
                 }
             }
-
             amis.setText(amisPasRepondu);
-
         }
 
     }
@@ -304,8 +302,16 @@ public class SondageViewActivity extends AppCompatActivity {
             confirmationCloture=true;
             return;
         }
+        if(sondage.aRepondu(this.u.getPseudo())){
+            Toast.makeText(this,"Veuillez d'abbord répondre au sondage",Toast.LENGTH_SHORT).show();
+            return;
+        }
         String reponseFinale;
-        reponseFinale=sondage.deleteSondage();
+        reponseFinale=sondage.deleteSondage(this.u.getPseudo());
+        if(reponseFinale==null){
+            Toast.makeText(this,"Seul l'auteur du sondage peut le cloturer",Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent i=new Intent(this, PopUpReponseFinaleActivity.class);
         i.putExtra("str",reponseFinale);
         startActivity(i);
