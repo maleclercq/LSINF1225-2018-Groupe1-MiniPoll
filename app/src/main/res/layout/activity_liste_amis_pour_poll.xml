@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context="com.example.matthieu.minipoll.ListeAmisPourPollActivity"
     tools:layout_editor_absoluteY="81dp">
 
@@ -12,12 +13,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/linearL"
-        android:layout_width="333dp"
+        android:layout_width="328dp"
         android:layout_height="156dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/linearL2"
+        app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearL2"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:context=".MainActivity">
 
 
@@ -31,16 +36,19 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/linearL2"
-        android:layout_width="330dp"
+        android:layout_width="324dp"
         android:layout_height="141dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="@+id/linearL"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/linearL"
-        app:layout_constraintTop_toBottomOf="@+id/linearL"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#FFFFFF"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:context=".MainActivity">
 
 
@@ -58,12 +66,39 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/colorValidation"
         android:onClick="OK"
         android:text="@string/ok"
-        android:backgroundTint="@color/colorValidation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearL2" />
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Participants :"
+        android:textColor="@color/colorSondage"
+        android:textSize="10pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Who should participate ?"
+        android:textColor="@color/colorSondage"
+        android:textSize="10pt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
