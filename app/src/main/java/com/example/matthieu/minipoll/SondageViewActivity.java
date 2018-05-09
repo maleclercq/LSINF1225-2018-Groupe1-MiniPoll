@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,6 +70,11 @@ public class SondageViewActivity extends AppCompatActivity {
         if(!participation) {
             TextView nbrMaxTV = findViewById(R.id.nbrMax);
             nbrMaxTV.setText("Number of choices: " + nbrChoixMax);
+        }
+
+        if(this.u.getPseudo().compareTo(this.auteur)!=0){ //n'affiche pas le boutton pour cloturer si l'utilisateur n'est pas le createur
+            Button but=findViewById(R.id.Cloturer);
+            but.setVisibility(View.GONE);
         }
 
         if(participation){ //affiche le score de la question
@@ -309,10 +315,7 @@ public class SondageViewActivity extends AppCompatActivity {
         }
         String reponseFinale;
         reponseFinale=sondage.deleteSondage(this.u.getPseudo());
-        if(reponseFinale==null){
-            Toast.makeText(this,"Seul l'auteur du sondage peut le cloturer",Toast.LENGTH_SHORT).show();
-            return;
-        }
+
         Intent i=new Intent(this, PopUpReponseFinaleActivity.class);
         i.putExtra("str",reponseFinale);
         startActivity(i);

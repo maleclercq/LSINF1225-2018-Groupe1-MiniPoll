@@ -153,6 +153,10 @@ public class QuizzActivity extends AppCompatActivity {
         }
     }
 
+    public void cloturer(View v){
+
+    }
+
     private void generateListContent() {//ajoute les propositions de reponses
 
         String[][] value = quizz.getProposition(quizz.getQuestion()[count][0]);

@@ -125,9 +125,6 @@ public class Sondage {
     }
 
     public String deleteSondage(String pseudo){
-        if(pseudo.compareTo(this.auteur)!=0){
-            return null;
-        }
         String test="";
         String [] whereArgs = {titre, auteur, date};
         Cursor c= myDbHelper.rawQuery("select PROPOSITION from SONDAGE where titre=? and auteur=? and date=?", whereArgs);
