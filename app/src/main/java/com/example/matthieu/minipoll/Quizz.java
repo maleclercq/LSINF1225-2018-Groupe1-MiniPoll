@@ -119,9 +119,8 @@ public class Quizz {//ok en principe
     }
 
 
-    public String deleteSondage(){
-        String test="dksfskd";
-        return test;
+    public void deleteQuizz(){
+
     }
 
 

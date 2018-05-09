@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -52,6 +53,7 @@ public class NewSondageActivity extends Activity {
         this.nbrProp = (int) i.getSerializableExtra("nbrProp");
         this.nbrChoix = (int) i.getSerializableExtra("nbrChoix");
         this.u = (Utilisateur) i.getSerializableExtra("utilisateur");
+        Log.e("debug",""+this.nbrProp);
 
         this.tabProp = new ArrayList<String>();
 
@@ -128,7 +130,7 @@ public class NewSondageActivity extends Activity {
     }
 
     public String getDate() {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Calendar cal = Calendar.getInstance();
         return (dateFormat.format(cal.getTime()));
     }
@@ -142,7 +144,7 @@ public class NewSondageActivity extends Activity {
             tabProp.add(((ListItem) myAdapter.getItem(i)).caption);
         }
 
-        if (tabProp.contains("") || titre.compareTo("") == 0 || question.compareTo("") == 0) { //si toute les cases n'ont pas ete remplies
+        if (tabProp.contains("") || titre.compareTo("") == 0 || question.compareTo("") == 0 || tabProp.contains(null)) { //si toute les cases n'ont pas ete remplies
             Toast.makeText(this, "Fill all the blank please", Toast.LENGTH_LONG).show();
             return;
         }
@@ -184,8 +186,8 @@ public class NewSondageActivity extends Activity {
                 + titre + "','"
                 + date + "','"
                 + u.getPseudo() + "',"
-                + nbrChoix + ","
-                + nbrProp + ");");
+                + nbrProp + ","
+                + nbrChoix + ");");
         tabSTM.add(str);
 
         Intent i = new Intent(this, ListeAmisPourPollActivity.class);
