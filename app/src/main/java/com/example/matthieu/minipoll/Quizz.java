@@ -48,12 +48,6 @@ public class Quizz {//ok en principe
         return value;
     }
 
-    public String [][] getProposition(String question){//ok ?
-        String[] whereArgs = {titre, auteur, date, question};
-        Cursor c = myDbHelper.rawQuery("select PROPOSITION from QUESTIONNAIRE_PROPOSITION where titre=? and auteur=? and date=? and question=?", whereArgs);
-        String [][] value = myDbHelper.createTabFromCursor(c,1);
-        return value;
-    }
 
     public String [][] getAnswer(String question){//ok ?
         String[] whereArgs = {titre, auteur, date, question};

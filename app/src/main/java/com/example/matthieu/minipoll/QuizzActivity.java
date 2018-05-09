@@ -96,7 +96,7 @@ public class QuizzActivity extends AppCompatActivity {
             for (int j=0;j<tab.length;j++){
                 if (Integer.parseInt(tab[j][1])==1){
                     String aAfficher = "Your answer: "+ quizz.getUserAnswer(u.getPseudo())[count][0] + "\n"
-                            + "The right answer was: "+ quizz.getProposition(quizz.getQuestion()[count][0])[j][0];
+                            + "The right answer was: "+ quizz.getAnswer(quizz.getQuestion()[count][0])[j][0];
                     ua.setText(aAfficher);
                 }
             }
@@ -143,7 +143,8 @@ public class QuizzActivity extends AppCompatActivity {
         if (quizz.getNumberOfQuestion()-count ==0) {//Si on a plus de question après
             quizz.deleteParticipant(u.getPseudo());
             quizz.insertParticipant(u.getPseudo());// On change la participation
-            for(int i=0; i<quizz.getNumberOfQuestion(); i++){//On change les réponses utilisateurs
+            int size = quizz.getNumberOfQuestion();
+            for(int i=0; i<size; i++){//On change les réponses utilisateurs
                 quizz.insertResultat(u.getPseudo(), quizz.getQuestion()[i][0], answer.get(i));
             }
             Intent i = new Intent(this, ClassementActivity.class);
@@ -170,7 +171,7 @@ public class QuizzActivity extends AppCompatActivity {
 
     private void generateListContent() {//ajoute les propositions de reponses
 
-        String[][] value = quizz.getProposition(quizz.getQuestion()[count][0]);
+        String[][] value = quizz.getAnswer(quizz.getQuestion()[count][0]);
         for (int i=0; i<value.length; i++) {
             data.add(value[i][0] + "\n");
         }
