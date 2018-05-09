@@ -55,4 +55,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void ami(View v) {
+        //a completer
+        Intent i = new Intent(this, FriendActivity.class); // NewPollActivity à creer
+        i.putExtra("utilisateur", u);
+        startActivity(i);
+    }
 }

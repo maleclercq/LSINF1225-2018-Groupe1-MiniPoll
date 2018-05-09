@@ -31,11 +31,11 @@ public class EditProfileActivity extends AppCompatActivity {
         Intent i = getIntent();
         u = (Utilisateur) i.getSerializableExtra("utilisateur");
 
-        editFirstName = findViewById(R.id.FirstName);
-        //editFirstName.setText(u.prenom);
-
         editName = (EditText) findViewById(R.id.Name);
         //editName.setText(u.nom);
+
+        editFirstName = (EditText) findViewById(R.id.FirstName);
+        //editFirstName.setText(u.prenom);
 
         editId = (EditText) findViewById(R.id.Pseudo);
         //editId.setText(u.pseudo);
