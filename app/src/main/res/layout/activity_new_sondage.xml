@@ -35,8 +35,8 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="228dp"
+        android:layout_width="321dp"
+        android:layout_height="439dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
@@ -47,7 +47,7 @@
         <ListView
             android:id="@+id/MyList"
             android:layout_width="match_parent"
-            android:layout_height="208dp"
+            android:layout_height="132dp"
             android:descendantFocusability="beforeDescendants">
 
         </ListView>
@@ -86,12 +86,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="172dp"
         android:backgroundTint="@color/colorValidation"
         android:onClick="previsualisation"
         android:text="@string/previsualisation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/OK"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
     <Button
         android:id="@+id/OK"
@@ -99,12 +100,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="172dp"
         android:backgroundTint="@color/colorValidation"
         android:onClick="OK"
         android:text="@string/ok"
         app:layout_constraintEnd_toStartOf="@+id/Previsualisation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
     <EditText
         android:id="@+id/Question"

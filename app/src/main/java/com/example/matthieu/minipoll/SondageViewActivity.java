@@ -220,7 +220,7 @@ public class SondageViewActivity extends AppCompatActivity {
 
         if(participation){
             TextView amis=findViewById(R.id.pasRepondu);
-            String amisPasRepondu="Participants n'ayant pas encore repondu:\n";
+            String amisPasRepondu="Waiting for:\n";
 
             String[][] value2 = sondage.getParticipants();
 
