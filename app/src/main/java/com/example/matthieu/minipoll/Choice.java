@@ -82,4 +82,11 @@ public class Choice {
         String[][] proposition =  myDbHelper.createTabFromCursor(c, 2);
         return proposition;
     }
+
+    public String getAnswerFromUser(String pseudo){
+        String[] whereArgs = {titre, date, auteur,pseudo};
+        Cursor c = myDbHelper.rawQuery("select REPONSE from CHOIX_REPONSE where titre=? and date=? and auteur=? and participant=?", whereArgs);
+        String[][] proposition =  myDbHelper.createTabFromCursor(c, 1);
+        return proposition[0][0];
+    }
 }

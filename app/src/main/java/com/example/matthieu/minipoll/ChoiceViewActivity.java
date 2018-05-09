@@ -74,15 +74,31 @@ public class ChoiceViewActivity extends AppCompatActivity {
         TextView questionC = findViewById(R.id.QuestionChoice);
         questionC.setText(question);
 
+        if(participation){
+            if(this.choice.getAnswerFromUser(u.getPseudo()).compareTo(first)==0){
+                gauche.setBackgroundResource(R.color.colorOui);
+                droite.setBackgroundResource(R.color.colorNon);
+            } else {
+                gauche.setBackgroundResource(R.color.colorNon);
+                droite.setBackgroundResource(R.color.colorOui);
+            }
+        }
+
     }
 
     public void chooseFirstChoice(View v){
+        if(participation){
+            return;
+        }
         gauche.setBackgroundResource(R.color.colorOui);
         droite.setBackgroundResource(R.color.colorNon);
         answer = first;
     }
 
     public void chooseSecondChoice(View v){
+        if(participation){
+            return;
+        }
         gauche.setBackgroundResource(R.color.colorNon);
         droite.setBackgroundResource(R.color.colorOui);
         answer = second;

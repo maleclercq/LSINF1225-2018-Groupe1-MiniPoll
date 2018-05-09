@@ -16,40 +16,62 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConnectionActivity">
+        <activity android:name=".ConnectionActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".Profile.CreateProfilActivity" />
-        <activity android:name=".PollListeActivity" />
-        <activity android:name=".SondageViewActivity" />
-        <activity android:name=".Profile.ProfileActivity" />
-        <activity android:name=".FriendActivity" />
-        <activity android:name=".New_poll.NewPollActivity" />
-        <activity android:name=".AddFriend" />
-        <activity android:name=".New_poll.NewChoiceActivity" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreateAccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Profile.CreateProfilActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PollListeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SondageViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Profile.ProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FriendActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".New_poll.NewPollActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddFriend"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".New_poll.NewChoiceActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ChoiceOfPictureActivity"
-            android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".New_poll.NewSondageActivity" />
-        <activity android:name=".New_poll.NewSondageTempoActivity" />
-        <activity android:name=".New_poll.ListeAmisPourPollActivity" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".New_poll.NewSondageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".New_poll.NewSondageTempoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".New_poll.ListeAmisPourPollActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".New_poll.NewQuizzActivity"
             android:label="@string/title_activity_new_quizz"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Profile.EditProfileActivity" />
-        <activity android:name=".New_poll.NewQuestionActivity" />
-        <activity android:name=".New_poll.PopUpReponseFinaleActivity" />
-        <activity android:name=".QuizzActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Profile.EditProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".New_poll.NewQuestionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".New_poll.PopUpReponseFinaleActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".QuizzActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".New_poll.PrevisualisationSondage"></activity>
-        <activity android:name=".ChoiceViewActivity"></activity>
+        <activity android:name=".New_poll.PrevisualisationSondage"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ChoiceViewActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

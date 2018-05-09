@@ -45,12 +45,19 @@ public class NewChoiceActivity extends Activity {
     }
 
     public void validation(View v){
-        String titre = ((EditText) findViewById(R.id.TitleChoice)).getText().toString();
+        String titre = ((EditText) findViewById(R.id.QuestionChoice)).getText().toString();
         String question = ((EditText) findViewById(R.id.QuestionChoice)).getText().toString();
         String first = ((EditText) findViewById(R.id.TitleFirstChoice)).getText().toString();
         String second = ((EditText) findViewById(R.id.TitleSecondChoice)).getText().toString();
         //ImageView firstIg;
         //ImageView secondIg;
+
+        //Enleve les caracteres indesirables
+        titre=titre.replaceAll("[']+", " ");
+        question=question.replaceAll("[']+", " ");
+        first=first.replaceAll("[']+", " ");
+        second=second.replaceAll("[']+", " ");
+
 
         if(titre.compareTo("")==0 || question.compareTo("")==0 || first.compareTo("")==0 || second.compareTo("")==0) { //si toute les cases n'ont pas ete remplies
             Toast.makeText(this,"Fill all the blanks please",Toast.LENGTH_LONG).show();

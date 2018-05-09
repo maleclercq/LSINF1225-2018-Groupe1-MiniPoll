@@ -155,7 +155,7 @@ public class NewQuestionActivity extends Activity {
             listeReponse.add(((ListItem) myAdapter.getItem(i)).caption);
         }
 
-        if (listeReponse.contains("") || titre.compareTo("") == 0 || question.compareTo("") == 0) { //si toute les cases n'ont pas ete remplies
+        if (listeReponse.contains("") || titre.compareTo("") == 0 || question.compareTo("") == 0 || listeReponse.contains(null)) { //si toute les cases n'ont pas ete remplies
             Toast.makeText(this, "Fill all the blank please", Toast.LENGTH_LONG).show();
             return;
         }
