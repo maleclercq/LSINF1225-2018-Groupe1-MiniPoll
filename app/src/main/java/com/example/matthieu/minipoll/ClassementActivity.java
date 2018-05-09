@@ -51,20 +51,23 @@ public class ClassementActivity extends AppCompatActivity {
     }
     private void generateListContent() {//ajoute les scores
         String[][] value = quizz.getParticipants();
+        String question="";
+        String userAnswer="";
+        String bonneReponse="";
         int size = quizz.getNumberOfQuestion();
         for (int i=0; i<value.length; i++) {
             if(Integer.parseInt(value[i][1])==1){
                 int score = 0;
                 String participant = value[i][0];
                 for (int j=0; j<size ;j++){
-                    String question = quizz.getQuestion()[j][0];//Question numero j
-                    String userAnswer = quizz.getUserAnswer(participant)[j][0];//Reponse de l'utilisateur a cette question
+                    question = quizz.getQuestion()[j][0];//Question numero j
+                    userAnswer = quizz.getUserAnswer(participant)[j][0];//Reponse de l'utilisateur a cette question
                     String [][] answerIsTrue = quizz.getAnswer(question);//Tableau avec les proposition et si oui ou non elles sont correctes
                     for (int k=0; k< answerIsTrue.length; k++){//Pour chaque proposition, on vérifie si elle est bonne et si c'est ce que l'utilisateur a repondu
-                        Log.i("Erreur: ", userAnswer);
-                        Log.i("Erreur: ", answerIsTrue[k][0]);
-                        String bonneReponse = answerIsTrue[k][0];
-                        if(Integer.parseInt(answerIsTrue[k][1])== 1 && userAnswer.equals(bonneReponse)){// COMPARE TA MERE !!!!
+                        bonneReponse = answerIsTrue[k][0];
+                        bonneReponse=bonneReponse.replaceAll("\n","");//evite les characteres indésirables
+                        userAnswer=userAnswer.replaceAll("\n","");//evite les characteres indésirables
+                        if(Integer.parseInt(answerIsTrue[k][1])== 1 && userAnswer.compareTo(bonneReponse)==0){// COMPARE TA MERE !!!!
                             score++;
                             Log.i("Erreur: ", "boucle3");
                         }
