@@ -57,8 +57,8 @@ public class Quizz {//ok en principe
 
     public String [][] getAnswer(String question){//ok ?
         String[] whereArgs = {titre, auteur, date, question};
-        Cursor c = myDbHelper.rawQuery("select PROPOSITION_CORRECTE from QUESTIONNAIRE_PROPOSITION where titre=? and auteur=? and date=? and question=? ", whereArgs);
-        String [][] value = myDbHelper.createTabFromCursor(c,1);
+        Cursor c = myDbHelper.rawQuery("select PROPOSITION, PROPOSITION_CORRECTE from QUESTIONNAIRE_PROPOSITION where titre=? and auteur=? and date=? and question=? ", whereArgs);
+        String [][] value = myDbHelper.createTabFromCursor(c,2);
         return value;
     }
 
@@ -82,9 +82,9 @@ public class Quizz {//ok en principe
     }
 
     public String[][] getParticipants(){
-        String[] whereArgs={titre,date,auteur,"0"};
-        Cursor c=myDbHelper.rawQuery("select PARTICIPANT from QUESTIONNAIRE_PARTICIPANT where titre=? and date=? and auteur=? and participation=? ", whereArgs);
-        String[][] value = myDbHelper.createTabFromCursor(c, 1);
+        String[] whereArgs={titre,date,auteur};
+        Cursor c=myDbHelper.rawQuery("select PARTICIPANT, PARTICIPATION from QUESTIONNAIRE_PARTICIPANT where titre=? and date=? and auteur=?", whereArgs);
+        String[][] value = myDbHelper.createTabFromCursor(c, 2);
         return value;
     }
 

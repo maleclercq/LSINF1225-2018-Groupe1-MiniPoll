@@ -82,6 +82,8 @@
     <!--activity QuizzActivity-->
     <string name="Suivant">Next</string>
 
+    <!--activity QuizzActivity-->
+    <string name="Back">Go back to menu</string>
 
 
 

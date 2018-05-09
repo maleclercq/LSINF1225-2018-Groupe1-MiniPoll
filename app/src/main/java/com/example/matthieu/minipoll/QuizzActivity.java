@@ -90,8 +90,16 @@ public class QuizzActivity extends AppCompatActivity {
             but.setVisibility(View.GONE);
         }
 
-        if(participation){ //affiche le score de la question
-            // Si la personne a répondu, juste afficher sa réponse et la bonne réponse
+        if(participation){
+            TextView ua = findViewById(R.id.UserAnswer);
+            String [][] tab= quizz.getAnswer(quizz.getQuestion()[count][0]);
+            for (int j=0;j<tab.length;j++){
+                if (Integer.parseInt(tab[j][1])==1){
+                    String aAfficher = "Your answer: "+ quizz.getUserAnswer(u.getPseudo())[count][0] + "\n"
+                            + "The right answer was: "+ quizz.getProposition(quizz.getQuestion()[count][0])[j][0];
+                    ua.setText(aAfficher);
+                }
+            }
         }
         else {
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -138,6 +146,12 @@ public class QuizzActivity extends AppCompatActivity {
             for(int i=0; i<quizz.getNumberOfQuestion(); i++){//On change les réponses utilisateurs
                 quizz.insertResultat(u.getPseudo(), quizz.getQuestion()[i][0], answer.get(i));
             }
+            Intent i = new Intent(this, ClassementActivity.class);
+            i.putExtra("utilisateur", u);
+            i.putExtra("titre", titre);
+            i.putExtra("date", date);
+            i.putExtra("auteur", auteur);
+            startActivity(i);
             finish();
         }
         else {

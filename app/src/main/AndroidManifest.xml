@@ -72,6 +72,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ChoiceViewActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".ClassementActivity"></activity>
     </application>
 
 </manifest>
