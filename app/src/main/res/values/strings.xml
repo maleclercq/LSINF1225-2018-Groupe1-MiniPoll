@@ -79,5 +79,10 @@
     <string name="NewQuizTitle">Quiz title :</string>
     <string name="FieldNbrOfQuestion">Select the number of questions</string>
 
+    <!--activity QuizzActivity-->
+    <string name="Suivant">Next</string>
+
+
+
 
 </resources>

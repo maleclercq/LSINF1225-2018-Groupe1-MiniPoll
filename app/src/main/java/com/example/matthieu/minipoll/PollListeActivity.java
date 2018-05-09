@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class PollListeActivity extends AppCompatActivity {
     DataBaseHelper myDbHelper;
     String first;
     String second;
+    ArrayList<String> answer = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +90,7 @@ public class PollListeActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-                if(typePoll.compareTo("CHOIX")==0){
+                else if(typePoll.compareTo("CHOIX")==0){
                     Intent i = new Intent(PollListeActivity.this, ChoiceViewActivity.class);
                     i.putExtra("utilisateur", u);
                     i.putExtra("titre", tab[0]);
@@ -97,6 +99,18 @@ public class PollListeActivity extends AppCompatActivity {
                     i.putExtra("participation",dejaParticipe);
                     i.putExtra("first", first);
                     i.putExtra("second", second);
+                    startActivity(i);
+                    finish();
+                }
+                else if (typePoll.compareTo("QUESTIONNAIRE")==0){
+                    Intent i = new Intent(PollListeActivity.this, QuizzActivity.class);
+                    i.putExtra("utilisateur", u);
+                    i.putExtra("titre", tab[0]);
+                    i.putExtra("date", tab[1].substring(9)); //substring pour eviter le 'Fait le: '
+                    i.putExtra("auteur", tab[2].substring(5)); //substring pour eviter le 'Par: '
+                    i.putExtra("participation",dejaParticipe);
+                    i.putExtra("count", 0 );
+                    i.putExtra("answer", answer);
                     startActivity(i);
                     finish();
                 }

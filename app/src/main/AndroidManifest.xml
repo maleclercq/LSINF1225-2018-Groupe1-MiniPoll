@@ -46,6 +46,8 @@
         <activity android:name=".Profile.EditProfileActivity" />
         <activity android:name=".New_poll.NewQuestionActivity" />
         <activity android:name=".New_poll.PopUpReponseFinaleActivity" />
+        <activity android:name=".QuizzActivity" />
+
         <activity android:name=".New_poll.PrevisualisationSondage"></activity>
         <activity android:name=".ChoiceViewActivity"></activity>
     </application>

@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.matthieu.minipoll.SondageViewActivity"
-    tools:layout_editor_absoluteY="81dp">
-
+    tools:context="com.example.matthieu.minipoll.QuizzActivity">
 
     <TextView
         android:id="@+id/Titre"
@@ -76,7 +74,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/nbrMax"
+        android:id="@+id/UserAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -85,38 +83,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearL"
-        tools:text="nbrChoix" />
+        tools:text="UserAnswer" />
 
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorValidation"
-        android:onClick="validerChoix"
-        android:text="@string/ok"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pasRepondu"
-        app:layout_constraintVertical_bias="0.478" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/colorValidation"
-        android:onClick="cloturer"
-        android:text="@string/cloturer"
+        android:text="@string/Suivant"
+        android:onClick="valider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pasRepondu"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.556" />
+
 
     <TextView
         android:id="@+id/pasRepondu"
@@ -127,8 +112,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nbrMax"
+        app:layout_constraintTop_toBottomOf="@+id/UserAnswer"
         tools:text="pasRepondu" />
-
 
 </android.support.constraint.ConstraintLayout>

@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SondageViewActivity extends AppCompatActivity {
+
     Utilisateur u;
     boolean participation;
     String titre;
@@ -168,7 +169,7 @@ public class SondageViewActivity extends AppCompatActivity {
         }
     }
 
-    public void saveChoices(View v){
+    public void validerChoix(View v){
         if(participation){
             Toast.makeText(this,"You've already answer to it",Toast.LENGTH_LONG).show();
             return;
