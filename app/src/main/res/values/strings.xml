@@ -72,6 +72,7 @@
     <string name="Camera">Take a picture</string>
 
     <!--activity newQuestion-->
+    <string name="Propositions">Propositions :</string>
     <string name="FieldRightAnswer">Right answer\'s number</string>
 
     <!--activity newQuizz-->
