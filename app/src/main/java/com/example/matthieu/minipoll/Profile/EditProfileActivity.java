@@ -3,6 +3,7 @@ package com.example.matthieu.minipoll.Profile;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.matthieu.minipoll.ChoiceOfPictureActivity;
+import com.example.matthieu.minipoll.ChoiceViewActivity;
 import com.example.matthieu.minipoll.DataBaseHelper;
 import com.example.matthieu.minipoll.R;
 import com.example.matthieu.minipoll.Utilisateur;
@@ -18,10 +20,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class EditProfileActivity extends AppCompatActivity {
-    EditText editFirstName, editName, editId, editEmail, editPassword;
-    String firstname, name, id, email, password;
     Utilisateur u;
     SQLiteDatabase sql;
+    private DataBaseHelper myDbHelper;
+
+    EditText editName, editFirstName, editPseudo, editMail, editPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,24 +35,32 @@ public class EditProfileActivity extends AppCompatActivity {
         u = (Utilisateur) i.getSerializableExtra("utilisateur");
 
         editName = (EditText) findViewById(R.id.Name);
-        //editName.setText(u.nom);
+        editName.setText(u.nom);
 
         editFirstName = (EditText) findViewById(R.id.FirstName);
-        //editFirstName.setText(u.prenom);
+        editFirstName.setText(u.prenom);
 
-        editId = (EditText) findViewById(R.id.Pseudo);
-        //editId.setText(u.pseudo);
+        editPseudo = (EditText) findViewById(R.id.Pseudo);
+        editPseudo.setText(u.getPseudo());
 
-        editEmail = (EditText)  findViewById(R.id.Email);
-        //editId.setText(u.email);
+        editMail = (EditText) findViewById(R.id.Email);
+        editMail.setText(u.email);
 
         editPassword = (EditText) findViewById(R.id.Password);
-        //editPassword.setText(u.mdp);
-
+        editPassword.setText(u.mdp);
     }
 
     public void validationProfile(View v) throws SQLException {
-        final DataBaseHelper myDbHelper = new DataBaseHelper(EditProfileActivity.this);
+        this.myDbHelper = new DataBaseHelper(EditProfileActivity.this);
+        SQLiteDatabase db = myDbHelper.getWritableDatabase();
+
+        String nom = ((EditText) findViewById(R.id.Name)).getText().toString();
+        String prenom = ((EditText) findViewById(R.id.Prenom)).getText().toString();
+        String pseudo = ((EditText) findViewById(R.id.Pseudo)).getText().toString();
+        String email = ((EditText) findViewById(R.id.AdresseEMail)).getText().toString();
+        String mdp = ((EditText) findViewById(R.id.Password)).getText().toString();
+        String photo = "basicimage.png";
+
         try {
             myDbHelper.createDataBase();
         }
@@ -58,27 +69,29 @@ public class EditProfileActivity extends AppCompatActivity {
             throw new Error("Unable to create database");
         }
         myDbHelper.openDataBase();
-        if(editEmail.toString().compareTo("")==0
-                || password.compareTo("")==0 ){
-            Toast.makeText(EditProfileActivity.this, "Please, fill all the fields", Toast.LENGTH_LONG).show(); //traduction
-            return;
-        }
-        //if(password.compareTo(confirmPassword)!=0){
-        //  Toast.makeText(EditProfileActivity.this,"Password don't correspond",Toast.LENGTH_LONG).show(); //traduction
-        //return;
-        // }
 
-        if(editPassword.toString().matches("^.*[^a-zA-Z0-9 ].*$") || password.length()<6){
-            Toast.makeText(EditProfileActivity.this,"Please, enter a valid password",Toast.LENGTH_LONG).show(); //traduction
-        }
-        try (Cursor c = sql.rawQuery("SELECT * FROM Utilisateur WHERE ID='" + editId.getText().toString() + "'", null)) {
-            if (c.moveToFirst()) {
-                sql.execSQL("UPDATE Utilisateur SET NOM ='" + editName.getText() + "', FIRSTNAME='" + editFirstName.getText() + "',ID='" + editId.getText() + "', MDP='" + editPassword.getText() + "', EMAIL'" + editEmail.getText(), new String[]{"' WHERE ID ='" + editId.getText() + "'"});
-                Toast.makeText(this, "Record Modified", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this, "Impossible to update profile", Toast.LENGTH_LONG).show();
-            }
-        }
+        SQLiteStatement stmt1=db.compileStatement("delete from UTILISATEUR where " +
+                "ID='"+ this.u.getPseudo() +"'");
+        stmt1.execute();
+
+        SQLiteStatement stmt2=db.compileStatement("insert into UTILISATEUR values('"
+                + pseudo + "','"
+                + nom + "','"
+                + prenom + "','"
+                + mdp + "','"
+                + email + "','"
+                + photo + ")");
+        stmt2.execute();
+
+        Intent i=new Intent(this, ProfileActivity.class);
+        i.putExtra("utilisateur",u);
+        i.putExtra("Nom", nom);
+        i.putExtra("Prenom", prenom);
+        i.putExtra("Pseudo", pseudo);
+        i.putExtra("Email", email);
+        i.putExtra("Mot de passe", mdp);
+        //i.putExtra("Photo", img);
+        startActivity(i);
     }
 
     public void retour(View v){

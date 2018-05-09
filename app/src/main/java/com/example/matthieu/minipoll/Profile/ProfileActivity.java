@@ -15,6 +15,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     Utilisateur u;
     DataBaseHelper myDbHelper;
+    String name;
+    String firstname;
+    String id;
+    String email;
+    String mdp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +29,19 @@ public class ProfileActivity extends AppCompatActivity {
         Intent i = getIntent();
         u = (Utilisateur) i.getSerializableExtra("utilisateur");
         TextView name=findViewById(R.id.Name);
-        name.setText("Nom: "+u.nom);
+        name.setText(u.nom);
 
         TextView firstName = findViewById(R.id.FirstName);
-        firstName.setText("Prenom: "+u.prenom);
+        firstName.setText(u.prenom);
 
         TextView pseudo = findViewById(R.id.Pseudo);
-        pseudo.setText("Pseudo: "+u.getPseudo());
+        pseudo.setText(u.getPseudo());
 
         TextView email = findViewById(R.id.Email);
-        email.setText("Email: "+u.email);
+        email.setText(u.email);
 
         TextView password = findViewById(R.id.password);
-        password.setText("Mot de passe: "+u.mdp);
+        password.setText(u.mdp);
 
 
         //Ajouter la photo de profil
@@ -47,6 +52,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void editProfile(View v){
         Intent i=new Intent(this, EditProfileActivity.class);
+        i.putExtra("utilisateur",u);
+        i.putExtra("Nom", name);
+        i.putExtra("Prenom", firstname);
+        i.putExtra("Pseudo", id);
+        i.putExtra("Email", email);
+        i.putExtra("Mot de passe", mdp);
+        //i.putExtra("Photo", img);
         startActivity(i);
     }
 
