@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -76,17 +77,17 @@ public class QuizzActivity extends AppCompatActivity {
         String enonceQuestion = listeQuestion[count][0];
         question.setText(enonceQuestion);//Affiche la question
 
-
-        Log.i("count", listeQuestion[0][0]);
-        Log.i("count", listeQuestion[1][0]);
-        Log.i("count", listeQuestion[2][0]);
-        Log.i("count", listeQuestion[3][0]);
         generateListContent();
         lv.setAdapter(new QuizzActivity.MyListAdaper(this, R.layout.list_choose_sondage, data));
 
         if(!participation) {
             TextView ua = findViewById(R.id.UserAnswer);
             ua.setText("Your answer: ");
+        }
+
+        if(this.u.getPseudo().compareTo(this.auteur)!=0){//n'affiche pas le boutton pour cloturer si l'utilisateur n'est pas le createur
+            Button but=findViewById(R.id.Cloturer);
+            but.setVisibility(View.GONE);
         }
 
         if(participation){ //affiche le score de la question

@@ -16,6 +16,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.os.Parcel;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -194,6 +195,7 @@ public class NewQuestionActivity extends Activity {
                     + j
                     + ");");
             tabSTM.add(str); //OK
+            Log.e("debug",str);
         }
 
         String str = ("insert into QUESTIONNAIRE values('"
@@ -202,14 +204,16 @@ public class NewQuestionActivity extends Activity {
                 + u.getPseudo()
                 + "');");
         tabSTM.add(str);//OK
+        Log.e("debug",str);
 
         String str2 = ("insert into QUESTION values('"
                 + titre + "','"
                 + date + "','"
-                + u.getPseudo()
-                + question.replace("',", " " )
-                + ");");//OK
-
+                + u.getPseudo()  +"','"
+                + question.replace("'", " " )
+                + "');");//OK
+        tabSTM.add(str2);//OK
+        Log.e("debug",str2);
 
         count = count -1;
 

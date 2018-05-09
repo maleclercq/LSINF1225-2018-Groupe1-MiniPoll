@@ -186,11 +186,11 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         {
             for(int i=0;i<amisQuiOntEteRajoute.size();i++) {
                 SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
-                    + this.titre + "','"
-                    + this.date + "','"
-                    + this.u.getPseudo() + "','"
-                    + amisQuiOntEteRajoute.get(i) + "',"
-                    + 0 + ")");
+                        + this.titre + "','"
+                        + this.date + "','"
+                        + this.u.getPseudo() + "','"
+                        + amisQuiOntEteRajoute.get(i) + "',"
+                        + 0 + ")");
                 stmt.execute();
             }
         }
@@ -198,16 +198,14 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         /**
          * rajoute le créateur a la liste des participants"
          **/
-        if(typePoll.compareTo("Survey")==0) {
-            Log.e("debug",insert);
-            SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
-                    + this.titre + "','"
-                    + this.date + "','"
-                    + this.u.getPseudo() + "','"
-                    + this.u.getPseudo() + "',"
-                    + 0 + ")");
-            stmt.execute();
-        }
+        Log.e("debug",insert);
+        SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
+                + this.titre + "','"
+                + this.date + "','"
+                + this.u.getPseudo() + "','"
+                + this.u.getPseudo() + "',"
+                + 0 + ")");
+        stmt.execute();
 
         finish();
     }
