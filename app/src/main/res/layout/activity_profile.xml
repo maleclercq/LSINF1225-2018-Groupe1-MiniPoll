@@ -19,7 +19,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/background_main" />
 
     <Button
@@ -32,21 +31,17 @@
         android:backgroundTint="@color/colorValidation"
         android:onClick="editProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Retour"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
         android:id="@+id/Retour"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="252dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/left_arrow"
         android:backgroundTint="@color/colorValidation"
         android:onClick="retour"
-        app:layout_constraintBottom_toTopOf="@+id/imgSpecimenPhoto"
-        app:layout_constraintEnd_toStartOf="@+id/Edit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Edit" />
 
@@ -54,11 +49,10 @@
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="34dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/FirstName"
-        app:layout_constraintStart_toStartOf="@+id/FirstName"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgSpecimenPhoto"
         tools:text="nom" />
 
@@ -66,9 +60,8 @@
         android:id="@+id/FirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
+        android:layout_marginTop="32dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/Pseudo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Name"
@@ -78,11 +71,10 @@
         android:id="@+id/Pseudo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
-        android:layout_marginStart="1dp"
+        android:layout_marginTop="32dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/Email"
-        app:layout_constraintStart_toStartOf="@+id/FirstName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FirstName"
         tools:text="pseudo" />
 
@@ -90,11 +82,10 @@
         android:id="@+id/Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="26dp"
-        android:layout_marginStart="13dp"
+        android:layout_marginTop="32dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/Password"
-        app:layout_constraintStart_toStartOf="@+id/Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Pseudo"
         tools:text="email" />
 
@@ -102,24 +93,24 @@
         android:id="@+id/Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="32dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Email"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="password" />
 
     <ImageView
         android:id="@+id/imgSpecimenPhoto"
-        android:layout_width="148dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="66dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:background="@drawable/photo"
-        app:layout_constraintBottom_toTopOf="@+id/Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Retour" />
 
 </android.support.constraint.ConstraintLayout>
