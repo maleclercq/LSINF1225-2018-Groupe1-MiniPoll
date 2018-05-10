@@ -1,5 +1,6 @@
 package com.example.matthieu.minipoll.Profile;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,6 +27,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     EditText editName, editFirstName, editPseudo, editMail, editPassword;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +57,9 @@ public class EditProfileActivity extends AppCompatActivity {
         SQLiteDatabase db = myDbHelper.getWritableDatabase();
 
         String nom = ((EditText) findViewById(R.id.Name)).getText().toString();
-        String prenom = ((EditText) findViewById(R.id.Prenom)).getText().toString();
+        String prenom = ((EditText) findViewById(R.id.FirstName)).getText().toString();
         String pseudo = ((EditText) findViewById(R.id.Pseudo)).getText().toString();
-        String email = ((EditText) findViewById(R.id.AdresseEMail)).getText().toString();
+        String email = ((EditText) findViewById(R.id.Email)).getText().toString();
         String mdp = ((EditText) findViewById(R.id.Password)).getText().toString();
         String photo = "basicimage.png";
 
@@ -80,7 +82,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 + prenom + "','"
                 + mdp + "','"
                 + email + "','"
-                + photo + ")");
+                + photo + "')");
         stmt2.execute();
 
         Intent i=new Intent(this, ProfileActivity.class);
