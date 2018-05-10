@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.matthieu.minipoll.DataBaseHelper;
@@ -43,6 +44,8 @@ public class ProfileActivity extends AppCompatActivity {
         TextView password = findViewById(R.id.Password);
         password.setText("Password: "+u.mdp);
 
+        //ImageView photo = findViewById(R.id.imgSpecimenPhoto);
+
 
         //Ajouter la photo de profil
         //ImageView profilPicture = findViewById(R.id.profilPicture);
@@ -58,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
         i.putExtra("Pseudo", id);
         i.putExtra("Email", email);
         i.putExtra("Mot de passe", mdp);
-        //i.putExtra("Photo", img);
+        i.putExtra("Photo", "basicimage.png");
         startActivity(i);
     }
 
