@@ -43,7 +43,6 @@
     <string name="Confirm">Confirm</string>
 
 
-
     <!--newSondageTempoActivity-->
     <string name="FieldNbrOfProposition">Propositions :</string>
     <string name="FieldNbrOfChoice">Choices :</string>
@@ -86,7 +85,6 @@
 
     <!--activity QuizzActivity-->
     <string name="Back">Back to menu</string>
-
 
 
 </resources>

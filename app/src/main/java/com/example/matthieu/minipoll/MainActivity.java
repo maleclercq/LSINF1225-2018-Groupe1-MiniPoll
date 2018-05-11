@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.matthieu.minipoll.Amis.ListeAmisActivity;
 import com.example.matthieu.minipoll.New_poll.NewPollActivity;
 import com.example.matthieu.minipoll.Profile.ProfileActivity;
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ami(View v) {
         //a completer
-        Intent i = new Intent(this, FriendActivity.class); // NewPollActivity à creer
+        Intent i = new Intent(this, ListeAmisActivity.class); // NewPollActivity à creer
         i.putExtra("utilisateur", u);
         startActivity(i);
     }
