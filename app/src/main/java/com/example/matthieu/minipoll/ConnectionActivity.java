@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class ConnectionActivity extends AppCompatActivity {
 
-    boolean debug=true;
+    boolean debug=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
