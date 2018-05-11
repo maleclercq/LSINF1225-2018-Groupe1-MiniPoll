@@ -15,6 +15,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
+        android:text="Classement"
+        android:textColor="@color/Black"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,18 +36,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/linearL"
-        android:layout_width="390dp"
-        android:layout_height="161dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="326dp"
+        android:layout_height="247dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Titre"
         tools:context=".MainActivity">
@@ -53,8 +53,8 @@
 
         <ListView
             android:id="@+id/listview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="326dp"
+            android:layout_height="270dp"
             android:layout_marginLeft="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -66,29 +66,33 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorValidation"
+        android:background="@drawable/validation_button"
         android:onClick="retour"
+        android:padding="5pt"
         android:text="@string/Back"
+        android:textColor="@color/White"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Cloturer" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Cloturer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Cloturer"
-        android:backgroundTint="@color/colorValidation"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/validation_button"
+        android:padding="5pt"
+        android:text="@string/Confirm"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearL" />
+        app:layout_constraintRight_toRightOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

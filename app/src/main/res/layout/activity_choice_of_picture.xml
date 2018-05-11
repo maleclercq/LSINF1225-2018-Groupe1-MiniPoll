@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pop_bg"
+    android:background="@color/White"
+
     tools:context=".ChoiceOfPictureActivity"
     tools:layout_editor_absoluteY="81dp">
 
@@ -41,11 +42,50 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:text="Choose the image source"
-        android:textColor="@color/colorQuestionnaire"
+        android:textColor="@color/colorChoix"
         android:textStyle="bold"
         android:textSize="11pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/Camera"
+        android:textColor="@color/Black"
+        android:textSize="8pt"
+        app:layout_constraintEnd_toEndOf="@+id/takePicture"
+        app:layout_constraintStart_toStartOf="@+id/takePicture"
+        app:layout_constraintTop_toBottomOf="@+id/takePicture" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/Gallery"
+        android:textColor="@color/Black"
+        android:textSize="8pt"
+        app:layout_constraintEnd_toEndOf="@+id/toImageGallery"
+        app:layout_constraintStart_toStartOf="@+id/toImageGallery"
+        app:layout_constraintTop_toBottomOf="@+id/toImageGallery" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="4dp"
+        android:layout_height="343dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorQuestionnaire"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
 </android.support.constraint.ConstraintLayout>
