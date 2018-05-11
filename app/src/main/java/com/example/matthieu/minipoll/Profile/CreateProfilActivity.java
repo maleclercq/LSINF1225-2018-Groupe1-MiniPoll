@@ -71,7 +71,13 @@ public class CreateProfilActivity extends AppCompatActivity {
         }
 
         SQLiteDatabase db = myDbHelper.getWritableDatabase();
-        SQLiteStatement stmt = db.compileStatement("insert into UTILISATEUR values('" + id + "','" + nom + "','" + prenom + "','" + password + "','" + mail + "','" + image + "')");
+        SQLiteStatement stmt = db.compileStatement("insert into UTILISATEUR values('"
+                + id + "','"
+                + nom + "','"
+                + prenom + "','"
+                + password + "','"
+                + mail + "','"
+                + image + "')");
         stmt.execute();
 
         u = new Utilisateur(id, nom, prenom, password, mail, "basicimage.png");

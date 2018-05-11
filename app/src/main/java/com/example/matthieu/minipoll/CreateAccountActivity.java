@@ -35,6 +35,11 @@ public class CreateAccountActivity extends AppCompatActivity {
             return;
         }
 
+        if(id.matches("^.*[^a-zA-Z0-9 ].*$") || id.length()<1){
+            Toast.makeText(CreateAccountActivity.this,"Please, enter a valid pseudo",Toast.LENGTH_LONG).show(); //traduction
+            return;
+        }
+
         if(password.compareTo(confirmPassword)!=0){
             Toast.makeText(CreateAccountActivity.this,"password don't correspond",Toast.LENGTH_LONG).show(); //traduction
             return;
@@ -75,6 +80,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
     public void retour(View v)
     {
         finish();

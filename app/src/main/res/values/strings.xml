@@ -85,6 +85,7 @@
     <!--activity QuizzActivity-->
     <string name="Back">Go back to menu</string>
 
-
+    <!--activity_liste_ami-->
+    <string name="Friend">Friend</string>
 
 </resources>

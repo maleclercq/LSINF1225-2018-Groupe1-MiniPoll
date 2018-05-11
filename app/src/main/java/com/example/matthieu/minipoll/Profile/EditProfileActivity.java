@@ -1,5 +1,6 @@
 package com.example.matthieu.minipoll.Profile;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,7 +26,9 @@ public class EditProfileActivity extends AppCompatActivity {
     private DataBaseHelper myDbHelper;
 
     EditText editName, editFirstName, editPseudo, editMail, editPassword;
+    //String newName, newFirstName, newPseudo, newMail, newPassword, photo;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +57,11 @@ public class EditProfileActivity extends AppCompatActivity {
         this.myDbHelper = new DataBaseHelper(EditProfileActivity.this);
         SQLiteDatabase db = myDbHelper.getWritableDatabase();
 
-        String nom = ((EditText) findViewById(R.id.Name)).getText().toString();
-        String prenom = ((EditText) findViewById(R.id.Prenom)).getText().toString();
-        String pseudo = ((EditText) findViewById(R.id.Pseudo)).getText().toString();
-        String email = ((EditText) findViewById(R.id.AdresseEMail)).getText().toString();
-        String mdp = ((EditText) findViewById(R.id.Password)).getText().toString();
+        String newName = ((EditText) findViewById(R.id.Name)).getText().toString();
+        String newFirstName = ((EditText) findViewById(R.id.FirstName)).getText().toString();
+        String newPseudo = ((EditText) findViewById(R.id.Pseudo)).getText().toString();
+        String newMail = ((EditText) findViewById(R.id.Email)).getText().toString();
+        String newPassword = ((EditText) findViewById(R.id.Password)).getText().toString();
         String photo = "basicimage.png";
 
         try {
@@ -70,28 +73,42 @@ public class EditProfileActivity extends AppCompatActivity {
         }
         myDbHelper.openDataBase();
 
+        try {
+            myDbHelper.openDataBase();
+        } catch (android.database.SQLException sqle) {
+            Toast.makeText(this, "Unable to open database", Toast.LENGTH_LONG).show();
+            throw sqle;
+        }
+
         SQLiteStatement stmt1=db.compileStatement("delete from UTILISATEUR where " +
                 "ID='"+ this.u.getPseudo() +"'");
         stmt1.execute();
 
         SQLiteStatement stmt2=db.compileStatement("insert into UTILISATEUR values('"
-                + pseudo + "','"
-                + nom + "','"
-                + prenom + "','"
-                + mdp + "','"
-                + email + "','"
-                + photo + ")");
+                + newPseudo + "','"
+                + newName + "','"
+                + newFirstName + "','"
+                + newPassword + "','"
+                + newMail + "','"
+                + photo + "')");
         stmt2.execute();
+
+        u.setPseudo(newPseudo);
+        u.nom = newName;
+        u.prenom = newFirstName;
+        u.email = newMail;
+        u.mdp = newMail;
 
         Intent i=new Intent(this, ProfileActivity.class);
         i.putExtra("utilisateur",u);
-        i.putExtra("Nom", nom);
-        i.putExtra("Prenom", prenom);
-        i.putExtra("Pseudo", pseudo);
-        i.putExtra("Email", email);
-        i.putExtra("Mot de passe", mdp);
-        //i.putExtra("Photo", img);
+        i.putExtra("Nom", newName);
+        i.putExtra("Prenom", newFirstName);
+        i.putExtra("Pseudo", newPseudo);
+        i.putExtra("Email", newMail);
+        i.putExtra("Mot de passe", newPassword);
+        i.putExtra("Photo", photo);
         startActivity(i);
+        finish();
     }
 
     public void retour(View v){
@@ -102,7 +119,4 @@ public class EditProfileActivity extends AppCompatActivity {
         Intent i = new Intent(this, ChoiceOfPictureActivity.class);
         startActivity(i);
     }
-
-
-
 }

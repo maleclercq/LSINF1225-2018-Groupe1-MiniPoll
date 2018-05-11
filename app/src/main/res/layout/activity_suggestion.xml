@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile.EditProfileActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context="com.example.matthieu.minipoll.Amis.SuggestionActivity">
 
     <ImageView
         android:id="@+id/imageView8"
@@ -33,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,25 +40,25 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgSpecimenPhoto"
         tools:text="nom" />
 
-    <EditText
+    <TextView
         android:id="@+id/FirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Name"
         tools:text="prénom" />
 
-    <EditText
+    <TextView
         android:id="@+id/Pseudo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,50 +66,25 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textSize="14sp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FirstName"
+        app:layout_constraintTop_toBottomOf="@+id/Retour"
         tools:text="pseudo" />
 
-    <EditText
+    <TextView
         android:id="@+id/Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Pseudo"
+        app:layout_constraintTop_toBottomOf="@+id/FirstName"
         tools:text="email" />
-
-    <EditText
-        android:id="@+id/Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email"
-        tools:text="password" />
-
-    <Button
-        android:id="@+id/ModifProfile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/correct"
-        android:backgroundTint="@color/colorValidation"
-        android:onClick="validationProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgSpecimenPhoto"
@@ -121,17 +95,31 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Retour"
+        app:layout_constraintTop_toBottomOf="@+id/Pseudo"
         app:srcCompat="@drawable/photo" />
 
     <Button
-        android:id="@+id/EditPicture"
-        android:layout_width="35dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="230dp"
-        android:background="@drawable/pencil"
-        android:onClick="chooseImage"
-        app:layout_constraintBottom_toBottomOf="@+id/imgSpecimenPhoto"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/left"
+        android:layout_width="71dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/left_arrow"
+        android:onClick="left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/right"
+        android:layout_width="67dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/left_arrow"
+        android:onClick="right"
+        android:scaleX="-1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
