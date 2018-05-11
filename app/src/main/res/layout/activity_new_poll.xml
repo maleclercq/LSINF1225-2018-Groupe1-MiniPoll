@@ -37,13 +37,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
+    <!--Drawable-->
+
     <Button
         android:id="@+id/Questionnaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/oval_questionnaire"
+
         android:onClick="questionnaire"
         android:text="@string/NewQuestionnaire"
         app:layout_constraintBottom_toTopOf="@+id/Sondage"

@@ -67,7 +67,7 @@
         android:textColor="@color/White"
         android:textStyle="bold"
         android:padding="10dp"
-        android:background="@drawable/validation_button"
+        android:background="@color/colorValidation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

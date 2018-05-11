@@ -27,7 +27,7 @@
         android:layout_marginTop="8dp"
         android:onClick="Retour"
         android:text="Retour"
-        android:background="@drawable/validation_button"
+        android:background="@color/colorValidation"
         android:textColor="@color/White"
         android:textStyle="bold"
         android:textSize="7pt"

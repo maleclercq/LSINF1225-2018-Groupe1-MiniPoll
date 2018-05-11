@@ -2,6 +2,9 @@ package com.example.matthieu.minipoll;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
@@ -80,5 +83,32 @@ public class Utilisateur implements Serializable {
         }
 
         return suggest;
+    }
+
+    public boolean addFriend(DataBaseHelper myDbHelper,String ami){
+        String [] whereArgs={ami};
+        Cursor c=myDbHelper.rawQuery("select id from utilisateur where id=?",whereArgs);
+
+        String [][] value=myDbHelper.createTabFromCursor(c,1);
+        if(value.length==0){
+            return false;
+        }
+
+        String [] whereArgs2={this.getPseudo(),ami};
+        c=myDbHelper.rawQuery("select ami from ami where utilisateur=? and ami=?",whereArgs2);
+
+        String [][] value2=myDbHelper.createTabFromCursor(c,1);
+        if(value2.length!=0){
+            return false;
+        }
+
+
+
+        SQLiteDatabase db = myDbHelper.getWritableDatabase();
+        SQLiteStatement stmt = db.compileStatement("insert into ami values('"+this.getPseudo()+"','"+ami+"')");
+        stmt.execute();
+        stmt=db.compileStatement("insert into ami values('"+ami+"','"+this.getPseudo()+"')");
+        stmt.execute();
+        return true;
     }
 }

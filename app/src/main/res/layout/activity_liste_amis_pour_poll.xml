@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/validation_button"
+        android:background="@color/colorValidation"
         android:textColor="@color/White"
         android:textStyle="bold"
         android:textSize="8pt"

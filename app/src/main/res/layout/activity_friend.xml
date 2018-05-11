@@ -69,13 +69,15 @@
 
     </SearchView>
 
+    <!--Drawable-->
+
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
+
         android:layout_marginEnd="16dp"
-        android:background="@drawable/plus_sign"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout" />
 

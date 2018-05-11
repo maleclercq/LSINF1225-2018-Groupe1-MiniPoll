@@ -148,20 +148,10 @@ public class ListeAmisActivity extends AppCompatActivity {
             return;
         }
 
-        String [] whereArgs={ami};
-        Cursor c=myDbHelper.rawQuery("select id from utilisateur where id=?",whereArgs);
-
-        String [][] value=myDbHelper.createTabFromCursor(c,1);
-        if(value.length==0){
-            Toast.makeText(this,"Sorry, no one has been found",Toast.LENGTH_LONG).show(); //traduction
+        if(!u.addFriend(myDbHelper,ami)){
+            Toast.makeText(this,"Sorry, not found",Toast.LENGTH_SHORT).show();
             return;
         }
-
-        SQLiteDatabase db = myDbHelper.getWritableDatabase();
-        SQLiteStatement stmt = db.compileStatement("insert into ami values('"+this.u.getPseudo()+"','"+ami+"')");
-        stmt.execute();
-        stmt=db.compileStatement("insert into ami values('"+ami+"','"+this.u.getPseudo()+"')");
-        stmt.execute();
         Intent i=new Intent(this,ListeAmisActivity.class);
         i.putExtra("utilisateur",u);
         startActivity(i);
@@ -170,11 +160,16 @@ public class ListeAmisActivity extends AppCompatActivity {
 
     public void suggestion(View v){
         ArrayList<String> suggestion=u.getSuggestion(this.myDbHelper);
+        if(suggestion.size()==0){
+            Toast.makeText(this,"Sorry, no suggestion available",Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent i=new Intent(this,SuggestionActivity.class);
         i.putExtra("utilisateur",u);
         i.putExtra("suggestion",suggestion);
         i.putExtra("position",0);
         startActivity(i);
+        finish();
     }
 
     public void retour(View v)
