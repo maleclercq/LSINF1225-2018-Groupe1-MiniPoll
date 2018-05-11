@@ -62,14 +62,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:srcCompat="@drawable/quiz_box" />
 
-    <!--Drawable-->
-
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/quiz_smallbox"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
@@ -114,7 +113,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:srcCompat="@drawable/quiz_box" />
 
-    <!--Drawable-->
 
     <ImageView
         android:id="@+id/imageView9"
@@ -122,6 +120,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/quiz_smallbox"
         app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
         app:layout_constraintTop_toBottomOf="@+id/textView2"

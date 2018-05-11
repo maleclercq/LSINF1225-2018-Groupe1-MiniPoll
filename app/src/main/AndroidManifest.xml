@@ -47,9 +47,6 @@
             android:name=".New_poll.NewPollActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddFriend"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".New_poll.NewChoiceActivity"
             android:screenOrientation="portrait" />
         <activity

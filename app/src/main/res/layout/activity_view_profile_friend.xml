@@ -98,7 +98,6 @@
         app:layout_constraintTop_toBottomOf="@+id/Pseudo"
         app:srcCompat="@drawable/photo" />
 
-    <!--Drawable-->
 
     <Button
         android:id="@+id/Delete"
@@ -107,8 +106,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-
         android:onClick="delete"
+        android:background="@android:drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="@+id/Retour"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
