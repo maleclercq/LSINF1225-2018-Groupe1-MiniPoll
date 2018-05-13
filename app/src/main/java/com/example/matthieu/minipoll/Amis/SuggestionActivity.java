@@ -52,7 +52,6 @@ public class SuggestionActivity extends AppCompatActivity {
         Cursor c=myDbHelper.rawQuery("select nom,prenom,email from utilisateur where id=?",whereArgs);
 
         String [][] value=myDbHelper.createTabFromCursor(c,3);
-        Log.e("debug:",suggestion.get(position));
 
         TextView nom=findViewById(R.id.Name);
         nom.setText(value[0][0]);
@@ -72,12 +71,24 @@ public class SuggestionActivity extends AppCompatActivity {
         if(p<0){
             p=suggestion.size()-1;
         }
-        Intent i=new Intent(this,SuggestionActivity.class);
-        i.putExtra("utilisateur",u);
-        i.putExtra("suggestion",suggestion);
-        i.putExtra("position",p);
-        startActivity(i);
-        finish();
+        position=p;
+
+        String [] whereArgs={suggestion.get(position)};
+        Cursor c=myDbHelper.rawQuery("select nom,prenom,email from utilisateur where id=?",whereArgs);
+
+        String [][] value=myDbHelper.createTabFromCursor(c,3);
+
+        TextView nom=findViewById(R.id.Name);
+        nom.setText(value[0][0]);
+
+        TextView prenom=findViewById(R.id.FirstName);
+        prenom.setText(value[0][1]);
+
+        TextView email=findViewById(R.id.Email);
+        email.setText(value[0][2]);
+
+        TextView pseudo=findViewById(R.id.Pseudo);
+        pseudo.setText(suggestion.get(position));
     }
 
     public void right(View v){
@@ -85,15 +96,51 @@ public class SuggestionActivity extends AppCompatActivity {
         if(p>=suggestion.size()){
             p=0;
         }
+        position=p;
+        Intent i=new Intent(this,SuggestionActivity.class);
+
+        String [] whereArgs={suggestion.get(position)};
+        Cursor c=myDbHelper.rawQuery("select nom,prenom,email from utilisateur where id=?",whereArgs);
+
+        String [][] value=myDbHelper.createTabFromCursor(c,3);
+
+        TextView nom=findViewById(R.id.Name);
+        nom.setText(value[0][0]);
+
+        TextView prenom=findViewById(R.id.FirstName);
+        prenom.setText(value[0][1]);
+
+        TextView email=findViewById(R.id.Email);
+        email.setText(value[0][2]);
+
+        TextView pseudo=findViewById(R.id.Pseudo);
+        pseudo.setText(suggestion.get(position));
+    }
+
+    public void addFriend(View v){
+        u.addFriend(myDbHelper,this.suggestion.get(position));
+
+        ArrayList<String> newSuggestion=u.getSuggestion(this.myDbHelper);
+        if(newSuggestion.size()==0){
+            Intent i = new Intent(this, ListeAmisActivity.class);
+            i.putExtra("utilisateur", u);
+            startActivity(i);
+            finish();
+            return;
+        }
+
         Intent i=new Intent(this,SuggestionActivity.class);
         i.putExtra("utilisateur",u);
-        i.putExtra("suggestion",suggestion);
-        i.putExtra("position",p);
+        i.putExtra("suggestion",newSuggestion);
+        i.putExtra("position",0);
         startActivity(i);
         finish();
     }
 
     public void retour(View v){
+        Intent i = new Intent(this, ListeAmisActivity.class);
+        i.putExtra("utilisateur", u);
+        startActivity(i);
         finish();
     }
 }

@@ -40,6 +40,7 @@
     <string name="NewQuestionnaire">New Quizz</string>
     <string name="Sondage">Survey</string>
     <string name="NewSurvey">New Survey</string>
+    <string name="Confirm">Confirm</string>
 
 
     <!--newSondageTempoActivity-->
@@ -83,7 +84,7 @@
     <string name="Suivant">Next</string>
 
     <!--activity QuizzActivity-->
-    <string name="Back">Go back to menu</string>
+    <string name="Back">Back to menu</string>
 
 
 </resources>

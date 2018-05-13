@@ -94,12 +94,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 + photo + "')");
         stmt2.execute();
 
-        u.setPseudo(newPseudo);
-        u.nom = newName;
-        u.prenom = newFirstName;
-        u.email = newMail;
-        u.mdp = newMail;
-
         Intent i=new Intent(this, ProfileActivity.class);
         i.putExtra("utilisateur",u);
         i.putExtra("Nom", newName);

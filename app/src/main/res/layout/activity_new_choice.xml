@@ -12,17 +12,15 @@
         android:id="@+id/QuestionChoice"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:backgroundTint="@color/colorSondage"
         android:ems="10"
-        android:hint="Write your question here"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TitleChoice" />
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
         android:id="@+id/Retour"
@@ -39,33 +37,50 @@
         android:id="@+id/OK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorValidation"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="52dp"
+        android:background="@color/colorValidation"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:textSize="7pt"
+        android:padding="5dp"
         android:onClick="validation"
         android:text="@string/ok"
-        app:layout_constraintBottom_toBottomOf="@+id/Previsualisation"
-        app:layout_constraintEnd_toStartOf="@+id/Previsualisation"
-        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView19"
-        app:layout_constraintVertical_bias="1.0"
         tools:text="@string/ok" />
 
     <Button
         android:id="@+id/Previsualisation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="52dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorValidation"
+        android:background="@color/colorValidation"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:textSize="7pt"
+        android:padding="5dp"
         android:text="@string/previsualisation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView19"
-        app:layout_constraintVertical_bias="0.333"
+        app:layout_constraintTop_toBottomOf="@+id/TitleSecondChoice"
+        app:layout_constraintVertical_bias="1.0"
         tools:text="@string/previsualisation" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="228dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/FormulateQuestion"
+        android:textColor="@color/colorSondage"
+        android:textStyle="bold"
+        android:textSize="8pt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/imageView15"
@@ -73,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/choice_box"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -106,13 +121,13 @@
     <EditText
         android:id="@+id/TitleFirstChoice"
         android:layout_width="0dp"
-        android:layout_height="57dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorSondage"
         android:ems="10"
+        android:backgroundTint="@color/colorSondage"
         android:hint="Enter the first proposition"
         android:inputType="textPersonName"
         android:textSize="14sp"
@@ -122,10 +137,24 @@
         app:layout_constraintTop_toTopOf="@+id/imageView18" />
 
     <ImageView
+        android:id="@+id/FirstChoiceImage"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/ic_menu_gallery"
+        android:backgroundTint="@color/colorQuestionnaire"
+        android:onClick="chooseImage"
+        app:layout_constraintBottom_toTopOf="@+id/imageView18"
+        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+    <ImageView
         android:id="@+id/imageView19"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/choice_box"
         app:layout_constraintEnd_toEndOf="@+id/imageView15"
         app:layout_constraintStart_toStartOf="@+id/imageView15"
@@ -153,6 +182,19 @@
         android:src="@drawable/choice_box_white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView19"
         app:layout_constraintEnd_toEndOf="@+id/imageView19" />
+
+    <ImageView
+        android:id="@+id/SecondChoiceImage"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/ic_menu_gallery"
+        android:backgroundTint="@color/colorQuestionnaire"
+        android:onClick="chooseImage"
+        app:layout_constraintBottom_toTopOf="@+id/imageView20"
+        app:layout_constraintEnd_toEndOf="@+id/imageView19"
+        app:layout_constraintTop_toTopOf="@+id/imageView19" />
 
     <EditText
         android:id="@+id/TitleSecondChoice"
@@ -198,19 +240,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/TitleChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:hint="Write the title"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
 
 </android.support.constraint.ConstraintLayout>

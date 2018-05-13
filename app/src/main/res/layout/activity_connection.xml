@@ -15,10 +15,10 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/background_connection" />
 
     <EditText
@@ -52,11 +52,15 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="86dp"
-        android:backgroundTint="@color/colorValidation"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorValidation"
         android:onClick="login"
         android:text="@string/Login"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="@+id/Password"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/Password"
         app:layout_constraintTop_toBottomOf="@+id/Password" />
 
@@ -64,16 +68,19 @@
     <Button
         android:id="@+id/CreateAccount"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="17pt"
+        android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:background="@color/colorValidation"
         android:onClick="createAccount"
+        android:padding="4pt"
         android:text="@string/CreateAccount"
-        android:backgroundTint="@color/colorValidation"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/Password"
-        app:layout_constraintStart_toStartOf="@+id/Password"
-        app:layout_constraintTop_toBottomOf="@+id/Login" />
+        app:layout_constraintStart_toStartOf="@+id/Password" />
 
 
 </android.support.constraint.ConstraintLayout>

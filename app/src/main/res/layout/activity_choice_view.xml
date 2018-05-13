@@ -48,11 +48,14 @@
         android:layout_width="3dp"
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/validationChoix"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13"
-        tools:layout_editor_absoluteX="187dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
     <Button
         android:id="@+id/validationChoix"
@@ -60,7 +63,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:onClick="validation"
-        android:text="Validation"
+        android:text="@string/Confirm"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:background="@color/colorValidation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -77,6 +84,7 @@
         android:onClick="chooseFirstChoice"
         android:text="Premier choix"
         android:textAlignment="center"
+        android:textSize="8pt"
         app:layout_constraintBottom_toTopOf="@+id/validationChoix"
         app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +100,7 @@
         android:layout_marginTop="8dp"
         android:onClick="chooseSecondChoice"
         android:text="Deuxième choix"
+        android:textSize="8pt"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/validationChoix"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,10 +111,13 @@
         android:id="@+id/imageView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/choice_titlebox"
-        tools:layout_editor_absoluteX="17dp" />
+        app:srcCompat="@drawable/choice_titlebox" />
 
     <ImageView
         android:id="@+id/imageView17"

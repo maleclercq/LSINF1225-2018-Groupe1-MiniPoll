@@ -50,13 +50,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newPoll(View v){
-        Intent i=new Intent(this, NewPollActivity.class);
+        //a completer
+        Intent i=new Intent(this, NewPollActivity.class); // NewPollActivity à creer
         i.putExtra("utilisateur",u);
         startActivity(i);
     }
 
     public void ami(View v) {
-        Intent i = new Intent(this, ListeAmisActivity.class);
+        //a completer
+        Intent i = new Intent(this, ListeAmisActivity.class); // NewPollActivity à creer
         i.putExtra("utilisateur", u);
         startActivity(i);
     }
