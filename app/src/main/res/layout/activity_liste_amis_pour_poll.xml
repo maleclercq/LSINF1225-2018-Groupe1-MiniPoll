@@ -20,16 +20,15 @@
         app:srcCompat="@drawable/title_background_survey" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/typePoll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="@string/NewSurveyPageTitle"
-        android:textStyle="bold"
         android:textColor="@color/White"
         android:textSize="10pt"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

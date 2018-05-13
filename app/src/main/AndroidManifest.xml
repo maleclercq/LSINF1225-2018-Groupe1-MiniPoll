@@ -44,6 +44,9 @@
             android:name=".Profile.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".FriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".New_poll.NewPollActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -89,9 +92,6 @@
             android:name=".ChoiceViewActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ClassementActivity" />
-        <activity android:name=".Amis.ListeAmisActivity" />
-        <activity android:name=".Amis.ViewProfileFriendActivity" />
-        <activity android:name=".Amis.SuggestionActivity"></activity>
     </application>
 
 </manifest>

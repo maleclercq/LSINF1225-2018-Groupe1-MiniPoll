@@ -8,29 +8,29 @@
     tools:context=".ChoiceOfPictureActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <Button
-        android:id="@+id/takePicture"
+    <ImageView
+        android:id="@+id/PictureOne"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@android:drawable/ic_menu_camera"
-        android:onClick="onTakePictureClicked"
+        android:background="@drawable/photo"
+        android:backgroundTintMode="@color/colorSondage"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/toImageGallery"
+        app:layout_constraintEnd_toStartOf="@+id/PictureTwo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/toImageGallery"
+    <ImageView
+        android:id="@+id/PictureTwo"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_centerInParent="true"
-        android:background="@android:drawable/ic_menu_gallery"
-        android:onClick="onImageGalleryClicked"
+        android:background="@drawable/photo"
+        android:backgroundTint="@color/colorValidation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/takePicture"
+        app:layout_constraintStart_toEndOf="@+id/PictureOne"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -40,10 +40,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:text="Choose the image source"
+        android:text="Choose your image"
         android:textColor="@color/colorQuestionnaire"
-        android:textStyle="bold"
         android:textSize="11pt"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

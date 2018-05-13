@@ -71,6 +71,9 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         amisARajouter= new ArrayList<String>();
         amisQuiOntEteRajoute = new ArrayList<String>();
 
+        TextView typeP = findViewById(R.id.typePoll);
+        typeP.setText("New " + typePoll);
+
         this.choice=new Choice(ListeAmisPourPollActivity.this,this.titre,this.date,this.u.getPseudo());
 
         ListView amis1 = (ListView) findViewById(R.id.listview2);
@@ -179,34 +182,32 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
             insert = "SONDAGE_PARTICIPANT";
         } else if (typePoll.compareTo("Choice") == 0) {
             choice.chooseParticipant(amisQuiOntEteRajoute.get(0));
+            choice.chooseParticipant(this.u.getPseudo());
         } else {
             insert = "QUESTIONNAIRE_PARTICIPANT";
         }
         if (typePoll.compareTo("Choice") != 0)
         {
             for(int i=0;i<amisQuiOntEteRajoute.size();i++) {
-                SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
+                SQLiteStatement stmt = db.compileStatement("insert into " + insert + "values('"
                         + this.titre + "','"
                         + this.date + "','"
                         + this.u.getPseudo() + "','"
                         + amisQuiOntEteRajoute.get(i) + "',"
                         + 0 + ")");
                 stmt.execute();
+                /**
+                 * rajoute le créateur a la liste des participants"
+                 **/
+                SQLiteStatement stmt2 = db.compileStatement("insert into " + insert + "values('"
+                        + this.titre + "','"
+                        + this.date + "','"
+                        + this.u.getPseudo() + "','"
+                        + this.u.getPseudo() + "',"
+                        + 0 + ")");
+                stmt2.execute();
             }
         }
-
-        /**
-         * rajoute le créateur a la liste des participants"
-         **/
-        Log.e("debug",insert);
-        SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
-                + this.titre + "','"
-                + this.date + "','"
-                + this.u.getPseudo() + "','"
-                + this.u.getPseudo() + "',"
-                + 0 + ")");
-        stmt.execute();
-
         finish();
     }
 

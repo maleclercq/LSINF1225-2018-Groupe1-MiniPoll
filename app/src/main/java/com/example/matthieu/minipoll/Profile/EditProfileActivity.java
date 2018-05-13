@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.matthieu.minipoll.ChoiceOfPictureActivity;
@@ -26,7 +27,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private DataBaseHelper myDbHelper;
 
     EditText editName, editFirstName, editPseudo, editMail, editPassword;
-    //String newName, newFirstName, newPseudo, newMail, newPassword, photo;
+    ImageView img;
 
     @SuppressLint("WrongViewCast")
     @Override
