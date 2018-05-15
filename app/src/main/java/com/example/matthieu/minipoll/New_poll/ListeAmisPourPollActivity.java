@@ -38,9 +38,10 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
 
     String titre;
     String date;
-    String auteur;
 
     Choice choice;
+
+    String qChoix;
 
     private ArrayList<String> amisARajouter;
     private ArrayList<String> amisQuiOntEteRajoute;
@@ -68,6 +69,9 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         this.titre=(String) i.getSerializableExtra("titre");
         this.date=(String) i.getSerializableExtra("date");
 
+        if(typePoll.compareTo("Choice")==0){
+            this.qChoix=(String)i.getSerializableExtra("question");
+        }
         amisARajouter= new ArrayList<String>();
         amisQuiOntEteRajoute = new ArrayList<String>();
 
@@ -213,6 +217,7 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
                     + this.titre + "','"
                     + this.date + "','"
                     + this.u.getPseudo() + "','"
+                    + this.qChoix + "','"
                     + this.u.getPseudo() + "',"
                     + 0 + ")");
             stmtAmi.execute();
