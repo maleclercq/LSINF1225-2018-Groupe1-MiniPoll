@@ -177,12 +177,24 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         if (typePoll.compareTo("Survey") == 0) {
             insert = "SONDAGE_PARTICIPANT";
         } else if (typePoll.compareTo("Choice") == 0) {
+            insert = "CHOIX_PARTICIPANT";
             choice.chooseParticipant(amisQuiOntEteRajoute.get(0));
         } else {
             insert = "QUESTIONNAIRE_PARTICIPANT";
         }
         if (typePoll.compareTo("Choice") != 0)
         {
+            /**
+             * rajoute le créateur a la liste des participants"
+             **/
+            SQLiteStatement stmtAmi = db.compileStatement("insert into " + insert + " values('"
+                    + this.titre + "','"
+                    + this.date + "','"
+                    + this.u.getPseudo() + "','"
+                    + this.u.getPseudo() + "',"
+                    + 0 + ")");
+            stmtAmi.execute();
+
             for(int i=0;i<amisQuiOntEteRajoute.size();i++) {
                 SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
                         + this.titre + "','"
@@ -192,18 +204,18 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
                         + 0 + ")");
                 stmt.execute();
             }
+        } else {
+            /**
+             * rajoute le créateur a la liste des participants"
+             **/
+            SQLiteStatement stmtAmi = db.compileStatement("insert into " + insert + " values('"
+                    + this.titre + "','"
+                    + this.date + "','"
+                    + this.u.getPseudo() + "','"
+                    + this.u.getPseudo() + "',"
+                    + 0 + ")");
+            stmtAmi.execute();
         }
-
-        /**
-         * rajoute le créateur a la liste des participants"
-         **/
-        SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
-                + this.titre + "','"
-                + this.date + "','"
-                + this.u.getPseudo() + "','"
-                + this.u.getPseudo() + "',"
-                + 0 + ")");
-        stmt.execute();
 
         finish();
     }

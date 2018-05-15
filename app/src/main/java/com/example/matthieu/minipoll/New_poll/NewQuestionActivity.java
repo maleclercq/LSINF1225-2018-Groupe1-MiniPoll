@@ -96,7 +96,7 @@ public class NewQuestionActivity extends Activity {
             ViewHolder holder;
             if (convertView == null) {
                 holder = new ViewHolder();
-                convertView = mInflater.inflate(R.layout.item_pour_sondage, null);
+                convertView = mInflater.inflate(R.layout.item_pour_sondage,null);
                 holder.caption = (EditText) convertView.findViewById(R.id.ItemCaption);
                 convertView.setTag(holder);
             } else {
@@ -137,7 +137,7 @@ public class NewQuestionActivity extends Activity {
 
 
     public void OK(View v) {
-
+        listeReponse= new ArrayList<String>();
         String question = ((EditText) findViewById(R.id.Question)).getText().toString();
         int Rightanswer=-1;
         try {

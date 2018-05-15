@@ -135,6 +135,8 @@ public class NewSondageActivity extends Activity {
     }
 
     public void OK(View v) {
+        tabProp= new ArrayList<String>();
+
         String titre = ((EditText) findViewById(R.id.Titre)).getText().toString();
 
         String question = ((EditText) findViewById(R.id.Question)).getText().toString();

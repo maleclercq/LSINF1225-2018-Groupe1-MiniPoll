@@ -56,9 +56,6 @@
         app:layout_constraintTop_toTopOf="@+id/imageView21"
         app:srcCompat="@drawable/find_friend_smallbox" />
 
-
-
-
     <EditText
         android:id="@+id/SearshingFriend"
         android:layout_width="0dp"
@@ -99,5 +96,19 @@
         android:textSize="10pt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView21" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/plus_sign"
+        android:onClick="find"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView21"
+        app:layout_constraintEnd_toStartOf="@+id/SearshingFriend"
+        app:layout_constraintStart_toStartOf="@+id/imageView21"
+        app:layout_constraintTop_toTopOf="@+id/imageView21" />
 
 </android.support.constraint.ConstraintLayout>
