@@ -201,7 +201,7 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
             stmtAmi.execute();
 
             for(int i=0;i<amisQuiOntEteRajoute.size();i++) {
-                SQLiteStatement stmt = db.compileStatement("insert into " + insert + "values('"
+                SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
                         + this.titre + "','"
                         + this.date + "','"
                         + this.u.getPseudo() + "','"
