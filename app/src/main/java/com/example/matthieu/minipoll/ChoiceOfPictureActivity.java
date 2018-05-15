@@ -3,6 +3,8 @@ package com.example.matthieu.minipoll;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -14,9 +16,11 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.matthieu.minipoll.Profile.EditProfileActivity;
 import com.example.matthieu.minipoll.R;
 
 import java.io.File;
@@ -36,11 +40,22 @@ public class ChoiceOfPictureActivity extends Activity {
     public static final int IMAGE_GALLERY_REQUEST = 20;
     public ImageView imgSpecimenPhoto;
 
+    SQLiteDatabase sql;
+    private DataBaseHelper myDbHelper;
+    Utilisateur u;
+    String photoChoisie;
+    String pictureName;
+    Button takePicture;
+    Button toImageGallery;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choice_of_picture);
+
+        Intent i = getIntent();
+        u = (Utilisateur) i.getSerializableExtra("utilisateur");
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -48,7 +63,7 @@ public class ChoiceOfPictureActivity extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.7), (int)(height*.2));
+        getWindow().setLayout((int)(width*.8), (int)(height*.2));
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
@@ -69,7 +84,7 @@ public class ChoiceOfPictureActivity extends Activity {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // store the image
         File pictureDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        String pictureName = getPictureName();
+        pictureName = getPictureName();
         File imageFile = new File(pictureDirectory, pictureName);
         Uri pictureUri = Uri.fromFile(imageFile);
         cameraIntent = cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, pictureUri);
@@ -78,6 +93,8 @@ public class ChoiceOfPictureActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        this.myDbHelper = new DataBaseHelper(ChoiceOfPictureActivity.this);
+        SQLiteDatabase db = myDbHelper.getWritableDatabase();
         super.onActivityResult(requestCode, resultCode, data);
         // if the user choose ok, we execute the code inside the braces, wheter we call the camera or the image Gallery
         if (resultCode==RESULT_OK){
@@ -86,8 +103,7 @@ public class ChoiceOfPictureActivity extends Activity {
                 //Bitmap cameraImage = (Bitmap) data.getExtras().get("data");
                 // we have the image, we ahve to put it in the imageview
                 //imgSpecimenPhoto.setImageBitmap(cameraImage);
-
-
+                //photoChoisie = pictureName;
             }
             if (requestCode == IMAGE_GALLERY_REQUEST)
             //back from the image Gallery
@@ -107,6 +123,9 @@ public class ChoiceOfPictureActivity extends Activity {
 
                     //show the image to the user in the imageView
                     imgSpecimenPhoto.setImageBitmap(image);
+
+                    photoChoisie = getPictureName();
+
                     finish();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -114,6 +133,17 @@ public class ChoiceOfPictureActivity extends Activity {
                     Toast.makeText(this, "Unable to open image", Toast.LENGTH_LONG).show();
                 }
             }
+            SQLiteStatement stmt1=db.compileStatement("delete from UTILISATEUR where " +
+                    "ID='"+ this.u.getPseudo() +"'");
+            SQLiteStatement stmt2=db.compileStatement("insert into UTILISATEUR values('"
+                    + u.getPseudo() + "','"
+                    + u.nom + "','"
+                    + u.prenom + "','"
+                    + u.mdp + "','"
+                    + u.email + "','"
+                    + photoChoisie + "')");
+            stmt2.execute();
+            stmt1.execute();
         }
     }
 

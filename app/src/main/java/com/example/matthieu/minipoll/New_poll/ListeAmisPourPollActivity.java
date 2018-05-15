@@ -179,6 +179,7 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         } else if (typePoll.compareTo("Choice") == 0) {
             insert = "CHOIX_PARTICIPANT";
             choice.chooseParticipant(amisQuiOntEteRajoute.get(0));
+            choice.chooseParticipant(this.u.getPseudo());
         } else {
             insert = "QUESTIONNAIRE_PARTICIPANT";
         }
@@ -196,7 +197,7 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
             stmtAmi.execute();
 
             for(int i=0;i<amisQuiOntEteRajoute.size();i++) {
-                SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
+                SQLiteStatement stmt = db.compileStatement("insert into " + insert + "values('"
                         + this.titre + "','"
                         + this.date + "','"
                         + this.u.getPseudo() + "','"

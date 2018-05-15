@@ -124,14 +124,4 @@
         app:layout_constraintTop_toBottomOf="@+id/Retour"
         app:srcCompat="@drawable/photo" />
 
-    <Button
-        android:id="@+id/EditPicture"
-        android:layout_width="35dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="230dp"
-        android:background="@drawable/pencil"
-        android:onClick="chooseImage"
-        app:layout_constraintBottom_toBottomOf="@+id/imgSpecimenPhoto"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

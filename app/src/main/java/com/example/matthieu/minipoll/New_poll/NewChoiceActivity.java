@@ -45,7 +45,7 @@ public class NewChoiceActivity extends Activity {
     }
 
     public void validation(View v){
-        String titre = ((EditText) findViewById(R.id.QuestionChoice)).getText().toString();
+        String titre = ((EditText) findViewById(R.id.TitleChoice)).getText().toString();
         String question = ((EditText) findViewById(R.id.QuestionChoice)).getText().toString();
         String first = ((EditText) findViewById(R.id.TitleFirstChoice)).getText().toString();
         String second = ((EditText) findViewById(R.id.TitleSecondChoice)).getText().toString();
