@@ -71,8 +71,8 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         amisARajouter= new ArrayList<String>();
         amisQuiOntEteRajoute = new ArrayList<String>();
 
-        TextView typeP = findViewById(R.id.typePoll);
-        typeP.setText("New " + typePoll);
+        //TextView typeP = findViewById(R.id.);
+       // typeP.setText("New " + typePoll);
 
         this.choice=new Choice(ListeAmisPourPollActivity.this,this.titre,this.date,this.u.getPseudo());
 

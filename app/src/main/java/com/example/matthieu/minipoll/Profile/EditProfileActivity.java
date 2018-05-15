@@ -94,6 +94,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 + photo + "')");
         stmt2.execute();
 
+        u = new Utilisateur(newPseudo, newName, newFirstName, newPassword, newMail, "basicimage.png");
+
+
         Intent i=new Intent(this, ProfileActivity.class);
         i.putExtra("utilisateur",u);
         i.putExtra("Nom", newName);
