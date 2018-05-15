@@ -35,11 +35,12 @@
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="410dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
         android:src="@drawable/quiz_bigbox"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView10" />
@@ -146,7 +147,7 @@
     <EditText
         android:id="@+id/Question"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="46dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -176,11 +177,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="279dp"
-        android:layout_height="147dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
         app:layout_constraintEnd_toEndOf="@+id/imageView14"
         app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="@+id/imageView16"
