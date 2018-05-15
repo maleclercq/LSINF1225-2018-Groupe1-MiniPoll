@@ -195,7 +195,6 @@ public class NewQuestionActivity extends Activity {
                     + j
                     + ");");
             tabSTM.add(str); //OK
-            Log.e("debug",str);
         }
 
         String str = ("insert into QUESTIONNAIRE values('"
@@ -204,7 +203,6 @@ public class NewQuestionActivity extends Activity {
                 + u.getPseudo()
                 + "');");
         tabSTM.add(str);//OK
-        Log.e("debug",str);
 
         String str2 = ("insert into QUESTION values('"
                 + titre + "','"
@@ -213,7 +211,6 @@ public class NewQuestionActivity extends Activity {
                 + question.replace("'", " " )
                 + "');");//OK
         tabSTM.add(str2);//OK
-        Log.e("debug",str2);
 
         count = count -1;
 

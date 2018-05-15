@@ -117,7 +117,6 @@ public class Sondage {
         String[][] tabScore=myDbHelper.createTabFromCursor(c,1);
 
         for(int i=0;i<tabScore.length;i++){
-            Log.e("debug",tabScore[i][0]);
             score+=(m- Integer.parseInt(tabScore[i][0]));
         }
 
@@ -135,7 +134,6 @@ public class Sondage {
         int nbrChoisir=getNombreAChoisir();
 
         for(int i=0;i<value.length;i++){
-            Log.e("debug",value[i][0]);
             tempo=getScore(value[i][0],nbrChoisir);
             if(tempo>maxScore) {
                 maxScore=tempo;

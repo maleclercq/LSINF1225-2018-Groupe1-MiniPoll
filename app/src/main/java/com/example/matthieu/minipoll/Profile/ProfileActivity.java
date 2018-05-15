@@ -63,6 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
         i.putExtra("Mot de passe", mdp);
         i.putExtra("Photo", "basicimage.png");
         startActivity(i);
+        finish();
     }
 
     public void retour(View v) {

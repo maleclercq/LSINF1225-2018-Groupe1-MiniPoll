@@ -143,7 +143,6 @@ public class ListeAmisActivity extends AppCompatActivity {
         String ami=et.getText().toString();
 
         if(ami.matches("^.*[^a-zA-Z0-9 ].*$") || ami.length()<1){
-            Log.e("debug",ami);
             Toast.makeText(this,"Please, enter a valid pseudo",Toast.LENGTH_LONG).show(); //traduction
             return;
         }
