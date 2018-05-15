@@ -59,6 +59,7 @@ public class NewQuizzActivity extends AppCompatActivity {
 
 
         Intent i=new Intent(this,NewQuestionActivity.class);
+        titre=titre.replace("'", " ");
         i.putExtra("titre",titre);
         i.putExtra("utilisateur",u);
         i.putExtra("count", nbrQuestion);

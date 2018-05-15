@@ -53,7 +53,6 @@ public class NewSondageActivity extends Activity {
         this.nbrProp = (int) i.getSerializableExtra("nbrProp");
         this.nbrChoix = (int) i.getSerializableExtra("nbrChoix");
         this.u = (Utilisateur) i.getSerializableExtra("utilisateur");
-        Log.e("debug",""+this.nbrProp);
 
         this.tabProp = new ArrayList<String>();
 

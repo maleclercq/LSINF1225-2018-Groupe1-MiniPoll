@@ -169,7 +169,6 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         /** Fin d'ouverture **/
 
         for (int i = 0; i < tabSTM.size(); i++) {
-            Log.e("debug", tabSTM.get(i));
             SQLiteStatement stmt = db.compileStatement(tabSTM.get(i));
             stmt.execute();
         }
@@ -198,7 +197,6 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
         /**
          * rajoute le créateur a la liste des participants"
          **/
-        Log.e("debug",insert);
         SQLiteStatement stmt = db.compileStatement("insert into " + insert + " values('"
                 + this.titre + "','"
                 + this.date + "','"

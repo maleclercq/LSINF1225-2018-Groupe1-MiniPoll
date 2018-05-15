@@ -47,7 +47,6 @@ public class PrevisualisationSondage extends AppCompatActivity {
         this.question = (String) i.getSerializableExtra("question");
         this.data= (ArrayList) i.getSerializableExtra("tabProp");
         this.nbrChoixMax=(int) i.getSerializableExtra("nbrChoixMax");
-        Log.e("debug:",data.get(0));
 
         TextView titreTV = findViewById(R.id.Titre);
         SpannableString sousligne = new SpannableString(this.titre);

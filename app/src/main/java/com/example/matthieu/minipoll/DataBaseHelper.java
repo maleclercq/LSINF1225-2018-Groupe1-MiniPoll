@@ -29,7 +29,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, 10);
         this.myContext = context;
         this.DB_PATH = "/data/data/" + context.getPackageName() + "/" + "databases/";
-        Log.e("Path 1", DB_PATH);
     }
 
     public void createDataBase() throws IOException {

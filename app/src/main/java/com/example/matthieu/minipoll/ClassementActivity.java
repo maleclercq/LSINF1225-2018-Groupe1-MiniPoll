@@ -69,7 +69,6 @@ public class ClassementActivity extends AppCompatActivity {
                         userAnswer=userAnswer.replaceAll("\n","");//evite les characteres indésirables
                         if(Integer.parseInt(answerIsTrue[k][1])== 1 && userAnswer.compareTo(bonneReponse)==0){// COMPARE TA MERE !!!!
                             score++;
-                            Log.i("Erreur: ", "boucle3");
                         }
                     }
                 }
