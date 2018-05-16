@@ -10,10 +10,11 @@
         android:id="@+id/imageView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/quiz_bigbox"
-        tools:layout_editor_absoluteY="93dp" />
+        app:layout_constraintTop_toBottomOf="@+id/Question"
+        app:srcCompat="@drawable/quiz_bigbox" />
 
     <ImageView
         android:id="@+id/imageView26"
@@ -136,6 +137,24 @@
         android:textSize="7pt"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView23"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/Cloturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorValidation"
+        android:onClick="Cloturer"
+        android:padding="5dp"
+        android:text="@string/cloturer"
+        android:textColor="@color/White"
+        android:textSize="7pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
