@@ -209,18 +209,6 @@ public class ListeAmisPourPollActivity extends AppCompatActivity {
                         + 0 + ")");
                 stmt.execute();
             }
-        } else {
-            /**
-             * rajoute le créateur a la liste des participants"
-             **/
-            SQLiteStatement stmtAmi = db.compileStatement("insert into " + insert + " values('"
-                    + this.titre + "','"
-                    + this.date + "','"
-                    + this.u.getPseudo() + "','"
-                    + this.qChoix + "','"
-                    + this.u.getPseudo() + "',"
-                    + 0 + ")");
-            stmtAmi.execute();
         }
 
         finish();
